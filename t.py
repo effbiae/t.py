@@ -1,4 +1,4 @@
-import a;import n;from p import p;import numpy as np;import subprocess;import sys
+import a;import n;from p import p;import numpy as np;import subprocess as sp;import sys
 def kb(f):
  try:f()
  except KeyboardInterrupt:pass
@@ -9,10 +9,10 @@ def e(x,m):
  if len(x)==2:return m.m(x[0],e(x[1],m))
  elif len(x)==3:return m.d(x[0],*[e(x,m)for x in x[1:]])
  return 0
-eval=lambda s,m:m.pk(e(p(s),m))
+ev=lambda s,m:m.pk(e(p(s),m))
 def ru(s):
- try:r=subprocess.run(["python3","-c",f"from t import *;kb(lambda:eval('{s}',a))"],check=True)
- except subprocess.CalledProcessError as err:
+ try:r=sp.run(["python3","-c",f"from t import *;kb(lambda:ev('{s}',a))"],check=True)
+ except sp.CalledProcessError as err:
   return err.returncode
  return r.returncode
 def segv():#returns exprs that don't segv
@@ -21,13 +21,20 @@ def segv():#returns exprs that don't segv
  for c in a.P[1:a.P.find('S')+1]:#first scan for SEGV
   print(c,end="");sys.stdout.flush()
   for t in [c+x for x in('(2)','^2','&2')]:
+   #add a 'fast' param to segv that doesn't launch subprocess but will kill test
    if x:=ru(t):print('\ne','SIGSEGV'if x==-11 else x,t)
    else:s+=[t]
+ print(' done')
  return s
-def cmp(x,y):return x==y
+def mat(x,y):
+ c=(x==y)
+ if isinstance(c,np.ndarray):return c.all()
+ return c
 def main():
   for x in segv():
    if x[0] in n.Q:
-    print(cmp(*[m.pk(e(x,m))for m in (a,n)]))
+    s,t=[ev(x,m)for m in (a,n)]
+    if not mat(s,t):
+     print(x,'~',s,'==',t)
 if __name__=='__main__':
  kb(main)
