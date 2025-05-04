@@ -30,14 +30,14 @@ def pn(x,i):#try to parse a num
   if x[j]=='e':j+=1;continue
   if x[j]=='.':t=float
   try:f=float(x[i:j+1])
-  except:print(x[i:j+1]);break
+  except:break
   j+=1
  return t(f),j-i
 def lex(x):
  r=[];i=0
  while i<len(x):
-  n,n=pn(x,i)
-  if n:i+=n;r.append(n);
+  a,n=pn(x,i)
+  if n:i+=n;r.append(('0',a));
   else:r.append(x[i]);i+=1
  return r
 def p(x):global s,i;s=lex('['+x);i=0;return t()
@@ -51,7 +51,7 @@ def test():
         [          '',() ],
         [       'x;y',('[', 'x', 'y') ],
         [       'x+y',('+', 'x', 'y') ],
-        [      '^8e3',('^', ('0',8000.0)) ],
+        [      '^8e3',('^', ('0',8000)) ],
         [      'x+*y',('+', 'x', ('*', 'y')) ],
         [    '(+x)%y',('%', ('+', 'x'), 'y') ],
         ]:
