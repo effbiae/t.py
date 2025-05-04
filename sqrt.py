@@ -1,6 +1,7 @@
 from a import *;import numpy as np
 ini()
-i=20000  #for c in P[2:]:print(c);x=m(c,ti(i));print(x);print(pk(x))
+print(cast)
+for c in P[2:]:print(c);x=m(c,ti(2));print(x);print(pk(x))
 x=pk(m('%',m('^',ti(i))))
 y=np.sqrt(1/i*np.fromiter(range(i),dtype=np.float32))
 e=max(abs(x-y))
