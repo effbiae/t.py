@@ -22,10 +22,13 @@ def safe():#returns exprs that don't segv
  print('testing for crash\n this is slow because it runs a new k.edu process 3 times for each prim')
  for c in a.P[1:a.P.find('S')+1]:#first scan for SEGV
   print(c,end="");sys.stdout.flush()
-  for t in [c+x for x in('(2)','^2','&2')]:
+  for t in [c+x for x in('(2)','!2','^2','&2')]:
    #add a 'fast' param to segv that doesn't launch subprocess but will kill test
    if x:=ru(t):print('\na','SIGSEGV'if x==-11 else x,t)
-   else:s+=[t]
+   else:
+    s+=[t]
+    if x:=ru(y:=c+'[(2);'+t+']'):print('\na','SIGSEGV'if x==-11 else x,t)
+    else:s+=[y]
  print(' done')
  return s
 def mat(x,y):
