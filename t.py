@@ -15,16 +15,18 @@ def ru(s):
  except subprocess.CalledProcessError as err:
   return err.returncode
  return r.returncode
+def segv():#returns exprs that don't segv
+ s=[]
+ print('testing for crash')
+ for c in a.P[1:a.P.find('S')+1]:#first scan for SEGV
+  print(c,end="");sys.stdout.flush()
+  for t in [c+x for x in('(2)','^2','&2')]:
+   if x:=ru(t):print('\ne','SIGSEGV'if x==-11 else x,t)
+   else:s+=[t]
+ return s
 def cmp(x,y):return x==y
 def main():
-  s=[]
-  print('testing for crash')
-  for c in a.P[1:a.P.find('S')+1]:#first scan for SEGV
-   print(c,end="");sys.stdout.flush()
-   for t in [c+"(2)",c+"^2"]:
-    if x:=ru(t):print('\n','SIGSEGV'if x==-11 else x,t)
-    else:s+=[t]
-  for x in s:
+  for x in segv():
    if x[0] in n.Q:
     print(cmp(*[m.pk(e(x,m))for m in (a,n)]))
 if __name__=='__main__':
