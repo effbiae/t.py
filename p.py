@@ -18,6 +18,7 @@ def E(x):
 def t():
  if q():return()
  x=n()if not s[i][0]in'(['else x[1]if 3>len(x:=E(s[i]))else x
+ while i<len(s)and'['==s[i][0]:x=E(x)
  return x
 def v():return';'<cs(i-1)
 def e(x):
@@ -43,18 +44,19 @@ def lex(x):
 def p(x):global s,i;s=lex('['+x);i=0;return t()
 def test():
     import sys
-    if 0: #generate test cases
-        for x in ["","x;y","x+y","^8e3","x+*y","(+x)%y"]:
-            print("        [%12s,%s ],"%(x.__repr__(),parse(x)))
+    if len(sys.argv)>1: #generate test cases
+        for x in ["","x;y","x+y","^8e3","x+*y","(+x)%y","%[1;3]"]:
+            print("        [%12s,%s ],"%(x.__repr__(),p(x)))
         print(']')
     for x,y in [
         [          '',() ],
         [       'x;y',('[', 'x', 'y') ],
         [       'x+y',('+', 'x', 'y') ],
-        [      '^8e3',('^', ('0',8000)) ],
+        [      '^8e3',('^', ('0', 8000)) ],
         [      'x+*y',('+', 'x', ('*', 'y')) ],
         [    '(+x)%y',('%', ('+', 'x'), 'y') ],
+        [    '%[1;3]',('%', ('0', 1), ('0', 3)) ],
         ]:
-        if (r:=parse(x))!=y:print('!',repr(x),repr(r),'!=',y);sys.exit(1)
+        if (r:=p(x))!=y:print('!',repr(x),repr(r),'!=',y);sys.exit(1)
 if __name__=='__main__':
  test()

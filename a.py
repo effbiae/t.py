@@ -10,5 +10,5 @@ sh=lambda x:0 if ax(x)else(round(nx(x)/ux(x)),ux(x))if mx(x)else(nx(x),)
 ty=lambda x:i2 if tx(x)==2 else e2 if tx(x)==5 else i0
 pa=lambda x:ix(x) if tx(x)==2 else ex(x) if tx(x)==5 else gx(x)
 import numpy as np
-pk=lambda x:pa(x)if ax(x)else np.ctypeslib.as_array(ct.cast(sx(x),ct.POINTER(ty(x))),shape=sh(x))
+pk=lambda x:None if x==0 else pa(x)if ax(x)else np.ctypeslib.as_array(ct.cast(sx(x),ct.POINTER(ty(x))),shape=sh(x))
 a.m_(0,0);k_(0,0)

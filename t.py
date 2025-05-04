@@ -34,7 +34,8 @@ def main():
   for x in segv():
    if x[0] in n.Q:
     s,t=[ev(x,m)for m in (a,n)]
-    if not mat(s,t):
-     print(x,'~',s,'==',t)
+    if s is None:print('a',x,'nyi');continue #a nyi
+    if not mat(s,t):print(x,'~',s,'~',t)
+    else:print("yay!")
 if __name__=='__main__':
  kb(main)

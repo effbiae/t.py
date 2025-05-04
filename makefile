@@ -8,3 +8,5 @@ t:t.c makefile k.edu
 	clang-13 -ot -D_start=_kstart $o -g t.c -L. -la -Wl,-rpath=`pwd`
 z:
 	zip py.zip makefile a.py a.c sqrt.py
+test:
+	python3 p.py
