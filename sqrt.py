@@ -1,11 +1,11 @@
-from a import *;import numpy as np
+from a import *;import numpy as np;import subprocess
 ini()
-print(cast)
-for c in P[2:]:print(c);x=m(c,ti(2));print(x);print(pk(x))
-x=pk(m('%',m('^',ti(i))))
-y=np.sqrt(1/i*np.fromiter(range(i),dtype=np.float32))
-e=max(abs(x-y))
-j=[a for a in range(i)if e==x[a]-y[a]][0]
-print(j,x[j]-y[j])
-print(x[j])
-print(y[j])
+for c in P[1:]:
+ print(c)
+ try:subprocess.run(["python3","-c","from a import *;ini();x=m(%s,ti(2));print(pk(x))"%repr(c)],check=True)
+ except subprocess.CalledProcessError as err:
+     if err.returncode==-11:
+         print("probably segfaulted")
+     else:
+         print(f"crashed for other reasons: {err.returncode}")
+
