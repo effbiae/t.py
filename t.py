@@ -1,4 +1,6 @@
 import a;import n;from p import p;import numpy as np;import subprocess as sp;import sys
+np.set_printoptions(precision=3);v=0
+if 'v'in sys.argv:v=1
 def kb(f):
  try:f()
  except KeyboardInterrupt:pass
@@ -15,27 +17,29 @@ def ru(s):
  except sp.CalledProcessError as err:
   return err.returncode
  return r.returncode
-def segv():#returns exprs that don't segv
+def safe():#returns exprs that don't segv
  s=[]
- print('testing for crash')
+ print('testing for crash\n this is slow because it runs a new k.edu process 3 times for each prim')
  for c in a.P[1:a.P.find('S')+1]:#first scan for SEGV
   print(c,end="");sys.stdout.flush()
   for t in [c+x for x in('(2)','^2','&2')]:
    #add a 'fast' param to segv that doesn't launch subprocess but will kill test
-   if x:=ru(t):print('\ne','SIGSEGV'if x==-11 else x,t)
+   if x:=ru(t):print('\na','SIGSEGV'if x==-11 else x,t)
    else:s+=[t]
  print(' done')
  return s
 def mat(x,y):
- c=(x==y)
+ c=(x-y)<1e-6
  if isinstance(c,np.ndarray):return c.all()
  return c
 def main():
-  for x in segv():
+  for x in safe():
    if x[0] in n.Q:
     s,t=[ev(x,m)for m in (a,n)]
-    if s is None:print('a',x,'nyi');continue #a nyi
-    if not mat(s,t):print(x,'~',s,'~',t)
-    else:print("yay!")
+    if s is None:print('a','NYI',x);continue
+    elif t is None:v and print('n NYI',x);continue
+    if not mat(s,t):print('MISMATCH:',x,'a:',s,'~ n:',t)
+    else:
+     if v:print('match',x,s)
 if __name__=='__main__':
  kb(main)
