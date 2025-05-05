@@ -20,6 +20,8 @@ def m(c,x):
   return None 
 def d(c,a,x):
   if a is None or x is None:return None
+  if c=='+':return a+x
+  if c=='-':return a-x
   if c=='*':return a*x
   if c=='%':return a/x
   if c=='@':

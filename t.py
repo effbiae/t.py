@@ -22,13 +22,15 @@ def safe():#returns exprs that don't segv
  print('testing for crash\n this is slow because it runs a new k.edu process 3 times for each prim')
  for c in a.P[1:a.P.find('S')+1]:#first scan for SEGV
   print(c,end="");sys.stdout.flush()
-  for t in [c+x for x in('(2)','!2','^2','&2')]:
+  g=('(2)','!2','^2','&2')
+  for t in g:
    #add a 'fast' param to segv that doesn't launch subprocess but will kill test
-   if x:=ru(t):print('\na','SIGSEGV'if x==-11 else x,t)
+   if x:=ru(e:=c+t):print('\na','SIGSEGV'if x==-11 else x,e)
    else:
-    s+=[t]
-    if x:=ru(y:=c+'[(2);'+t+']'):print('\na','SIGSEGV'if x==-11 else x,t)
-    else:s+=[y]
+    s+=[e]
+    for u in g:
+     if x:=ru(f:='('+u+')'+c+t):print('\na','SIGSEGV'if x==-11 else x,f)
+     else:s+=[f]
  print(' done')
  return s
 def mat(x,y):
@@ -36,13 +38,13 @@ def mat(x,y):
  if isinstance(c,np.ndarray):return c.all()
  return c
 def main():
-  for x in safe():
-   if x[0] in n.Q:
-    s,t=[ev(x,m)for m in (a,n)]
-    if s is None:print('a','NYI',x);continue
-    elif t is None:v and print('n NYI',x);continue
-    if not mat(s,t):print('MISMATCH:',x,'a:',s,'~ n:',t)
-    else:
-     if v:print('match',x,s)
+ for x in safe():
+  if x[0] in n.Q:
+   s,t=[ev(x,m)for m in (a,n)]
+   if s is None:print('a','NYI',x);continue
+   elif t is None:v and print('n NYI',x);continue
+   if not mat(s,t):print('MISMATCH:',x,'a:',s,'~ n:',t)
+   else:
+    if v:print('match',x,s)
 if __name__=='__main__':
  kb(main)

@@ -1,4 +1,4 @@
-P=":+-*%!&|<>=~,^#_$?@.";m=["v;",P,";)]\n "];c=dict([(chr(x),' ')for x in range(128)])
+P=open('P').read();m=["v;",P,";)]\n "];c=dict([(chr(x),' ')for x in range(128)])
 def f(x,s):
  for a in s:c[a]=x
 for i in range(len(m[0])):f(m[0][i],m[i+1])
