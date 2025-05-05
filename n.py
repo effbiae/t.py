@@ -15,7 +15,7 @@ def m(c,x):
    try:return x[0]
    except TypeError:return x
   if c=='^':
-   if type(x)==int:return 1/x*np.fromiter(range(x),np.float32)
+   if type(x)==int:return 1/x*np.arange(x)
   if c=='&':
    return np.full((x,x),1,np.dtype('b'))if ax(x) else np.transpose(x)
   return None 
@@ -26,9 +26,9 @@ def d(c,a,x):
   if c=='*':return a*x
   if c=='%':return a/x
   if c=='!':return a//x
-  if c=='<':return a<x
-  if c=='>':return a<x
-  if c=='=':return a==x
+  if c=='<':return 0+(a<x)
+  if c=='>':return 0+(a<x)
+  if c=='=':return 0+(a==x)
   if c=='#':
    if ax(a) and m('#',x):
     return np.take(x,np.arange(a)%(1 if ax(x)else len(x)))

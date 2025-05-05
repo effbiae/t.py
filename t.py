@@ -1,8 +1,7 @@
 import a;import n;from p import p;import numpy as np;import subprocess as sp;import sys;import pickle;import os
-ban=['(&2)_!2','(&2)_^2']
-nda=lambda x:isinstance(x,np.ndarray);np.set_printoptions(precision=3);v=0
+ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3);v=0
 if '-v'in sys.argv:v=1
-lf=open('log', 'w')
+log=open('log', 'w')
 def kb(f):
  try:f()
  except KeyboardInterrupt:pass
@@ -22,11 +21,12 @@ def ru(s):
  return r.returncode
 def safe():#returns exprs that don't segv
  s=[]
- print('testing for crash\n this is slow because it runs a new k.edu process many times for each prim\n'+
-         '  be patient -- this is only done once and then cached')
+ print('testing for crash\n'+
+       ' this is slow because it runs a new k.edu process many times for each prim\n'+
+       '  be patient -- this is only done once and then cached')
  for c in a.P[1:a.P.find('S')+1]:#first scan for SEGV
   print(c,end="");sys.stdout.flush()
-  g=('(2)','!2','^2','&2');n=lambda x,e:print('\na','SIGSEGV'if x==-11 else x,e)
+  g=('(2)','!2','^2','&2');n=lambda x,e:print('\na','SIGSEGV'if x==-11 else 'FAIL',e)
   for t in g:
    if x:=ru(e:=c+t):n(x,e)
    else:
@@ -35,11 +35,11 @@ def safe():#returns exprs that don't segv
      if x:=ru(f:=f'({u}){c}{t}'):n(x,f)
      else:s+=[f]
  print(' done');pickle.dump(s,open('s','wb'));return s
-def chk(s):u=up(p(s));print(u,file=lf);lf.flush();return u in ban
+def chk(s):u=up(p(s));print(u,file=log);log.flush();return 0
 def mis(x,s,t):
- def sm(an,x):n=nda(x)and len(x.shape)>1;l='\n'if n else'';return l+an+':'+l+str(x)
+ def sm(an,x):n=(not ax(x))and len(x.shape)>1;l='\n'if n else'';return l+an+':'+l+str(x)
  print('>>>>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<<<<')
-def match(x,y):c=(x-y)<1e-6;return c.all()if nda(c)else c
+def match(x,y):c=(x-y)<1e-6;return c.all()if not ax(c)else c
 def main():
  if os.path.exists('s'):sa=pickle.load(open('s','rb'))
  else:sa=safe()
