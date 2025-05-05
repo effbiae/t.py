@@ -27,7 +27,7 @@ def d(c,a,x):
  if c=='%':return a/x
  if c=='!':return a//x
  if c=='<':return 0+(a<x)
- if c=='>':return 0+(a<x)
+ if c=='>':return 0+(a>x)
  if c=='=':return 0+(a==x)
  if c=='#':
   if ax(a) and m('#',x):
