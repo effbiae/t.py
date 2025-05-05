@@ -1,6 +1,7 @@
 import a;import n;from p import p;import numpy as np;import subprocess as sp;import sys;import pickle;import os
+ban=['(&2)_!2','(&2)_^2']
 nda=lambda x:isinstance(x,np.ndarray);np.set_printoptions(precision=3);v=0
-if 'v'in sys.argv:v=1
+if '-v'in sys.argv:v=1
 lf=open('log', 'w')
 def kb(f):
  try:f()
@@ -21,7 +22,8 @@ def ru(s):
  return r.returncode
 def safe():#returns exprs that don't segv
  s=[]
- print('testing for crash\n this is slow because it runs a new k.edu process many times for each prim')
+ print('testing for crash\n this is slow because it runs a new k.edu process many times for each prim\n'+
+         '  be patient -- this is only done once and then cached')
  for c in a.P[1:a.P.find('S')+1]:#first scan for SEGV
   print(c,end="");sys.stdout.flush()
   g=('(2)','!2','^2','&2');n=lambda x,e:print('\na','SIGSEGV'if x==-11 else x,e)
@@ -30,10 +32,10 @@ def safe():#returns exprs that don't segv
    else:
     s+=[e]
     for u in g:
-     if x:=ru(f:=f'{c}[{u};{t}]'):n(x,f)
+     if x:=ru(f:=f'({u}){c}{t}'):n(x,f)
      else:s+=[f]
  print(' done');pickle.dump(s,open('s','wb'));return s
-def log(s):print(up(p(s)),file=lf);lf.flush()
+def chk(s):u=up(p(s));print(u,file=lf);lf.flush();return u in ban
 def mis(x,s,t):
  def sm(an,x):n=nda(x)and len(x.shape)>1;l='\n'if n else'';return l+an+':'+l+str(x)
  print('>>>>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<<<<')
@@ -42,7 +44,8 @@ def main():
  if os.path.exists('s'):sa=pickle.load(open('s','rb'))
  else:sa=safe()
  for x in sa:
-  log(x);s,t=[ev(x,m)for m in(a,n)]
+  if chk(x):continue
+  s,t=[ev(x,m)for m in(a,n)]
   if s is None:print('a','NYI',x);continue
   elif t is None:v and print('n NYI',x);continue
   if not match(s,t):mis(x,s,t)

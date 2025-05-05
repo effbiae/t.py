@@ -6,11 +6,11 @@ def m(c,x):
   if c=='-':return -(x)
   if c=='*':return x*x
   if c=='%':return np.sqrt(x)
-  if c=='#':return 1 if ax(x) else len(x)
+  if c=='#':return 1 if ax(x)else len(x)
   if c=='*':return x*x
   if c=='~':return np.vectorize(lambda x:0+(x==0))(x)
   if c=='_':return np.floor(x)
-  if c=='!':return np.fromiter(range(round(x)),int) if ax(x) else None
+  if c=='!':return np.arange(round(x))if ax(x)else None
   if c=='@':
    try:return x[0]
    except TypeError:return x
@@ -26,6 +26,9 @@ def d(c,a,x):
   if c=='*':return a*x
   if c=='%':return a/x
   if c=='!':return a//x
+  if c=='<':return a<x
+  if c=='>':return a<x
+  if c=='=':return a==x
   if c=='#':
    if ax(a) and m('#',x):
     return np.take(x,np.arange(a)%(1 if ax(x)else len(x)))
