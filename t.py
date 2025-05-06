@@ -1,7 +1,5 @@
 import a;import n;from p import p;import numpy as np;import subprocess as sp;import sys;import pickle;import os
-ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3);v=0
-if '-v'in sys.argv:v=1
-log=open('log', 'w')
+ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3);v='-v'in sys.argv;log=open('log', 'w')
 def kb(f):
  try:f()
  except KeyboardInterrupt:pass
@@ -45,8 +43,8 @@ def main():
  for x in sa:
   if chk(x):continue
   s,t=[ev(x,m)for m in(a,n)]
-  if s is None:print('a','NYI',x);continue
-  elif t is None:v and print('n NYI',x);continue
+  if s is None:print('a','nyi',x);continue
+  elif t is None:v and print('n nyi',x);continue
   if not match(s,t):mis(x,s,t)
 if __name__=='__main__':
  kb(main)
