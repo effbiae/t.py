@@ -5,7 +5,7 @@ def kb(f):
  except KeyboardInterrupt:pass
 e=lambda x,m:(m.te(x[1])if type(x[1])==float else m.ti(x[1]))if x[0]=='0'else m.k(P.find(x[0]),*[e(x,m)if x else x for x in x[1:]])
 ce=lambda x:f't{"e"if type(x[1])==float else "i"}({x[1]})'if x[0]=='0' else f'k({P.find(x[0])},{",".join([ce(x)if x else "0"for x in x[1:]])})'
-lg=lambda x,f:print(x,file=f)and f.flush();cb=lambda x:lg(f'_r({ce(p(x))});',cf);ev=lambda s,m:m.pk(e(p(s),m))
+lg=lambda x,f:(print(x,file=f),f.flush());cb=lambda x:lg(f'_r({ce(p(x))});',cf);ev=lambda s,m:m.pk(e(p(s),m))
 def ru(s):
  try:r=sp.run(["python3","-c",f"from t import *;kb(lambda:ev('{s}',a))"],check=True)
  except sp.CalledProcessError as err:
@@ -13,8 +13,7 @@ def ru(s):
  return r.returncode
 def safe():#returns exprs that don't segv
  s=[]
- print('testing for crash\n'+
-       ' this is slow because it runs a new k.edu process many times for each prim\n'+
+ print('testing for crash\n this is slow because it runs a new k.edu process many times for each prim\n'+
        '  be patient -- this is only done once and then cached')
  for c in a.P[1:a.P.find('S')+1]:#first scan for SEGV
   print(c,end="");sys.stdout.flush()
@@ -33,8 +32,7 @@ def mis(x,s,t):
  print('>>>>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<<<<')
 def match(x,y):c=(x-y)<1e-6;return c.all()if not ax(c)else c
 def main():
- sa=pickle.load(open('s','rb'))if os.path.exists('s')else safe()
- for x in sa:
+ for x in pickle.load(open('s','rb'))if os.path.exists('s')else safe():
   if chk(x):continue
   cb(x);s,t=[ev(x,m)for m in(a,n)]
   if s is None:print('a','nyi',x);continue
