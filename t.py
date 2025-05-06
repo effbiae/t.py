@@ -4,9 +4,8 @@ def kb(f):
  try:f()
  except KeyboardInterrupt:pass
 e=lambda x,m:(m.te(x[1])if type(x[1])==float else m.ti(x[1]))if x[0]=='0'else m.k(P.find(x[0]),*[e(x,m)if x else x for x in x[1:]])
-ce=lambda x:return f't{"e"if type(x[1])==float else "i"}({x[1]})'if x[0]=='0' else f'k({P.find(x[0])},{",".join([ce(x)if x else "0"for x in x[1:]])})'
-def cb(x):print(f'_r({ce(p(x))});',file=cf);cf.flush()
-ev=lambda s,m:m.pk(e(p(s),m))
+ce=lambda x:f't{"e"if type(x[1])==float else "i"}({x[1]})'if x[0]=='0' else f'k({P.find(x[0])},{",".join([ce(x)if x else "0"for x in x[1:]])})'
+lg=lambda x,f:print(x,file=f)and f.flush();cb=lambda x:lg(f'_r({ce(p(x))});',cf);ev=lambda s,m:m.pk(e(p(s),m))
 def ru(s):
  try:r=sp.run(["python3","-c",f"from t import *;kb(lambda:ev('{s}',a))"],check=True)
  except sp.CalledProcessError as err:
@@ -28,7 +27,7 @@ def safe():#returns exprs that don't segv
      if x:=ru(f:=f'({u}){c}{t}'):n(x,f)
      else:s+=[f]
  print(' done');pickle.dump(s,open('s','wb'));return s
-def chk(s):print(s,file=log);log.flush();return 0
+chk=lambda x:lg(x,log)and 0
 def mis(x,s,t):
  def sm(an,x):n=(not ax(x))and len(x.shape)>1;l='\n'if n else'';return l+an+':'+l+str(x)
  print('>>>>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<<<<')
