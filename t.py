@@ -3,8 +3,8 @@ ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3);v='-v'
 def kb(f):
  try:f()
  except KeyboardInterrupt:pass
-e=lambda x,m:(m.te(x[1])if type(x[1])==float else m.ti(x[1]))if x[0]=='0'else m.k(P.find(x[0]),*[e(x,m)if x else x for x in x[1:]])
-ce=lambda x:f't{"e"if type(x[1])==float else "i"}({x[1]})'if x[0]=='0' else f'k({P.find(x[0])},{",".join([ce(x)if x else "0"for x in x[1:]])})'
+e=lambda x,m:(m.te(x[1])if type(x[1])==float else m.ti(x[1]))if x[0]=='0'else m.k(P.find(x[0]),e(x[1],m)if x[1] else None,e(x[2],m))
+ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'if x[0]=='0' else f'k({P.find(x[0])},{",".join([ce(x)if x else "0"for x in x[1:]])})'
 lg=lambda x,f:(print(x,file=f),f.flush());cb=lambda x:lg(f'_r({ce(p(x))});',cf);ev=lambda s,m:m.pk(e(p(s),m))
 def ru(s):
  try:r=sp.run(["python3","-c",f"from t import *;kb(lambda:ev('{s}',a))"],check=True)
@@ -38,5 +38,4 @@ def main():
   if s is None:print('a','nyi',x);continue
   elif t is None:v and print('n nyi',x);continue
   if not match(s,t):mis(x,s,t)
-if __name__=='__main__':
- kb(main)
+if __name__=='__main__':kb(main)
