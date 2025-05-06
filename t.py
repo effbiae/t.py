@@ -4,11 +4,9 @@ def kb(f):
  try:f()
  except KeyboardInterrupt:pass
 def e(x,m):
- if x==0:return 0
  if x[0]=='0':return m.te(x[1])if type(x[1])==float else m.ti(x[1])
- return m.k(P.find(x[0]),*[e(x,m)for x in x[1:]])
+ return m.k(P.find(x[0]),*[e(x,m)if x else x for x in x[1:]])
 def ce(x):
- if x==0:return 0
  if x[0]=='0':return f't{"e"if type(x[1])==float else "i"}({x[1]})'
  return f'k({P.find(x[0])},{",".join([ce(x)if x else "0"for x in x[1:]])})'
 def cb(x):print(f'_r({ce(p(x))});',file=cf);cf.flush()
