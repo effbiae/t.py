@@ -41,8 +41,7 @@ def mis(x,s,t):
  print('>>>>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<<<<')
 def match(x,y):c=(x-y)<1e-6;return c.all()if not ax(c)else c
 def main():
- if os.path.exists('s'):sa=pickle.load(open('s','rb'))
- else:sa=safe()
+ sa=pickle.load(open('s','rb'))if os.path.exists('s')else safe()
  for x in sa:
   if chk(x):continue
   s,t=[ev(x,m)for m in(a,n)]
