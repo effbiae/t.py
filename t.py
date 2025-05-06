@@ -4,18 +4,14 @@ def kb(f):
  try:f()
  except KeyboardInterrupt:pass
 def e(x,m):
+ if x==0:return 0
  if x[0]=='0':return m.te(x[1])if type(x[1])==float else m.ti(x[1])
- if len(x)==2:return m.m(x[0],e(x[1],m))
- elif len(x)==3:return m.d(x[0],*[e(x,m)for x in x[1:]])
- return 0
+ return m.k(P.find(x[0]),*[e(x,m)for x in x[1:]])
 def ce(x):
+ if x==0:return 0
  if x[0]=='0':return f't{"e"if type(x[1])==float else "i"}({x[1]})'
- if len(x)==2:return f'k({P.find(x[0])},0,{ce(x[1])})'
- elif len(x)==3:return f'k({P.find(x[0])},{",".join([ce(x)for x in x[1:]])})'
+ return f'k({P.find(x[0])},{",".join([ce(x)if x else "0"for x in x[1:]])})'
 def cb(x):print(f'_r({ce(p(x))});',file=cf);cf.flush()
-def up(x):#unparse for k.edu
- if x[0]=='0':return str(x[1])
- return x[0]+up(x[1])if len(x)==2 else f'({up(x[1])}){x[0]}{up(x[2])}'
 ev=lambda s,m:m.pk(e(p(s),m))
 def ru(s):
  try:r=sp.run(["python3","-c",f"from t import *;kb(lambda:ev('{s}',a))"],check=True)
@@ -38,7 +34,7 @@ def safe():#returns exprs that don't segv
      if x:=ru(f:=f'({u}){c}{t}'):n(x,f)
      else:s+=[f]
  print(' done');pickle.dump(s,open('s','wb'));return s
-def chk(s):u=up(p(s));print(u,file=log);log.flush();return 0
+def chk(s):print(s,file=log);log.flush();return 0
 def mis(x,s,t):
  def sm(an,x):n=(not ax(x))and len(x.shape)>1;l='\n'if n else'';return l+an+':'+l+str(x)
  print('>>>>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<<<<')

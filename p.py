@@ -23,7 +23,7 @@ def t():
 def v():return';'<cs(i-1)
 def e(x):
  if q():return x
- v_=v();f=t();return (f,x,e(t()))if v()>v_ else (x,e(f))
+ v_=v();f=t();return (f,x,e(t()))if v()>v_ else (x,0,e(f))
 def pn(x,i):#try to parse a num
  j=i;t=int;f=float('nan')
  if not x[i] in '0123456789':return f,0

@@ -1,5 +1,6 @@
 import numpy as np;np.seterr(divide='ignore', invalid='ignore')
 ax=lambda x:not isinstance(x,np.ndarray);ID=lambda x:x;ti=ID;te=ID;pk=ID
+def k(c,a,x):m(c,x)if a is 0 else d(c,a,x)
 def m(c,x):
  if x is None:return x
  if c=='+':return abs(x)
