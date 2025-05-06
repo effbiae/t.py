@@ -10,6 +10,8 @@ P:k.edu
 	a=$$(grep -o 'P="[^"]*"' k.edu/z.c);b=$${a:3:29};echo -n $$b>P
 t:t.c makefile k.edu
 	clang-13 -ot -D_start=_kstart $o -g t.c -L. -la -Wl,-rpath=`pwd`
+g:c.b g.c liba.so
+	clang-13 -og -D_start=_kstart $o -g g.c -L. -la -Wl,-rpath=`pwd`
 z:;zip py.zip makefile a.py a.c t.py p.py n.py
 test:;python3 p.py
 clean:;rm -f P s liba.so t py.zip t log -r k.edu __pycache__

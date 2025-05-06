@@ -1,5 +1,5 @@
-import a;import n;from p import p;import numpy as np;import subprocess as sp;import sys;import pickle;import os
-ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3);v='-v'in sys.argv;log=open('log', 'w')
+import a;import n;from p import p;import numpy as np;import subprocess as sp;import sys;import pickle;import os;P=a.P
+ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3);v='-v'in sys.argv;log=open('log','w');cf=open('c.b','w')
 def kb(f):
  try:f()
  except KeyboardInterrupt:pass
@@ -8,6 +8,11 @@ def e(x,m):
  if len(x)==2:return m.m(x[0],e(x[1],m))
  elif len(x)==3:return m.d(x[0],*[e(x,m)for x in x[1:]])
  return 0
+def ce(x):
+ if x[0]=='0':return f't{"e"if type(x[1])==float else "i"}({x[1]})'
+ if len(x)==2:return f'k({P.find(x[0])},0,{ce(x[1])})'
+ elif len(x)==3:return f'k({P.find(x[0])},{",".join([ce(x)for x in x[1:]])})'
+def cb(x):print(f'_r({ce(p(x))});',file=cf);cf.flush()
 def up(x):#unparse for k.edu
  if x[0]=='0':return str(x[1])
  return x[0]+up(x[1])if len(x)==2 else f'({up(x[1])}){x[0]}{up(x[2])}'
@@ -42,7 +47,7 @@ def main():
  sa=pickle.load(open('s','rb'))if os.path.exists('s')else safe()
  for x in sa:
   if chk(x):continue
-  s,t=[ev(x,m)for m in(a,n)]
+  cb(x);s,t=[ev(x,m)for m in(a,n)]
   if s is None:print('a','nyi',x);continue
   elif t is None:v and print('n nyi',x);continue
   if not match(s,t):mis(x,s,t)
