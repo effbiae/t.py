@@ -29,9 +29,12 @@ def d(c,a,x):
  if c=='<':return 0+(a<x)
  if c=='>':return 0+(a>x)
  if c=='=':return 0+(a==x)
+ if c=='&':return 0+np.logical_and(a,x)
+ if c=='|':return 0+np.logical_or(a,x)
  if c=='#':
-  if ax(a) and m('#',x):
-   return np.take(x,np.arange(a)%(1 if ax(x)else len(x)))
+  n=m('#',x)
+  if ax(a) and n:
+   return np.take(x,np.arange(a)%n)
  if c=='@':
   if not ax(a) and not ax(x):return np.matmul(a,x)
   if not ax(a):
