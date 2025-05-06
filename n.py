@@ -28,8 +28,8 @@ def d(c,a,x):
  if c=='<':return 0+(a<x)
  if c=='>':return 0+(a>x)
  if c=='=':return 0+(a==x)
- if c=='&':return 0+np.logical_and(a,x)
- if c=='|':return 0+np.logical_or(a,x)
+ if c=='&':return np.minimum(a,x)
+ if c=='|':return np.maximum(a,x)
  if c=='#':
   n=m('#',x)
   if ax(a) and n:return np.take(x,np.arange(a)%n)
