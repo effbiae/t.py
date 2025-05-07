@@ -11,7 +11,8 @@ def m(c,x):
  if c=='*':return x*x
  if c=='~':return np.vectorize(lambda x:0+(x==0))(x)
  if c=='_':return np.floor(x)
- if c=='!':return np.arange(round(x))if ax(x)else None
+ if c=='|':if not ax(x):return x[::-1]
+ if c=='!':return np.arange(int(x))if ax(x)else None
  if c=='@':
   try:return x[0]
   except TypeError:return x
@@ -35,5 +36,5 @@ def d(c,a,x):
   if not ax(a)and not ax(x):return np.matmul(a,x)
   if not ax(a)and x<len(a):return a[x]
   return a*x
- if c=='~':c=(a-x)<1e-6;return int(c if ax(c)else c.all())
- return None 
+ if c=='~':c=(a-x)<1e-6;return 0+(c if ax(c)else c.all())
+ return None
