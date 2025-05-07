@@ -19,7 +19,7 @@ def main():
  es=exprs();gb(es);le(es)
  for x in es:
   log(x);v and print('try',x);s,t=[ev(x,m)for m in(a,n)]
-  if type(s)is tuple:print('a','err',s[1],Y[s[1]],'for',x);continue
+  if type(s)is tuple:print('a','err',s[0],Y[s[0]],'for',x);continue
   elif t is None:v and print('n nyi',x);continue
   if not match(s,t):mis(x,s,t)
 if __name__=='__main__':main()
