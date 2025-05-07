@@ -2,9 +2,7 @@ P=open('P').read();m=["v;",P,";)]\n "];c=dict([(chr(x),' ')for x in range(128)])
 def f(x,s):
  for a in s:c[a]=x
 for i in range(len(m[0])):f(m[0][i],m[i+1])
-def cs(i):
- if(i<len(s)):return c[s[i][0]]
- return ';'
+def cs(i):return c[s[i][0]]if i<len(s)else';'
 def n():
  global i
  if len(s)!=i:i+=1;return s[i-1]
