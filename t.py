@@ -28,8 +28,7 @@ def safe():#returns exprs that don't segv
  print(' done');pickle.dump(s,open('s','wb'));return s
 chk=lambda x:lg(x,log)and 0
 def mis(x,s,t):
- def sm(an,x):n=(not ax(x))and len(x.shape)>1;l='\n'if n else'';return l+an+':'+l+str(x)
- print('>>>>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<<<<')
+ sm=lambda an,x:[l:='\n'if (not ax(x))and len(x.shape)>1 else'',l+an+':'+l+str(x)][1];print('>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<')
 def match(x,y):c=(x-y)<1e-6;return c.all()if not ax(c)else c
 def main():
  for x in pickle.load(open('s','rb'))if os.path.exists('s')else safe():
