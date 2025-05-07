@@ -9,8 +9,8 @@ ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'if x[0]=='0'else \
 lg=lambda x,f:(print(x,file=f),f.flush());gb=lambda x:[lg(f'_r({ce(p(a))});',gf)for a in x]
 le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);ev=lambda s,m:m.pk(e(p(s),m))
 def exprs():
- g=('(2)','!2','^2','&2');x=[(c,t)for t in g for c in a.P[1:a.P.find('S')+1]]
- return [f'{c}{t}'for (c,t) in x]+[f'({u}){c}{t}'for u in g for (c,t) in x]
+ g=('(2)','!2','^2','&2');x=[c+t for t in g for c in a.P[1:a.P.find('S')+1]]
+ return x+[f'({u})'+a for u in g for a in x]
 def mis(x,s,t):
  sm=lambda an,x:[l:='\n'if (not ax(x))and len(x.shape)>1 else'',l+an+':'+l+str(x)][1]
  print('>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<')
