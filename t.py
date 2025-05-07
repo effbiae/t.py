@@ -1,5 +1,5 @@
 import a;import n;from p import p;import numpy as np;import subprocess as sp
-import sys;import pickle;import os;P=a.P
+import sys;import pickle;import os;P=a.P;Y=open('Y').read().split()
 ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3)
 v='-v'in sys.argv;log=open('log','w');cf=open('c.b','w')
 def kb(f):
@@ -40,8 +40,8 @@ def match(x,y):c=(x-y)<1e-6;return c.all()if not ax(c)else c
 def main():
  for x in pickle.load(open('s','rb'))if os.path.exists('s')else safe():
   if chk(x):continue
-  cb(x);s,t=[ev(x,m)for m in(a,n)]
-  if type(s)is tuple:print('a','code',s[1],'for',x);continue
+  cb(x);v and print('try',x);s,t=[ev(x,m)for m in(a,n)]
+  if type(s)is tuple:print('a','err',s[1],Y[s[1]],'for',x);continue
   elif t is None:v and print('n nyi',x);continue
   if not match(s,t):mis(x,s,t)
 if __name__=='__main__':kb(main)

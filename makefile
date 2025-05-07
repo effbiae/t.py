@@ -1,13 +1,15 @@
 SHELL=/bin/bash
 o=-fno-builtin -funsigned-char -fno-unwind-tables -Wno-psabi -Wfatal-errors -Wno-multichar -Wno-parentheses -Wno-pointer-type-mismatch -Wno-incompatible-pointer-types
-all:P liba.so
+all:P Y liba.so
 liba.so:k.edu makefile a.c
 	clang-13 -oliba.so $o -g -shared -fPIC k.edu/[az].c a.c -Ofast -nostdlib -mavx512f -mavx512dq -mavx512vbmi -mavx512vnni
 k.edu:
 	git clone https://github.com/effbiae/k.edu.git
 	cd k.edu && git checkout 96437adcb81f 2>/dev/null #30eaa9e3 
 P:k.edu
-	a=$$(grep -o 'P="[^"]*"' k.edu/z.c);b=$${a:3:29};echo -n $$b>P
+	a=$$(grep -o 'P="[^"]*"' k.edu/z.c);echo -n $${a:3:29}>P
+Y:k.edu
+	a=$$(grep -o 'Y\[[^"]*"[^"]*"' k.edu/z.c);echo -n $${a:7:16}>Y
 t:t.c makefile k.edu
 	clang-13 -ot -D_start=_kstart $o -g t.c -L. -la -Wl,-rpath=`pwd`
 g:c.b g.c liba.so
