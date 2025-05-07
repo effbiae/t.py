@@ -1,11 +1,16 @@
-import a;import n;from p import p;import numpy as np;import subprocess as sp;import sys;import pickle;import os;P=a.P
-ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3);v='-v'in sys.argv;log=open('log','w');cf=open('c.b','w')
+import a;import n;from p import p;import numpy as np;import subprocess as sp
+import sys;import pickle;import os;P=a.P
+ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3)
+v='-v'in sys.argv;log=open('log','w');cf=open('c.b','w')
 def kb(f):
  try:f()
  except KeyboardInterrupt:pass
-e=lambda x,m:([m.te,m.ti][type(x[1])==int](x[1]))if x[0]=='0'else m.k(P.find(x[0]),e(x[1],m)if x[1] else None,e(x[2],m))
-ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'if x[0]=='0' else f'k({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
-lg=lambda x,f:(print(x,file=f),f.flush());cb=lambda x:lg(f'_r({ce(p(x))});',cf);ev=lambda s,m:m.pk(e(p(s),m))
+e=lambda x,m:([m.te,m.ti][type(x[1])==int](x[1]))if x[0]=='0'else \
+        m.k(P.find(x[0]),e(x[1],m)if x[1] else None,e(x[2],m))
+ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'if x[0]=='0' else \
+        f'k({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
+lg=lambda x,f:(print(x,file=f),f.flush());cb=lambda x:lg(f'_r({ce(p(x))});',cf)
+ev=lambda s,m:m.pk(e(p(s),m))
 def ru(s):
  try:r=sp.run(["python3","-c",f"from t import *;kb(lambda:ev('{s}',a))"],check=True)
  except sp.CalledProcessError as err:
@@ -13,7 +18,8 @@ def ru(s):
  return r.returncode
 def safe():#returns exprs that don't segv
  s=[]
- print('testing for crash\n this is slow because it runs a new k.edu process many times for each prim\n'+
+ print('testing for crash\n' +
+       ' this is slow because it runs a new k.edu process many times for each prim\n'+
        '  be patient -- this is only done once and then cached')
  for c in a.P[1:a.P.find('S')+1]:#first scan for SEGV
   print(c,end="");sys.stdout.flush()
@@ -28,7 +34,8 @@ def safe():#returns exprs that don't segv
  print(' done');pickle.dump(s,open('s','wb'));return s
 chk=lambda x:lg(x,log)and 0
 def mis(x,s,t):
- sm=lambda an,x:[l:='\n'if (not ax(x))and len(x.shape)>1 else'',l+an+':'+l+str(x)][1];print('>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<')
+ sm=lambda an,x:[l:='\n'if (not ax(x))and len(x.shape)>1 else'',l+an+':'+l+str(x)][1]
+ print('>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<')
 def match(x,y):c=(x-y)<1e-6;return c.all()if not ax(c)else c
 def main():
  for x in pickle.load(open('s','rb'))if os.path.exists('s')else safe():
