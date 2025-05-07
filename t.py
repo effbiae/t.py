@@ -17,11 +17,8 @@ def ru(s):
   return err.returncode
  return r.returncode
 def exprs():
- g=('(2)','!2','^2','&2')
- x=[(c,t)for t in g for c in a.P[1:a.P.find('S')+1]]
- s=[f'{c}{t}'for (c,t) in x]
- s+=[f'({u}){c}{t}'for u in g for (c,t) in x]
- return s
+ g=('(2)','!2','^2','&2');x=[(c,t)for t in g for c in a.P[1:a.P.find('S')+1]]
+ return [f'{c}{t}'for (c,t) in x]+[f'({u}){c}{t}'for u in g for (c,t) in x]
 def mis(x,s,t):
  sm=lambda an,x:[l:='\n'if (not ax(x))and len(x.shape)>1 else'',l+an+':'+l+str(x)][1]
  print('>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<')
