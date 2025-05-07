@@ -34,7 +34,7 @@ def main():
  for x in pickle.load(open('s','rb'))if os.path.exists('s')else safe():
   if chk(x):continue
   cb(x);s,t=[ev(x,m)for m in(a,n)]
-  if s is None:print('a','nyi',x);continue
+  if type(s)is tuple:print('a','code',s[1],'for',x);continue
   elif t is None:v and print('n nyi',x);continue
   if not match(s,t):mis(x,s,t)
 if __name__=='__main__':kb(main)
