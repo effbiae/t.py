@@ -10,7 +10,7 @@ e=lambda x,m:([m.te,m.ti][type(x[1])==int](x[1]))if x[0]=='0'else \
 ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'if x[0]=='0' else \
         f'k({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
 lg=lambda x,f:(print(x,file=f),f.flush());cb=lambda x:[lg(f'_r({ce(p(a))});',cf)for a in x]
-le=lambda x:[lg(e,ef)for e in x];ev=lambda s,m:m.pk(e(p(s),m))
+le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);ev=lambda s,m:m.pk(e(p(s),m))
 def ru(s):
  try:r=sp.run(["python3","-c",f"from t import *;kb(lambda:ev('{s}',a))"],check=True)
  except sp.CalledProcessError as err:
@@ -22,7 +22,6 @@ def exprs():
  s=[f'{c}{t}'for (c,t) in x]
  s+=[f'({u}){c}{t}'for u in g for (c,t) in x]
  return s
-log=lambda x:lg(x,lf)
 def mis(x,s,t):
  sm=lambda an,x:[l:='\n'if (not ax(x))and len(x.shape)>1 else'',l+an+':'+l+str(x)][1]
  print('>>> mismatch:',x,sm('a',s),sm('n',t),'\n<<<')
