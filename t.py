@@ -1,5 +1,5 @@
-import a;import n;from p import p;import numpy as np;import subprocess as sp
-import sys;import pickle;import os;P=a.P;Y=open('Y').read().split()
+import a;import n;from p import p;import numpy as np;import sys
+P=a.P;Y=open('Y').read().split()
 ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3)
 v='-v'in sys.argv;lf,gf,ef=[open(x,'w')for x in['log','g.b','e']]
 def kb(f):
