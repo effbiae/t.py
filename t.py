@@ -1,4 +1,4 @@
-import a,n,sys;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split()
+import a,n,sys;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y
 ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3)
 lf,gf,ef=[open(x,'w')for x in['log','g.b','e']];v,q=[x in sys.argv for x in 'vq']
 e=lambda x,m:([m.te,m.ti][type(x[1])==int](x[1]))if x[0]=='0'else m.k(P.find(x[0]),e(x[1],m)if x[1] else None,e(x[2],m))
@@ -13,7 +13,7 @@ def main():
  for x in es:
   log(x);v and print('try',x);s,t=[ev(x,m)for m in(a,n)]
   if type(s)is tuple:q and print('a err',s[0],Y[s[0]],'for',x);continue
-  elif t is None:print('n nyi',x,'a:',s);continue
+  elif type(t) is tuple:0 if t[0]==8 else print('n',t[0],Z[t[0]],x,'a:',s);continue
   elif type(t) is tuple:v and print('n err',t[0]);continue
   if not n.d('~',s,t):mis(x,s,t)
   sys.stdout.flush()
