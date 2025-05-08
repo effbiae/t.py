@@ -1,6 +1,6 @@
 import a,n,sys;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y
 ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3)
-lf,gf,ef=[open(x,'w')for x in['log','g.b','e']];on,ov,oq,od=[x in sys.argv and '-'+x not in sys.argv for x in 'nvqd'];od='-d' not in sys.argv
+lf,gf,ef=[open(x,'w')for x in['log','g.b','e']];on,ov,oq,od,oe=[x in sys.argv and '-'+x not in sys.argv for x in 'nvqde'];od='-d' not in sys.argv
 e=lambda x,m:([m.te,m.ti][type(x[1])==int](x[1]))if x[0]=='0'else m.k(P.find(x[0]),e(x[1],m)if x[1] else None,e(x[2],m))
 ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'  if x[0]=='0'else f'ke({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
 lg=lambda x,f:(print(x,file=f),f.flush());cb=lambda x:[lg(f'_r({ce(p(a))}); //{a}',gf)for a in x]
@@ -13,7 +13,7 @@ def main():
  for x in es:
   log(x);ov and print('try',x);s,t=[ev(x,m)for m in(a,n)]
   if type(s)is tuple:
-      if type(t) is not tuple:od and print('> a',Y[s[0]],'for',x,sm('n',t));continue
+      if type(t) is not tuple:oe and print('> a',Y[s[0]],'for',x,sm('n',t));continue
   if type(t)is tuple:0 if t[0]==8 else on and print('> n',Z[t[0]],x,sm('a',s));continue
   if not n.d('~',s,t):mis(x,s,t)
   sys.stdout.flush()
