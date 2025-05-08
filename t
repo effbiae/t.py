@@ -1,3 +1,4 @@
+#!/usr/bin/python3
 import a,n,sys;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y
 ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3)
 lf,gf,ef=[open(x,'w')for x in['log','g.b','e']];on,ov,oq,od,oe=[x in sys.argv and '-'+x not in sys.argv for x in 'nvqde'];od='-d' not in sys.argv
