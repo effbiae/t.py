@@ -47,6 +47,7 @@ def d(c,a,x):
   if not ax(a)and x<len(a):return a[x]
   return a*x
  if c=='~':
+     if (ax(a)+ax(x))%2:return 0
      p=[m(',',_)if ax(_)else _ for _ in(a,x)]
      if not np.equal(*[_.shape for _ in p]).all():return 0
      return 0+d('|',np.equal(*[np.isnan(_)for _ in p]),d('=',*p)).all()
