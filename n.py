@@ -30,12 +30,7 @@ def d(c,a,x):
  if c=='%':return a/x
  if c=='<':return 0+(a<x)
  if c=='>':return 0+(a>x)
- if c=='=':
-     a,x=[m(',',_)if ax(_)else _ for _ in(a,x)]
-     if any([len(_)==0 for _ in(a,x)]):return None
-     p,q=[np.where(np.isnan(_))[0]for _ in(a,x)]
-     n=all([_.size==0 for _ in(p,q)])
-     return d('|',n or p.size==q.size and p==q,0+(abs(a-x)<1e-6))
+ if c=='=':return 0+(abs(a-x)<1e-6)
  if c=='!':return x%a
  if c=='?':return x/a
  if c=='&':return np.minimum(a,x)
@@ -48,5 +43,12 @@ def d(c,a,x):
   if not ax(a)and not ax(x):return np.matmul(a,x)
   if not ax(a)and x<len(a):return a[x]
   return a*x
- if c=='~':r=d('=',a,x);return 0+(r if ax(r)else r.all())
+ if c=='~':
+     r=d('=',a,x);
+     a,x=[m(',',_)if ax(_)else _ for _ in(a,x)]
+     if any([len(_)==0 for _ in(a,x)]):return 0
+     p,q=[np.where(np.isnan(_))[0]for _ in(a,x)]
+     n=all([_.size==0 for _ in(p,q)])
+     r=d('|',n or p.size==q.size and p==q,d('=',a,x))
+     return 0+(r if ax(r)else r.all())
  return None
