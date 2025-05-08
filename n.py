@@ -11,7 +11,7 @@ def m(c,x):
  if c=='%':return np.sqrt(x)
  if c=='#':return 1 if ax(x)else len(x)
  if c=='*':return x*x
- if c=='~':return np.vectorize(lambda x:0+(x==0))(x)
+ if c=='~':return d('=',x,0)
  if c=='_':return np.floor(x)
  if c=='|':return x[::-1]if not ax(x) else (9,)
  if c=='!':return np.arange(int(x))if ax(x)else (9,)
