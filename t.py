@@ -7,14 +7,14 @@ lg=lambda x,f:(print(x,file=f),f.flush());cb=lambda x:[lg(f'_r({ce(p(a))}); //{a
 le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);ev=lambda s,m:m.pk(e(p(s),m))
 exprs=lambda:(g:=('(2)','!2','^2','&2'),x:=[c+t for t in g for c in a.P[1:a.P.find('.')+1]],x+[f'({u})'+a for u in g for a in x])[-1]
 sm=lambda an,x:[l:='\n'if (not ax(x))and len(x.shape)>1 else'',l+an+':'+l+str(x)][1];
-def mis(x,s,t):od and print('> dif',x,sm('a',s),sm('n',t))
+mis=lambda x,s,t:od and print('> dif',x,sm('a',s),sm('n',t));err=lambda x:type(x)is tuple
 def main():
  es=exprs();cb(es);le(es)
  for x in es:
   log(x);ov and print('try',x);s,t=[ev(x,m)for m in(a,n)]
-  if type(s)is tuple:
-      if type(t) is not tuple:oe and print('> a',Y[s[0]],'for',x,sm('n',t));continue
-  if type(t)is tuple:0 if t[0]==8 else on and print('> n',Z[t[0]],x,sm('a',s));continue
-  if not n.d('~',s,t):mis(x,s,t)
+  if err(s)and s[0]:
+      if not err(t):oe and print('> a',Y[s[0]],'for',x,sm('n',t));continue
+  if err(t):0 if t[0]==8 else on and print('> n',Z[t[0]],x,sm('a',s));continue
+  if not err(s)and not n.d('~',s,t):mis(x,s,t)
   sys.stdout.flush()
 if __name__=='__main__':main()
