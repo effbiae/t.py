@@ -5,3 +5,4 @@ U kte(ee){return te(e);}
 xx(n)xx(t)xx(i)xx(m)xx(a)xx(p)
 e2 kex(Ux){return ex;}
 i0 kgx(Ux){return (i0)ix;}
+U k(i2,U,U);U ke(ii,Ua,Ux){return a&&pa?a:px?x:k(i,a,x);}
