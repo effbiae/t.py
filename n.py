@@ -21,7 +21,7 @@ def m(c,x):
   try:return x[0]
   except TypeError:return x
  if c=='^':return 1/x*np.arange(x)if type(x)==int else (9,)
- if c=='&':return np.full((x,x),1)if ax(x)else np.transpose(x)
+ if c=='&':return np.full((x,x),1)if ax(x)else np.transpose(np.matrix(x))
  return (0,) 
 def d(c,a,x):
  if c=='+':return a+x
@@ -40,7 +40,7 @@ def d(c,a,x):
      except:return (0,)
  if c==',':
      try:return np.concatenate((m(',',a)if ax(a)else a,m(',',x)if ax(x)else x))
-     except Exception as e:return e
+     except:return (0,)
  if c=='#':n=m('#',x);return np.take(x,np.arange(a)%n)if ax(a)and n else (9,)
  if c=='@':
   if not ax(a)and not ax(x):return np.matmul(a,x)

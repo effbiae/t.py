@@ -12,7 +12,8 @@ def main():
  es=exprs();cb(es);le(es)
  for x in es:
   log(x);ov and print('try',x);s,t=[ev(x,m)for m in(a,n)]
-  if type(s)is tuple:oq and print('> a',Y[s[0]],'for',x);continue
+  if type(s)is tuple:
+      if type(t) is not tuple:od and print('> a',Y[s[0]],'for',x,sm('n',t));continue
   if type(t)is tuple:0 if t[0]==8 else on and print('> n',Z[t[0]],x,sm('a',s));continue
   if not n.d('~',s,t):mis(x,s,t)
   sys.stdout.flush()
