@@ -13,7 +13,7 @@ def main():
  for x in es:
   log(x);v and print('try',x);s,t=[ev(x,m)for m in(a,n)]
   if type(s)is tuple:q and print('a err',s[0],Y[s[0]],'for',x);continue
-  elif t is None:v and print('n nyi',x,'a:',s);continue
+  elif t is None:print('n nyi',x,'a:',s);continue
   elif type(t) is tuple:v and print('n err',t[0]);continue
   if not n.d('~',s,t):mis(x,s,t)
   sys.stdout.flush()

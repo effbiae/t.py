@@ -35,6 +35,9 @@ def d(c,a,x):
  if c=='?':return x/a
  if c=='&':return np.minimum(a,x)
  if c=='|':return np.maximum(a,x)
+ if c=='_':
+     try:return np.delete(x,m('!',a))
+     except:pass
  if c==',':
      try:return np.concatenate((m(',',a)if ax(a)else a,m(',',x)if ax(x)else x))
      except Exception as e:return e
