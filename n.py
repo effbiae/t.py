@@ -44,7 +44,6 @@ def d(c,a,x):
   if not ax(a)and x<len(a):return a[x]
   return a*x
  if c=='~':
-     r=d('=',a,x);
      a,x=[m(',',_)if ax(_)else _ for _ in(a,x)]
      if any([len(_)==0 for _ in(a,x)]):return 0
      p,q=[np.where(np.isnan(_))[0]for _ in(a,x)]
