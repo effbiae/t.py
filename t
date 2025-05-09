@@ -2,7 +2,7 @@
 import a,n,sys;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y
 ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3)
 lf,gf,ef=[open(x,'w')for x in['log','g.b','e']]
-on,ov,od,oe=[x in sys.argv or 'a' in sys.argv for x in 'nvde'];od=all([_ not in sys.argv for _ in'nve'])
+on,ov,od,oe=[x in sys.argv or 'a' in sys.argv for x in 'nvde'];od=od or all([_ not in sys.argv for _ in'nve'])
 e=lambda x,m:([m.te,m.ti][type(x[1])==int](x[1]))if x[0]=='0'else m.k(P.find(x[0]),e(x[1],m)if x[1] else None,e(x[2],m))
 ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'  if x[0]=='0'else f'ke({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
 lg=lambda x,f:(print(x,file=f),f.flush());cb=lambda x:[lg(f'_r({ce(p(a))}); //{a}',gf)for a in x]
@@ -15,7 +15,7 @@ def main(es):
  cb(es);le(es)
  for x in es:
   log(x);ov and print('try',x);s,t=[ev(x,m)for m in(a,n)]
-  if err(s) and not err(t) and s[0]:oe and print('> a',Y[s[0]],'for',x,sm('n',t))
+  if err(s) and not err(t) and s[0]:  oe and print('> a',Y[s[0]],x,sm('n',t))
   elif err(t) and not errpass(s,t[0]):on and print('> n',Z[t[0]],x,sm('a',s))
   elif not n.d('~',s,t)and not err(s) and not err(t):od and print('> dif',x,sm('a',s),sm('n',t))
   if n.d('~',s,t):ov and print('agree',x,sm('',s))
