@@ -40,7 +40,7 @@ def d(c,a,x):
      try:return x[a:]
      except:return (0,)
  if c==',':
-     try:return np.concatenate((m(',',a)if ax(a)else a,m(',',x)if ax(x)else x))
+     try:return np.concatenate([m(',',_)if ax(_)else _ for _ in(a,x)])
      except:return (0,)
  if c=='#':n=m('#',x);return np.take(x,np.arange(a)%n)if ax(a)and n else (9,)
  if c=='@':
