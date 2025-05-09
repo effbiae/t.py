@@ -15,9 +15,9 @@ def main(es):
  cb(es);le(es)
  for x in es:
   log(x);ov and print('try',x);s,t=[ev(x,m)for m in(a,n)]
-  if err(s) and not err(t) and s[0]:  oe and print('> a',Y[s[0]],x,sm('n',t))
+  if not n.d('~',s,t)and not err(s) and not err(t):od and print('> dif',x,sm('a',s),sm('n',t))
+  elif err(s) and not err(t) and s[0]:oe and print('> a',Y[s[0]],x,sm('n',t))
   elif err(t) and not errpass(s,t[0]):on and print('> n',Z[t[0]],x,sm('a',s))
-  elif not n.d('~',s,t)and not err(s) and not err(t):od and print('> dif',x,sm('a',s),sm('n',t))
   if n.d('~',s,t):ov and print('agree',x,sm('',s))
   else:ov and print('disagree',x,sm('a',s),sm('n',t))
   sys.stdout.flush()
