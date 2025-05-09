@@ -1,5 +1,6 @@
 from a import P;import numpy as np;np.seterr(divide='ignore', invalid='ignore')
 ax=lambda x:not isinstance(x,np.ndarray);ID=lambda x:x;ti=ID;te=ID;pk=ID
+ty=lambda x:2 if type(x)is int else 5 if type(x)is float else [5,2][0+(x.dtype=='int64')]
 topy=lambda x:x.item()if not ax(x)and x.shape==()else x
 k=lambda i,a,x:topy(m(P[i],x)if a is None else d(P[i],a,x))
 Y='nyi 1 2 3 4 5 6 7 wontdo err'.split()
@@ -43,8 +44,11 @@ def d(c,a,x):
      except:return (0,)
  if c=='#':n=m('#',x);return np.take(x,np.arange(a)%n)if ax(a)and n else (9,)
  if c=='@':
-  if not ax(a)and not ax(x):return np.matmul(a,x)
-  if not ax(a)and x<len(a):return a[x]
+  if not ax(a):
+   if ty(x)==2:
+    try:return a[x]
+    except:return (9,)
+   if not ax(x):return np.matmul(a,x)
   return a*x
  if c=='~':
      if (ax(a)+ax(x))%2:return 0
