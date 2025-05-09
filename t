@@ -2,7 +2,7 @@
 import a,n,sys;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y
 ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3)
 lf,gf,ef=[open(x,'w')for x in['log','g.b','e']]
-on,ov,oq,od,oe=[x in sys.argv or 'a' in sys.argv for x in 'nvqde'];od=all([_ not in sys.argv for _ in'nvqe'])
+on,ov,od,oe=[x in sys.argv or 'a' in sys.argv for x in 'nvde'];od=all([_ not in sys.argv for _ in'nve'])
 e=lambda x,m:([m.te,m.ti][type(x[1])==int](x[1]))if x[0]=='0'else m.k(P.find(x[0]),e(x[1],m)if x[1] else None,e(x[2],m))
 ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'  if x[0]=='0'else f'ke({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
 lg=lambda x,f:(print(x,file=f),f.flush());cb=lambda x:[lg(f'_r({ce(p(a))}); //{a}',gf)for a in x]
