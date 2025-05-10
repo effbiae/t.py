@@ -1,4 +1,5 @@
 from a import P;import numpy as np;np.seterr(divide='ignore', invalid='ignore')
+from functools import reduce
 ax=lambda x:not isinstance(x,np.ndarray);ID=lambda x:x;ti=ID;te=ID;pk=ID
 ty=lambda x:2 if type(x)is int else 5 if type(x)is float else [5,2][0+(x.dtype=='int64')]
 topy=lambda x:x.item()if not ax(x)and x.shape==()else x
@@ -31,7 +32,7 @@ def d(c,a,x):
  if c=='+':return a+x
  if c=='-':return a-x
  if c=='*':return a*x
- if c=='%':return a/x
+ if c=='%':return (np.array(float(a))if ax(a)else a)/x
  if c=='<':return 0+(a<x)
  if c=='>':return 0+(a>x)
  if c=='=':return 0+(abs(a-x)<1e-6)
@@ -53,7 +54,9 @@ def d(c,a,x):
      if ax(a)!=ax(x):return 0
      p=[m(',',_)if ax(_)else _ for _ in(a,x)]
      if not np.equal(*[_.shape for _ in p]).all():return 0
-     return 0+d('|',np.logical_and(*[np.isnan(_)for _ in p]),d('=',*p)).all()
+     fs=(np.isnan,np.isposinf,np.isneginf)
+     ms=[np.logical_and(*[f(_)for _ in p])for f in fs]
+     return 0+d('|',reduce(np.logical_or,ms),d('=',*p)).all()
  if c=='^':
      if ty(a)!=2:return (1,)
      if ax(x):return d('#',a,x)
