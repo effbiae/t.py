@@ -42,8 +42,7 @@ def d(c,a,x):
  if c=='#':n=m('#',x);return np.take(x,np.arange(a)%n)if ax(a)and n else (9,)
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
   if ax(a):return a*x
-  if len(a.shape)==1:
-   return tr(lambda a,x:a[x],(a,x),(9,)) #if ty(x)==2:
+  if len(a.shape)==1:return tr(lambda a,x:a[x],(a,x),(9,)) #if ty(x)==2:
   if len(a.shape)==2:return tr(np.matmul,(a,x),(9,))
  if c=='~':
      if ax(a)!=ax(x):return 0
