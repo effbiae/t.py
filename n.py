@@ -35,13 +35,15 @@ def d(c,a,x):
  if c=='<':return 0+(a<x)
  if c=='>':return 0+(a>x)
  if c=='=':return 0+(abs(a-x)<1e-6)
- if c=='!':return x%a
+ if c=='!':return x%a if ty(x)==2 else a*x
  if c=='?':#s? is inverse;v? is inverse;m? is commute
   q=x/a;return q if any([ty(_)==5 for _ in (a,x)]) else np.floor(q)
  if c=='&':return np.minimum(a,x)
  if c=='|':return np.maximum(a,x)
  if c=='_':return tr(lambda a,x:x[a:],(a,x),(1,))
- if c==',':return tr(lambda a,x:np.concatenate([m(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
+ if c==',':
+  if ty(a)!=ty(x):return (3,)
+  return tr(lambda a,x:np.concatenate([m(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
  if c=='#':n=m('#',x);return (m(',',x)if ax(x) else x)[np.arange(a)%n]if ax(a)and n else (1,)
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
   if ax(a):return a*x
