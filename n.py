@@ -33,17 +33,18 @@ def d(c,a,x):
  if c=='>':return 0+(a>x)
  if c=='=':return 0+(abs(a-x)<1e-6)
  if c=='!':return x%a
- if c=='?':return x/a
+ if c=='?':#s? is inverse;v? is inverse;m? is commute
+  q=x/a;return q if any([ty(_)==5 for _ in (a,x)]) else np.floor(q)
  if c=='&':return np.minimum(a,x)
  if c=='|':return np.maximum(a,x)
  if c=='_':return tr(lambda a,x:x[a:],(a,x),(0,))
  if c==',':return tr(lambda a,x:np.concatenate([m(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
  if c=='#':n=m('#',x);return np.take(x,np.arange(a)%n)if ax(a)and n else (9,)
- if c=='@':
-  if not ax(a):
-   if ty(x)==2:return tr(lambda a,x:a[x],(a,x),(9,))
-   if not ax(x):return np.matmul(a,x)
-  return a*x
+ if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
+  if ax(a):return a*x
+  if len(a.shape)==1:
+   return tr(lambda a,x:a[x],(a,x),(9,)) #if ty(x)==2:
+  if len(a.shape)==2:return tr(np.matmul,(a,x),(9,))
  if c=='~':
      if ax(a)!=ax(x):return 0
      p=[m(',',_)if ax(_)else _ for _ in(a,x)]

@@ -2,7 +2,7 @@ SHELL=/bin/bash
 o=-fno-builtin -funsigned-char -fno-unwind-tables -Wno-psabi -Wfatal-errors -Wno-multichar -Wno-parentheses -Wno-pointer-type-mismatch -Wno-incompatible-pointer-types
 all:P Y liba.so
 liba.so:k.edu makefile a.c
-	clang-13 -oliba.so $o -g -shared -fPIC k.edu/[az].c a.c -Ofast -nostdlib -mavx512f -mavx512dq -mavx512vbmi -mavx512vnni
+	clang -oliba.so $o -g -shared -fPIC k.edu/[az].c a.c -Ofast -nostdlib -mavx512f -mavx512dq -mavx512vbmi -mavx512vnni
 k.edu:
 	git clone https://github.com/effbiae/k.edu.git
 P:k.edu
