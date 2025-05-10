@@ -21,7 +21,7 @@ def m(c,x):
  if c=='<':return np.triu(np.ones((x,x)),+1)if ax(x) else (9,)
  if c=='>':return np.tril(np.ones((x,x)),-1)if ax(x) else (9,)
  if c=='=':return np.identity(x)if ax(x) else (9,)
- if c=='!':return np.arange(int(x))if ax(x)else (9,)
+ if c=='!':return np.arange(int(x))if ax(x)else np.array(x.shape)
  if c==',':return np.reshape(x,1)if ax(x)else np.reshape(x,(1,)+x.shape)if len(x.shape)==1 else (9,)
  if c=='@':return tr(lambda x:x[0],(x,),x)
  if c=='^':return 1/x*np.arange(x)if type(x)==int else(9,)
