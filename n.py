@@ -42,7 +42,7 @@ def d(c,a,x):
  if c=='|':return np.maximum(a,x)
  if c=='_':return tr(lambda a,x:x[a:],(a,x),(1,))
  if c==',':return tr(lambda a,x:np.concatenate([m(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
- if c=='#':n=m('#',x);return np.take(x,np.arange(a)%n)if ax(a)and n else (1,)
+ if c=='#':n=m('#',x);return (m(',',x)if ax(x) else x)[np.arange(a)%n]if ax(a)and n else (1,)
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
   if ax(a):return a*x
   if len(a.shape)==1:return tr(lambda a,x:a[x],(a,x),(9,))if ty(x)==2 else(3,)
@@ -54,6 +54,7 @@ def d(c,a,x):
      return 0+d('|',np.logical_and(*[np.isnan(_)for _ in p]),d('=',*p)).all()
  if c=='^':
      if ty(a)!=2:return (1,)
+     if ax(x):return d('#',a,x)
      f=lambda a,x:m('&',d('#',a,x)if ax(a)else a);x=m('!',x)if ax(x)else x
      return tr(f,(a,x),(9,))if ax(a)else(1,)
  return (0,)
