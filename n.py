@@ -2,11 +2,7 @@ from a import P;import numpy as np;np.seterr(divide='ignore', invalid='ignore');
 ax=lambda x:not isinstance(x,np.ndarray)or not len(x.shape);ID=lambda x:x;ti=ID;te=ID;pk=ID
 ty=lambda x:2 if type(x)is int else 5 if type(x)is float else [5,2][0+(x.dtype=='int64')]
 topy=lambda x:x.item()if not ax(x)and x.shape==()else x;k=lambda i,a,x:topy(k1(P[i],x)if a is None else k2(P[i],a,x))
-mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2)
-def tr(f,v,e):
- try:return f(*v)
- except:return e
-Y='nyi rnk len typ wontdo other'.split()
+mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len typ wontdo other'.split()
 def k1(c,x):
  if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   np.sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else k2('=',x,0)if c=='~'else np.floor(x)
@@ -57,6 +53,9 @@ def k2(c,a,x):
      f=lambda a,x:k1('&',k2('#',a,x)if ax(a)else a);x=k1('!',x)if ax(x)else x
      return tr(f,(a,x),(5,))if ax(a)else(1,)
  return(0,)
+def tr(f,v,e):
+ try:return f(*v)
+ except:return e
 
 '''m?x is x@m (i.e. commute of @. useful for our ai machinations)
 btw in general  a@x is at/application/composition/..
