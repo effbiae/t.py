@@ -13,7 +13,7 @@ def sm(an,x):
     l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
     s=l+(an+':' if not ow else '\t')+l+(str(x)if not err(x)else 'err '+str(x[0]))
     return s.replace('\n','|').replace('[','').replace(']','')if ow else s
-err=lambda x:type(x)is tuple;errpass=lambda s,e:e==8 or err(s) and (s[0]in[0]or s[0]==e)
+err=lambda x:type(x)is tuple;errpass=lambda s,e:e==4 or err(s) and (s[0]in[0]or s[0]==e)
 def help():p=sys.argv[0];print(f'try {p} for differences, then try {p} n for possible bugs. also {p} a \'2+^2\' for single expr')
 def main(es):
  if not os.path.exists('p'):

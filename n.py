@@ -9,15 +9,8 @@ def tr(f,v,e):
  except:return e
 Y='nyi rnk len typ wontdo other'.split()
 def m(c,x):
- if c=='?':return(4,)
- if c=='+':return abs(x)
- if c=='-':return -x
- if c=='*':return x*x
- if c=='%':return np.sqrt(x)
- if c=='#':return 1 if ax(x)else len(x)
- if c=='*':return x*x
- if c=='~':return d('=',x,0)
- if c=='_':return np.floor(x)
+ if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x) if c=='+'else -x if c=='-'else x*x if c=='*'else \
+  np.sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else d('=',x,0)if c=='~'else  np.floor(x)
  if c=='|':return x[::-1]if not ax(x)and len(x.shape)==1 else np.identity(x)[::-1]if ax(x)else(1,)
  if c=='<':return np.triu(np.ones((x,x),dtype=int),+1)if ax(x)else(5,)
  if c=='>':return np.tril(np.ones((x,x),dtype=int),-1)if ax(x)else(5,)
@@ -29,14 +22,8 @@ def m(c,x):
  if c=='&':return np.full((x,x),1)if ax(x)else np.transpose(np.matrix(x))if(len(x.shape)==2)else(1,)
  return(0,)
 def d(c,a,x):
- if c=='+':return a+x
- if c=='-':return a-x
- if c=='*':return a*x
- if c=='%':return(np.array(float(a))if ax(a)else a)/x
- if c=='<':return 0+(a<x)
- if c=='>':return 0+(a>x)
- if c=='=':return 0+(abs(a-x)<1e-6)
- if c=='!':return x%a# if ty(x)==2 else a*x
+ if c in'+-*%<>=!':return a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else (np.array(float(a))if ax(a)else a)/x if c=='%' \
+  else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else 0+(abs(a-x)<1e-6)if c=='='else x%a
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
    if len(a.shape)==2:
