@@ -2,6 +2,7 @@ from a import P;import numpy as np;np.seterr(divide='ignore', invalid='ignore');
 ax=lambda x:not isinstance(x,np.ndarray)or not len(x.shape);ID=lambda x:x;ti=ID;te=ID;pk=ID
 ty=lambda x:2 if type(x)is int else 5 if type(x)is float else [5,2][0+(x.dtype=='int64')]
 topy=lambda x:x.item()if not ax(x)and x.shape==()else x;k=lambda i,a,x:topy(m(P[i],x)if a is None else d(P[i],a,x))
+mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2)
 def tr(f,v,e):
  try:return f(*v)
  except:return e
@@ -9,7 +10,7 @@ Y='nyi rnk len typ wontdo other'.split()
 def m(c,x):
  if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   np.sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else d('=',x,0)if c=='~'else np.floor(x)
- if c=='|':return x[::-1]if not ax(x)and len(x.shape)==1 else np.identity(x)[::-1]if ax(x)else(1,)
+ if c=='|':return x[::-1]if v(x)else np.identity(x)[::-1]if ax(x)else(1,)
  if c=='<':return np.triu(np.ones((x,x),dtype=int),+1)if ax(x)else(5,)
  if c=='>':return np.tril(np.ones((x,x),dtype=int),-1)if ax(x)else(5,)
  if c=='=':return np.identity(x)if ax(x)else(5,)
