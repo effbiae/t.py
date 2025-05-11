@@ -39,16 +39,16 @@ def k2(c,a,x):
    else:return(3,)
   if m(a):return tr(matmul,(a,x),(5,))
  if c=='~':
-     if ax(a)!=ax(x):return 0
-     p=[k1(',',_)if ax(_)else _ for _ in(a,x)]
-     if not equal(*[_.shape for _ in p]).all():return 0
-     fs=(isnan,isposinf,isneginf);ms=[logical_and(*[f(_)for _ in p])for f in fs]
-     return 0+k2('|',reduce(logical_or,ms),k2('=',*p)).all()
+  if ax(a)!=ax(x):return 0
+  p=[k1(',',_)if ax(_)else _ for _ in(a,x)]
+  if not equal(*[_.shape for _ in p]).all():return 0
+  fs=(isnan,isposinf,isneginf);ms=[logical_and(*[f(_)for _ in p])for f in fs]
+  return 0+k2('|',reduce(logical_or,ms),k2('=',*p)).all()
  if c=='^':
-     if ty(a)!=2:return(1,)
-     if ax(x):return k2('#',a,x)
-     f=lambda a,x:k1('&',k2('#',a,x)if ax(a)else a);x=k1('!',x)if ax(x)else x
-     return tr(f,(a,x),(5,))if ax(a)else(1,)
+  if ty(a)!=2:return(1,)
+  if ax(x):return k2('#',a,x)
+  f=lambda a,x:k1('&',k2('#',a,x)if ax(a)else a);x=k1('!',x)if ax(x)else x
+  return tr(f,(a,x),(5,))if ax(a)else(1,)
  return(0,)
 def tr(f,v,e):
  try:return f(*v)
