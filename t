@@ -20,14 +20,14 @@ def main(es):
   cb(es);le(es);results=[]
   for x in es:
    log(x);ov and print('try',x);s,t=[ev(x,m)for m in(a,n)]
-   if n.d('~',s,t):ov and print('agree',x,sm('',s))
+   if n.k2('~',s,t):ov and print('agree',x,sm('',s))
    else:ov and print('disagree',x,sm('n',t),sm('a',s))
    results+=[(x,s,t)];sys.stdout.flush()
   with open('p','wb')as f:pickle.dump(results,f)
  else:
   with open('p','rb')as f:results=pickle.load(f)
  for x,s,t in results:
-  if not n.d('~',s,t)and not err(s) and not err(t):od and print('> dif',x,sm('n',t),sm('a',s))
+  if not n.k2('~',s,t)and not err(s) and not err(t):od and print('> dif',x,sm('n',t),sm('a',s))
   elif err(s) and not err(t) and s[0]:oe and print('> a',Y[s[0]],x,sm('n',t))
   elif err(t) and not errpass(s,t[0]):on and print('> n',Z[t[0]],x,sm('a',s))
   sys.stdout.flush()
