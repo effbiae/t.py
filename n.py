@@ -38,21 +38,6 @@ def d(c,a,x):
  if c=='=':return 0+(abs(a-x)<1e-6)
  if c=='!':return x%a if ty(x)==2 else a*x
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
-   '''m?x is x@m (i.e. commute of @. useful for our ai machinations)
-btw in general  a@x is at/application/composition/..
-i.e. 'a' is a function. e.g. scalar s is scalar i.e. it scales. that is why it is called scalar.
-2@3 is 6
-
-a?x is the inverse operation, e.g
-
-2?6 is 3
-
-except m?x is not least squares. instead we are using it for something else.
-
-m@x is linear transform(m is function)
-v@x is indexing (vectors are functions)
-v?x is find(i.e. inverse of index)
-  '''
   if not ax(a):
    if not ax(x):return(3,)
    if len(a.shape)==1:
@@ -68,6 +53,21 @@ v?x is find(i.e. inverse of index)
   return tr(lambda a,x:np.concatenate([m(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
  if c=='#':n=m('#',x);return (m(',',x)if ax(x) else x)[np.arange(a)%n]if ax(a)and n else (1,)
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
+  '''m?x is x@m (i.e. commute of @. useful for our ai machinations)
+btw in general  a@x is at/application/composition/..
+i.e. 'a' is a function. e.g. scalar s is scalar i.e. it scales. that is why it is called scalar.
+2@3 is 6
+
+a?x is the inverse operation, e.g
+
+2?6 is 3
+
+except m?x is not least squares. instead we are using it for something else.
+
+m@x is linear transform(m is function)
+v@x is indexing (vectors are functions)
+v?x is find(i.e. inverse of index)
+  '''
   if ax(a):return a*x
   if len(a.shape)==1:return tr(lambda a,x:a[x],(a,x),(9,))if ax(x)and ty(x)==2 else(3,)
   if len(a.shape)==2:return tr(np.matmul,(a,x),(9,))
