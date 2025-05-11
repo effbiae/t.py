@@ -22,12 +22,9 @@ def k2(c,a,x):
   else minimum(a,x)if c=='&'else maximum(a,x)
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
-   if m(a):
-    if ty(x)!=2:return(2,)
+   if ty(x)!=2:return(2,)
    if not ax(x):return(3,)
-   if v(a):
-    i=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0]
-    return i if len(i)else len(a)
+   if v(a):i=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return i if len(i)else len(a)
    else:return(2,)
   q=x/a;return q if any([ty(_)==5 for _ in(a,x)])else floor(q)
  if c=='_':return tr(lambda a,x:x[a:],(a,x),(1,))
