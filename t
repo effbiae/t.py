@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import a,n,sys;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y
+import a,n,sys,os,pickle;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y
 ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3)
 lf,gf,ef=[open(x,'w')for x in['log','g.b','e']]
 on,ov,od,oe=[x in sys.argv or 'a' in sys.argv for x in 'nvde'];od=od or all([_ not in sys.argv for _ in'nve'])
@@ -12,14 +12,20 @@ sm=lambda an,x:[l:='\n'if (not ax(x))and len(x.shape)>1 else'',l+an+':'+l+(str(x
 err=lambda x:type(x)is tuple;errpass=lambda s,e:e==8 or err(s) and (s[0]in[0]or s[0]==e)
 def help():p=sys.argv[0];print(f'try {p} for differences, then try {p} n for possible bugs. also {p} a \'2+^2\' for single expr')
 def main(es):
- cb(es);le(es)
- for x in es:
-  log(x);ov and print('try',x);s,t=[ev(x,m)for m in(a,n)]
+ if not os.path.exists('p'):
+  cb(es);le(es);results=[]
+  for x in es:
+   log(x);ov and print('try',x);s,t=[ev(x,m)for m in(a,n)]
+   if n.d('~',s,t):ov and print('agree',x,sm('',s))
+   else:ov and print('disagree',x,sm('a',s),sm('n',t))
+   results+=[(x,s,t)];sys.stdout.flush()
+  with open('p','wb')as f:pickle.dump(results,f)
+ else:
+  with open('p','rb')as f:results=pickle.load(f)
+ for x,s,t in results:
   if not n.d('~',s,t)and not err(s) and not err(t):od and print('> dif',x,sm('a',s),sm('n',t))
   elif err(s) and not err(t) and s[0]:oe and print('> a',Y[s[0]],x,sm('n',t))
   elif err(t) and not errpass(s,t[0]):on and print('> n',Z[t[0]],x,sm('a',s))
-  if n.d('~',s,t):ov and print('agree',x,sm('',s))
-  else:ov and print('disagree',x,sm('a',s),sm('n',t))
   sys.stdout.flush()
 if __name__=='__main__':
     if'h' in sys.argv:help();sys.exit(0)
