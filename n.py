@@ -38,6 +38,9 @@ def d(c,a,x):
  if c=='=':return 0+(abs(a-x)<1e-6)
  if c=='!':return x%a if ty(x)==2 else a*x
  if c=='?':#s? is inverse;v? is inverse;m? is commute
+  if not ax(a) and len(a.shape)==1:
+   i=np.nonzero([d('~',a[i],x)for i in np.arange(len(a))])[0]
+   return i if len(i) else len(a)
   q=x/a;return q if any([ty(_)==5 for _ in (a,x)]) else np.floor(q)
  if c=='&':return np.minimum(a,x)
  if c=='|':return np.maximum(a,x)
