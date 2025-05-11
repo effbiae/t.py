@@ -18,12 +18,12 @@ def m(c,x):
  if c=='*':return x*x
  if c=='~':return d('=',x,0)
  if c=='_':return np.floor(x)
- if c=='|':return x[::-1]if not ax(x) and len(x.shape)==1 else(1,)
+ if c=='|':return x[::-1]if not ax(x) and len(x.shape)==1 else np.identity(x)[::-1]if ax(x)else(1,)
  if c=='<':return np.triu(np.ones((x,x)),+1)if ax(x) else (9,)
  if c=='>':return np.tril(np.ones((x,x)),-1)if ax(x) else (9,)
  if c=='=':return np.identity(x)if ax(x) else (9,)
  if c=='!':return np.arange(int(x))if ax(x)else np.array(x.shape)
- if c==',':return np.reshape(x,1)if ax(x)else np.reshape(x,(1,)+x.shape)if len(x.shape)==1 else (9,)
+ if c==',':return np.reshape(x,1)if ax(x)else np.reshape(x,(1,)+x.shape)if len(x.shape)==1 else (1,)
  if c=='@':return tr(lambda x:x[0],(x,),x)
  if c=='^':return 1/x*np.arange(x)if type(x)==int else(9,)
  if c=='&':return np.full((x,x),1)if ax(x)else np.transpose(np.matrix(x))if (len(x.shape)==2)else (1,)
@@ -39,6 +39,8 @@ def d(c,a,x):
  if c=='!':return x%a if ty(x)==2 else a*x
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
+   if len(a.shape)==2:
+    if ty(x)!=2:return(2,)
    if not ax(x):return(3,)
    if len(a.shape)==1:
     i=np.nonzero([d('~',a[i],x)for i in np.arange(len(a))])[0]
@@ -69,7 +71,9 @@ v@x is indexing (vectors are functions)
 v?x is find(i.e. inverse of index)
   '''
   if ax(a):return a*x
-  if len(a.shape)==1:return tr(lambda a,x:a[x],(a,x),(9,))if ax(x)and ty(x)==2 else(3,)
+  if len(a.shape)==1:
+   if ty(x)==2:return tr(lambda a,x:a[x],(a,x),(2,))if ax(x)else(2,)
+   else:return (3,)
   if len(a.shape)==2:return tr(np.matmul,(a,x),(9,))
  if c=='~':
      if ax(a)!=ax(x):return 0
