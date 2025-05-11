@@ -12,7 +12,7 @@ P:k.edu
 	a=$$(grep -o 'P="[^"]*"' k.edu/z.c);echo -n $${a:3:29}>P
 Y:k.edu
 	a=$$(grep -o 'Y\[[^"]*"[^"]*"' k.edu/z.c);echo -n $${a:7:16}>Y
-g:c.b g.c liba.so
+g:g.b g.c liba.so
 	$c -og -D_start=_kstart $o -g g.c $O -L. -la -Wl,-rpath=`pwd`
 z:;zip py.zip makefile a.py a.c t.py p.py n.py
 test:;python3 p.py
