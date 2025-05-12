@@ -8,6 +8,7 @@ ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'  if x[0]=='0'else f'ke({P.find(x
 lg=lambda x,f:(print(x,file=f),f.flush());cb=lambda x:[lg(f'_r({ce(p(a))}); //{a}',gf)for a in x]
 le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);ev=lambda s,m:m.pk(e(p(s),m))
 g=('(2)','!2','^2','&2','<2','>2')#,'(1)')
+g=('(256)','(0.+!256)','^256','(0.+&256)')#,'<2','>2')#,'(1)')
 exprs=lambda:(x:=[c+t for t in g for c in a.P[1:a.P.find('.')+1]],x+[f'({u})'+a for u in g for a in x])[-1]
 def sm(an,x):
     l='\n'if not ax(x)and len(x.shape)>1 and not ow else''

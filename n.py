@@ -17,14 +17,14 @@ def k1(c,x):
  if c=='&':return full((x,x),1)if ax(x)else transpose(matrix(x))if m(x)else(1,)
  return(0,)
 def k2(c,a,x):
- if c in'+-*%<>=!&|':return a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else (array(float(a))if ax(a)else a)/x if c=='%' \
-  else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else 0+(abs(a-x)<1e-6)if c=='='else x%a if c=='!' \
-  else minimum(a,x)if c=='&'else maximum(a,x)
+ if c in'+-*%<>=!&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else (array(float(a))if ax(a)else a)/x if c=='%' \
+   else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else 0+(abs(a-x)<1e-6)if c=='='else x%a if c=='!' \
+   else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
    if ty(x)!=2:return(2,)
    if not ax(x):return(3,)
-   if v(a):i=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return i if len(i)else len(a)
+   if v(a):i=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return i[0] if len(i)else len(a)
    else:return(2,)
   q=x/a;return q if any([ty(_)==5 for _ in(a,x)])else floor(q)
  if c=='_':return tr(lambda a,x:x[a:],(a,x),(1,))
