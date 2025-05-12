@@ -10,7 +10,7 @@ def e(x,m):
  if (p:=P.find(x[0]))>0:y=m.k(p,e(x[1],m)if x[1] else None,e(x[2],m));return y
  if p==0:
   k=(m,x[1])
-  if k in v:print(x[1]);m._r(v[k])
+  if k in v:m._r(v[k])
   v[k]=e(x[2],m);return m.r_(v[k])
 ow=1
 def sm(an,x):
@@ -23,7 +23,6 @@ def main():
   if not x:return
   log(x);print('try',x)
   s,t=[m.pk(m.r_(e(p(x),m)))for m in(a,n)]
-  
   if not n.k2('~',s,t):print('disagree',x,sm('n',t),sm('a',s))
   else:print(s)
   sys.stdout.flush()
