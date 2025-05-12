@@ -1,0 +1,33 @@
+#!/usr/bin/python3
+import a,n,sys;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y
+ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3);v={}
+lg=lambda x,f,e:(print(x,file=f,end=e),f.flush());lf=open('log','w');log=lambda x:lg(x,lf,None)
+O=lambda x:lg(x,sys.stdout,'')
+ev=lambda s,m:m.pk(e(p(s),m));err=lambda x:type(x)is tuple
+def e(x,m):
+ if x[0]=='0':return([m.te,m.ti][type(x[1])==int](x[1]))
+ if type(x)==str and x.isalpha():return m.r_(v[(m,x)])
+ if (p:=P.find(x[0]))>0:y=m.k(p,e(x[1],m)if x[1] else None,e(x[2],m));return y
+ if p==0:
+  k=(m,x[1])
+  if k in v:print(x[1]);m._r(v[k])
+  v[k]=e(x[2],m);return m.r_(v[k])
+ow=1
+def sm(an,x):
+ l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
+ s=l+(an+':' if not ow else '\t')+l+(str(x)if not err(x)else 'err '+str(x[0]))
+ return s.replace('\n','|').replace('[','').replace(']','')if ow else s
+def main():
+ while 1:
+  O(' 'if sys.stdin.isatty()else'');x=sys.stdin.readline()
+  if not x:return
+  log(x);print('try',x)
+  s,t=[m.pk(m.r_(e(p(x),m)))for m in(a,n)]
+  
+  if not n.k2('~',s,t):print('disagree',x,sm('n',t),sm('a',s))
+  else:print(s)
+  sys.stdout.flush()
+if __name__=='__main__':
+  if'h' in sys.argv:help();sys.exit(0)
+  s=[_ for _ in sys.argv[1:] if len(_)>1]
+  main()
