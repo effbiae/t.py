@@ -4,14 +4,14 @@ ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3);v={}
 lg=lambda x,f,e:(print(x,file=f,end=e),f.flush());lf=open('log','w');log=lambda x:lg(x,lf,None)
 O=lambda x:lg(x,sys.stdout,'')
 ev=lambda s,m:m.pk(e(p(s),m));err=lambda x:type(x)is tuple
+def il(c,x):
+    if(c):return x()
 def e(x,m):
  if x[0]=='0':return([m.te,m.ti][type(x[1])==int](x[1]))
  if type(x)==str and x.isalpha():return m.r_(v[(m,x)])
  if (p:=P.find(x[0]))>0:y=m.k(p,e(x[1],m)if x[1] else None,e(x[2],m));return y
  if p==0:
-  k=(m,x[1])
-  if k in v:m._r(v[k])
-  v[k]=e(x[2],m);return m.r_(v[k])
+  k=(m,x[1]);il(k in v,lambda:m._r(v[k]));v[k]=e(x[2],m);return m.r_(v[k])
 ow=1
 def sm(an,x):
  l='\n'if not ax(x)and len(x.shape)>1 and not ow else''

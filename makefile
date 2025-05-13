@@ -1,6 +1,6 @@
 SHELL=/bin/bash
 o=-fno-builtin -funsigned-char -fno-unwind-tables -Wno-psabi -Wfatal-errors -Wno-multichar -Wno-parentheses -Wno-pointer-type-mismatch -Wno-incompatible-pointer-types
-c=clang
+c=clang-13
 m=-mavx512f -mavx512dq -mavx512vbmi -mavx512vnni
 O=-O3
 all:P Y liba.so

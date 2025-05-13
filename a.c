@@ -2,7 +2,7 @@
 U kti(ii){return ti(i);}
 U kte(ee){return te(e);}
 #define xx(s) i2 k##s##x(Ux){return s##x;}
-xx(n)xx(t)xx(i)xx(m)xx(a)xx(p)
+xx(n)xx(t)xx(i)xx(m)xx(a)xx(p)xx(u)
 e2 kex(Ux){return ex;}
 i0 kgx(Ux){return (i0)ix;}
 U k(i2,U,U);U ke(ii,Ua,Ux){return a&&pa?a:px?x:k(i,a,x);}
