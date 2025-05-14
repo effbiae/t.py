@@ -3,19 +3,19 @@ ax=lambda x:not isinstance(x,ndarray)or not len(x.shape);ID=lambda x:x;ti=ID;te=
 ty=lambda x:2 if type(x)is int else 5 if type(x)is float else [5,2][0+(x.dtype=='int64')]
 topy=lambda x:x.item()if not ax(x)and x.shape==()else x;k=lambda i,a,x:topy(k1(P[i],x)if a is None else k2(P[i],a,x))
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len typ wontdo other'.split()
-err=lambda x:type(x)is tuple
+err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==2
 def k1(c,x):
  if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else k2('=',x,0)if c=='~'else floor(x)
- if c=='|':return x[::-1]if v(x)else identity(x)[::-1]if ax(x)else(1,)
- if c=='<':return triu(ones((x,x),dtype=int),+1)if ax(x)else(5,)
- if c=='>':return tril(ones((x,x),dtype=int),-1)if ax(x)else(5,)
- if c=='=':return identity(x)if ax(x)else(5,)
- if c=='!':return arange(int(x))if ax(x)else array(x.shape)if m(x) else(2,)#reshape(arange(prod(x)),x)if v(x)and len(x)<3 else (1,)
+ if c=='|':return x[::-1]if v(x)else identity(x)[::-1]if aix(x)else(1,)
+ if c=='<':return triu(ones((x,x),dtype=int),+1)if aix(x)else(5,)
+ if c=='>':return tril(ones((x,x),dtype=int),-1)if aix(x)else(5,)
+ if c=='=':return identity(x)if aix(x)else(5,)
+ if c=='!':return arange(x)if aix(x)else array(x.shape)if m(x)else(2,)#reshape(arange(prod(x)),x)if v(x)and len(x)<3 else (1,)
  if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else(1,)
  if c=='@':return tr(lambda x:x[0],(x,),x)
- if c=='^':return 1/x*arange(x)if type(x)==int else(5,)
- if c=='&':return full((x,x),1)if ax(x)else transpose(matrix(x))if m(x)else(1,)
+ if c=='^':return 1/x*arange(x)if aix(x)else(5,)
+ if c=='&':return full((x,x),1)if aix(x)else transpose(matrix(x))if m(x)else(1,)
  return(0,)
 def k2(c,a,x):
  if c in'+-*%<>=!&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else (array(float(a))if ax(a)else a)/x if c=='%' \
@@ -35,7 +35,7 @@ def k2(c,a,x):
   if m(a)or m(x):return(3,)
   if ty(a)!=ty(x):return(3,)
   return tr(lambda a,x:concatenate([k1(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
- if c=='#':n=k1('#',x);return(k1(',',x)if ax(x)else x)[arange(a)%n]if ax(a)and n else(1,)
+ if c=='#':n=k1('#',x);return(k1(',',x)if ax(x)else x)[arange(a)%n]if aix(a)and n else(1,)
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
   if ax(a):return a*x
   if ax(x):return(2,)

@@ -2,7 +2,7 @@ SHELL=/bin/bash
 o=-fno-builtin -funsigned-char -fno-unwind-tables -Wno-psabi -Wfatal-errors -Wno-multichar -Wno-parentheses -Wno-pointer-type-mismatch -Wno-incompatible-pointer-types
 c=clang-13
 m=-mavx512f -mavx512dq -mavx512vbmi -mavx512vnni
-O=-O3
+O=#-O3
 all:P Y liba.so
 liba.so:k.edu makefile a.c
 	$c -oliba.so $o -g -shared -fPIC k.edu/[az].c a.c $O -nostdlib $m

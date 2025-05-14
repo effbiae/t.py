@@ -1,6 +1,7 @@
 #include"k.edu/z.a"
-U kti(ii){return ti(i);}
-U kte(ee){return te(e);}
+void ldmxcsr(){o(ia32_ldmxcsr)(0xbfc0);}
+U kti(i2 x){return ti(x);}
+U kte(e2 x){return te(x);}
 #define xx(s) i2 k##s##x(Ux){return s##x;}
 xx(n)xx(t)xx(i)xx(m)xx(a)xx(p)xx(u)
 e2 kex(Ux){return ex;}

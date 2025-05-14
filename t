@@ -14,23 +14,24 @@ def e(x,m):
       m.r_(o)
      return o#m.r_(o)
  if (p:=P.find(x[0]))>0:
-  if x[1]:a=e(x[1],m);return a if m.err(a) else m.k(P.find(x[0]),a,e(x[2],m))
+  if x[1]:a=e(x[1],m);b=e(x[2],m);return a if m.err(a)else b if m.err(b)else m.k(P.find(x[0]),a,b)
   else:a=e(x[2],m);return a if m.err(a) else m.k(P.find(x[0]),None,e(x[2],m))
  if p==0:
   k=(m,x[1]);il(k in v,lambda:m._r(v[k]));v[k]=e(x[2],m);return v[k]#m.r_(v[k])#check for error and don't assign
 
-#ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'if x[0]=='0'else f'ke({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
-lg=lambda x,f:(print(x,file=f),f.flush());#cb=lambda x:[lg(f'i(256,_r({ce(p(a))})); //{a}',gf)for a in x]
+cd=lambda x:f'U {x[1]}={ce(x[2])};'
+ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'if x[0]=='0'else f'r_({x})'if type(x)==str and x.isalpha() else\
+        f'ke({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
+lg=lambda x,f:(print(x,file=f),f.flush());ca=lambda x:[lg(cd(p(x)),gf)];cb=lambda x:[lg(f'_r({ce(p(a))}); //{a}',gf)for a in x]
 le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);ev=lambda s,m:m.pk(e(p(s),m))
-#g0=('2','!2','^2','&2','<2','>2','1',)#,'(1)')
-#g0=('2','0.+!32,32','^256','0.+&256','0.+<256')#,'<2','>2')#,'(1)')
-g0=('2','!2','^2','&2','<2','>2','1','0.+&2','^256','0.+&256')#,'<2','>2')#,'(1)')
+#g0=('2','!2','^2','&2','<2','>2','1','0.+&2','^256','0.+&256')#,'<2','>2')#,'(1)')
+g0=('^2','0.+&2','0.+<2','1.','^256','0.+&256')#,'<2','>2')#,'(1)')
 g='abcdefghijklmnopqrstuvwxyz'[:len(g0)]
 ss=[g[i]+':'+g0[i] for i in range(len(g))]
-gs=';'.join(ss);log(gs);print(gs)
+[ca(s) for s in ss];gs=';'.join(ss);log(gs);print(gs)
 [e(p(s),m) for s in ss for m in (a,n)]
 vs=a.P[1:a.P.find('.')+1].replace('$','')
-exprs=lambda:(x:=[c+t for t in g for c in vs],x+[u+a for u in g for a in x],x+[c+a for c in vs for a in x])[-1]
+exprs=lambda:(x:=[c+t for t in g for c in vs],x:=x+[u+a for u in g for a in x],x+[c+a for c in vs for a in x])[-1]
 def sm(an,x):
     l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
     s=l+(an+':' if not ow else '')+l+(str(x)if not err(x)else 'err '+str(x[0]))
@@ -46,9 +47,9 @@ def leak(es):
          print(e)
 def main(es):
  if 'p'not in sys.argv:
-  # cb(es);
   le(es);results=[]
   for x in es:
+   cb([x]);
    if x in [x[1:]for x in sys.argv if x[0]=='-']:continue
    log(x);ov and print('try',x);s,t=[ev(x,m)for m in(a,n)]
    if n.k2('~',s,t):ov and print('agree',x,sm('',s))
