@@ -15,23 +15,25 @@ def e(x,m):
      return o#m.r_(o)
  if (p:=P.find(x[0]))>0:
   if x[1]:a=e(x[1],m);return a if m.err(a) else m.k(P.find(x[0]),a,e(x[2],m))
-  else:return m.k(P.find(x[0]),None,e(x[2],m))
+  else:a=e(x[2],m);return a if m.err(a) else m.k(P.find(x[0]),None,e(x[2],m))
  if p==0:
   k=(m,x[1]);il(k in v,lambda:m._r(v[k]));v[k]=e(x[2],m);return v[k]#m.r_(v[k])#check for error and don't assign
 
 #ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'if x[0]=='0'else f'ke({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
 lg=lambda x,f:(print(x,file=f),f.flush());#cb=lambda x:[lg(f'i(256,_r({ce(p(a))})); //{a}',gf)for a in x]
 le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);ev=lambda s,m:m.pk(e(p(s),m))
-g0=('2','!2','^2','&2','<2','>2')#,'(1)')
+#g0=('2','!2','^2','&2','<2','>2','1',)#,'(1)')
 #g0=('2','0.+!32,32','^256','0.+&256','0.+<256')#,'<2','>2')#,'(1)')
+g0=('2','!2','^2','&2','<2','>2','1','0.+&2','^256','0.+&256')#,'<2','>2')#,'(1)')
 g='abcdefghijklmnopqrstuvwxyz'[:len(g0)]
 ss=[g[i]+':'+g0[i] for i in range(len(g))]
-print(';'.join(ss))
+gs=';'.join(ss);log(gs);print(gs)
 [e(p(s),m) for s in ss for m in (a,n)]
-exprs=lambda:(x:=[c+t for t in g for c in a.P[1:a.P.find('.')+1]],x+[f'{u}'+a for u in g for a in x])[-1]
+vs=a.P[1:a.P.find('.')+1].replace('$','')
+exprs=lambda:(x:=[c+t for t in g for c in vs],x+[u+a for u in g for a in x],x+[c+a for c in vs for a in x])[-1]
 def sm(an,x):
     l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
-    s=l+(an+':' if not ow else '\t')+l+(str(x)if not err(x)else 'err '+str(x[0]))
+    s=l+(an+':' if not ow else '')+l+(str(x)if not err(x)else 'err '+str(x[0]))
     return s.replace('\n','|').replace('[','').replace(']','')[:100]if ow else s
 err=lambda x:type(x)is tuple;errpass=lambda s,e:e==4 or err(s) and (s[0]in[0]or s[0]==e)
 def help():p=sys.argv[0];print(f'try {p} for differences, then try {p} n for possible bugs. also {p} a \'2+^2\' for single expr')
@@ -57,7 +59,7 @@ def main(es):
   with open('p','rb')as f:results=pickle.load(f)
  for w in range(3):
   for x,s,t in results:
-   if w==0 and not n.k2('~',s,t)and not err(s) and not err(t):od and print('> dif',x,sm('n',t),sm('a',s))#,max(abs(t-s)[1:]))
+   if w==0 and not n.k2('~',s,t)and not err(s) and not err(t):od and print(x,'\t',sm('n',t),'\t(',sm('a',s),')')#,max(abs(t-s)[1:]))
    elif w==1 and err(s) and not err(t) and s[0]:oe and print('> a',Y[s[0]],x,sm('n',t))
    elif w==2 and err(t) and not errpass(s,t[0]):on and print('> n',Z[t[0]],x,sm('a',s))
   sys.stdout.flush()

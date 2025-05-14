@@ -11,7 +11,7 @@ def k1(c,x):
  if c=='<':return triu(ones((x,x),dtype=int),+1)if ax(x)else(5,)
  if c=='>':return tril(ones((x,x),dtype=int),-1)if ax(x)else(5,)
  if c=='=':return identity(x)if ax(x)else(5,)
- if c=='!':return arange(int(x))if ax(x)else(1,) #reshape(arange(prod(x)),x)if v(x)and len(x)<3 else (1,)
+ if c=='!':return arange(int(x))if ax(x)else array(x.shape)if m(x) else(2,)#reshape(arange(prod(x)),x)if v(x)and len(x)<3 else (1,)
  if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else(1,)
  if c=='@':return tr(lambda x:x[0],(x,),x)
  if c=='^':return 1/x*arange(x)if type(x)==int else(5,)
@@ -23,6 +23,7 @@ def k2(c,a,x):
    else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
+   if v(x) and not m(a):return(3,)
    if not ax(x):return k2('@',x,a)
    if ty(x)!=2:return(2,)
    if v(a):i=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return i[0] if len(i)else len(a)
@@ -30,15 +31,19 @@ def k2(c,a,x):
   q=x/a;return q if any([ty(_)==5 for _ in(a,x)])else floor(q)
  if c=='_':return tr(lambda a,x:x[a:],(a,x),(1,))
  if c==',':
+  if ax(a):return(1,)
+  if m(a)or m(x):return(3,)
   if ty(a)!=ty(x):return(3,)
   return tr(lambda a,x:concatenate([k1(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
  if c=='#':n=k1('#',x);return(k1(',',x)if ax(x)else x)[arange(a)%n]if ax(a)and n else(1,)
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
   if ax(a):return a*x
+  if ax(x):return(2,)
   if v(a):
-   if ty(x)==2:return tr(lambda a,x:a[x],(a,x),(2,))if ax(x)else(2,)
-   elif m(x):return tr(matmul,(a,x),(5,))
-  if m(a):return tr(matmul,(a,x),(5,))
+   if ty(x)==2 and v(x):return tr(lambda a,x:a[x],(a,x),(2,))
+   elif m(x):return tr(matmul,(a,x),(2,))
+  if m(a):return tr(matmul,(a,x),(2,))
+  return(3,)
  if c=='~':
   if ax(a)!=ax(x):return 0
   p=[k1(',',_)if ax(_)else _ for _ in(a,x)]
