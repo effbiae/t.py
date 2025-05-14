@@ -11,7 +11,7 @@ def k1(c,x):
  if c=='<':return triu(ones((x,x),dtype=int),+1)if ax(x)else(5,)
  if c=='>':return tril(ones((x,x),dtype=int),-1)if ax(x)else(5,)
  if c=='=':return identity(x)if ax(x)else(5,)
- if c=='!':return arange(int(x))if ax(x)else reshape(arange(prod(x)),x)if v(x)and len(x)<3 else (1,)
+ if c=='!':return arange(int(x))if ax(x)else(1,) #reshape(arange(prod(x)),x)if v(x)and len(x)<3 else (1,)
  if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else(1,)
  if c=='@':return tr(lambda x:x[0],(x,),x)
  if c=='^':return 1/x*arange(x)if type(x)==int else(5,)

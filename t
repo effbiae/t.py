@@ -10,7 +10,6 @@ def e(x,m):
  if x[0]=='0':return([m.te,m.ti][type(x[1])==int](x[1]))
  if type(x)==str and x.isalpha():
      o=v[(m,x)];
-     print('rr',m.rr(o));
      if not m.ax(o):
       m.r_(o)
      return o#m.r_(o)
@@ -23,10 +22,12 @@ def e(x,m):
 #ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'if x[0]=='0'else f'ke({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
 lg=lambda x,f:(print(x,file=f),f.flush());#cb=lambda x:[lg(f'i(256,_r({ce(p(a))})); //{a}',gf)for a in x]
 le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);ev=lambda s,m:m.pk(e(p(s),m))
-#g0=('(2)','!2','^2','&2','<2','>2')#,'(1)')
-g0=('(2)','0.+!32,32','^256','0.+&256','0.+<256')#,'<2','>2')#,'(1)')
+g0=('2','!2','^2','&2','<2','>2')#,'(1)')
+#g0=('2','0.+!32,32','^256','0.+&256','0.+<256')#,'<2','>2')#,'(1)')
 g='abcdefghijklmnopqrstuvwxyz'[:len(g0)]
-[e(p(g[i]+':'+g0[i]),m) for i in range(len(g)) for m in (a,n)]
+ss=[g[i]+':'+g0[i] for i in range(len(g))]
+print(';'.join(ss))
+[e(p(s),m) for s in ss for m in (a,n)]
 exprs=lambda:(x:=[c+t for t in g for c in a.P[1:a.P.find('.')+1]],x+[f'{u}'+a for u in g for a in x])[-1]
 def sm(an,x):
     l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
@@ -54,10 +55,11 @@ def main(es):
   with open('p','wb')as f:pickle.dump(results,f)
  else:
   with open('p','rb')as f:results=pickle.load(f)
- for x,s,t in results:
-  if not n.k2('~',s,t)and not err(s) and not err(t):od and print('> dif',x,sm('n',t),sm('a',s))#,max(abs(t-s)[1:]))
-  elif err(s) and not err(t) and s[0]:oe and print('> a',Y[s[0]],x,sm('n',t))
-  elif err(t) and not errpass(s,t[0]):on and print('> n',Z[t[0]],x,sm('a',s))
+ for w in range(3):
+  for x,s,t in results:
+   if w==0 and not n.k2('~',s,t)and not err(s) and not err(t):od and print('> dif',x,sm('n',t),sm('a',s))#,max(abs(t-s)[1:]))
+   elif w==1 and err(s) and not err(t) and s[0]:oe and print('> a',Y[s[0]],x,sm('n',t))
+   elif w==2 and err(t) and not errpass(s,t[0]):on and print('> n',Z[t[0]],x,sm('a',s))
   sys.stdout.flush()
 if __name__=='__main__':
     if'h' in sys.argv:help();sys.exit(0)
