@@ -31,7 +31,7 @@ ss=[g[i]+':'+g0[i] for i in range(len(g))]
 [ca(s) for s in ss];gs=';'.join(ss);log(gs);print(gs)
 [e(p(s),m) for s in ss for m in (a,n)]
 vs=a.P[1:a.P.find('.')+1].replace('$','')
-exprs=lambda:(x:=[c+t for t in g for c in vs],x:=x+[u+a for u in g for a in x],x+[c+a for c in vs for a in x])[-1]
+exprs=lambda:(x:=[c+t for t in g for c in vs],x:=x+[u+a for u in g for a in x])[-1]#,x+[c+a for c in vs for a in x])[-1]
 def sm(an,x):
     l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
     s=l+(an+':' if not ow else '')+l+(str(x)if not err(x)else 'err '+str(x[0]))
