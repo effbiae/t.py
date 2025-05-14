@@ -22,8 +22,8 @@ lg=lambda x,f:(print(x,file=f),f.flush());ca=lambda x:[lg(cd(x),gf)];cb=lambda x
 le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);
 if 'i' not in sys.argv:
  #g0=('2','!2','^2','&2','<2','>2','1','0.+&2','^256','0.+&256')#,'<2','>2')#,'(1)')
- #g0=('^2','0.+&2','0.+<2','1.','^256','0.+&256')#,'<2','>2')#,'(1)')
- g0=('1.','0.','-1.')
+ #g0=('1.','0.','-1.')
+ g0=('^2','0.+&2','0.+<2','1.','^256','0.+&256')#,'<2','>2')#,'(1)')
  g='abcdefghijklmnopqrstuvwxyz'[:len(g0)]
  ss=[g[i]+':'+g0[i] for i in range(len(g))]
  le(ss);[ca(s) for s in ss];gs=';'.join(ss);log(gs);print(gs)
@@ -46,18 +46,19 @@ def leak(es):
      if os.system('make g 2>&1 >/dev/null&&./g'):
          print(e)
 def main(es):
+ results=[]
  if 'p'not in sys.argv:
-  le(es)
+  le(es);stop=[_[1:]for _ in sys.argv if _[0]=='s']
   for x in es:
    if x in [x[1:]for x in sys.argv if x[0]=='-']:continue
-   cb([x]);
-   log(x);ov and print('try',x);ks=[e(p(x),m)for m in(a,n)]
+   if x in stop:break
+   cb([x]);log(x);ov and print('try',x);ks=[e(p(x),m)for m in(a,n)]
    s,t=(9,9)
    if x[1]!=':':#don't get a:1
     s,t=[m.pk(_)for (_,m) in zip(ks,(a,n))]
     if n.k2('~',s,t):ov and print('agree',x,sm('',s))
     else:ov and print('disagree',x,sm('n',t),sm('a',s))
-   results=[(x,s,t)];sys.stdout.flush()
+   results+=[(x,s,t)];sys.stdout.flush()
   with open('p','wb')as f:pickle.dump(results,f)
  else:
   with open('p','rb')as f:results=pickle.load(f)
@@ -70,6 +71,6 @@ def main(es):
 if __name__=='__main__':
     if'h' in sys.argv:help();sys.exit(0)
     if'i' in sys.argv:s=[_.strip() for _ in sys.stdin.readlines()]
-    else:s=[_ for _ in sys.argv[1:] if len(_)>1 and _[0]!='-'];s=s if len(s) else exprs()
+    else:s=[_ for _ in sys.argv[1:] if len(_)>1 and _[0]not in's-'];s=s if len(s) else exprs()
     if'l'in sys.argv:leak(s);sys.exit(0)
     main(s)
