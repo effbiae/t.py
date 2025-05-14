@@ -15,7 +15,7 @@ def e(x,m):
      return o#m.r_(o)
  if (p:=P.find(x[0]))>0:
   if x[1]:a=e(x[1],m);b=e(x[2],m);return a if m.err(a)else b if m.err(b)else m.k(P.find(x[0]),a,b)
-  else:a=e(x[2],m);return a if m.err(a) else m.k(P.find(x[0]),None,e(x[2],m))
+  else:a=e(x[2],m);return a if m.err(a) else m.k(P.find(x[0]),None,a)
  if p==0:
   k=(m,x[1]);il(k in v,lambda:m._r(v[k]));v[k]=e(x[2],m);return v[k]#m.r_(v[k])#check for error and don't assign
 
