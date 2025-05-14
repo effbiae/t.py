@@ -1,5 +1,5 @@
 from a import P;from numpy import *;seterr(divide='ignore', invalid='ignore');from functools import reduce
-ax=lambda x:not isinstance(x,ndarray)or not len(x.shape);ID=lambda x:x;ti=ID;te=ID;pk=ID;r_=ID;_r=ID
+ax=lambda x:not isinstance(x,ndarray)or not len(x.shape);ID=lambda x:x;ti=ID;te=ID;pk=ID;r_=ID;_r=ID;rr=lambda x:1
 ty=lambda x:2 if type(x)is int else 5 if type(x)is float else [5,2][0+(x.dtype=='int64')]
 topy=lambda x:x.item()if not ax(x)and x.shape==()else x;k=lambda i,a,x:topy(k1(P[i],x)if a is None else k2(P[i],a,x))
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len typ wontdo other'.split()
