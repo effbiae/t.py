@@ -8,4 +8,4 @@ sh=lambda x:0 if ax(x)else(ux(x),round(nx(x)/ux(x)if ux(x)else nx(x)))if mx(x)el
 ty=lambda x:ct.c_int if tx(x)==2 else e2 if tx(x)==5 else i0;pa=lambda x:ix(x)if tx(x)==2 else ex(x) if tx(x)==5 else gx(x)
 import numpy as np;err=lambda x:px(x)
 pk=lambda x:(ix(x),)if px(x) else pa(x)if ax(x)else[np.copy(np.ctypeslib.as_array(ct.cast(sx(x),ct.POINTER(ty(x))),shape=sh(x))),_r(x)][0]
-a.m_(0,0);k_(0,0)
+a.m(0,0);k_(0,0)
