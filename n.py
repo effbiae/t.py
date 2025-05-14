@@ -7,14 +7,14 @@ err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==2
 def k1(c,x):
  if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else k2('=',x,0)if c=='~'else floor(x)
- if c=='|':return x[::-1]if v(x)else identity(int(x))[::-1]if ax(x)else(1,)
- if c=='<':return triu(ones((int(x),int(x)),dtype=int),+1)if ax(x)else(0,)
- if c=='>':return tril(ones((int(x),int(x)),dtype=int),-1)if ax(x)else(0,)
- if c=='=':return identity(int(x))if ax(x)else(0,)
+ if c=='|':return x[::-1]if v(x)else identity(int(x))[::-1]if ax(x)and x>0 else(1,)
+ if c=='<':return triu(ones((int(x),int(x)),dtype=int),+1)if ax(x)and x>0 else(0,)
+ if c=='>':return tril(ones((int(x),int(x)),dtype=int),-1)if ax(x)and x>0 else(0,)
+ if c=='=':return identity(int(x))if ax(x)and x>0 else(0,)
  if c=='!':return arange(int(x))if ax(x)else array(x.shape)if m(x)else(0,)#reshape(arange(prod(x)),x)if v(x)and len(x)<3 else (1,)
  if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else(1,)
  if c=='@':return tr(lambda x:x[0],(x,),x)
- if c=='^':return 1/x*arange(int(x))if ax(x)else(0,)
+ if c=='^':return 1/x*arange(int(x))if ax(x)and x>0 else(0,)
  if c=='&':return full((int(x),int(x)),1)if ax(x)and x>0 else transpose(matrix(x))if m(x)else(1,)
  return(0,)
 def k2(c,a,x):
@@ -29,7 +29,7 @@ def k2(c,a,x):
    if ty(x)!=2:return(2,)
    if v(a):i=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return i[0] if len(i)else len(a)
    else:return(2,)
-  q=x/a;return q if any([ty(_)==5 for _ in(a,x)])else floor(q)
+  q=array(x)/a;return q.item() if any([ty(_)==5 for _ in(a,x)])else floor(q)
  if c=='_':return tr(lambda a,x:x[int(a):],(a,x),(1,))
  if c==',':
   if ax(a):return(1,)

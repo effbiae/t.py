@@ -22,7 +22,8 @@ lg=lambda x,f:(print(x,file=f),f.flush());ca=lambda x:[lg(cd(x),gf)];cb=lambda x
 le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);
 if 'i' not in sys.argv:
  #g0=('2','!2','^2','&2','<2','>2','1','0.+&2','^256','0.+&256')#,'<2','>2')#,'(1)')
- g0=('^2','0.+&2','0.+<2','1.','^256','0.+&256')#,'<2','>2')#,'(1)')
+ #g0=('^2','0.+&2','0.+<2','1.','^256','0.+&256')#,'<2','>2')#,'(1)')
+ g0=('1.','0.','-1.')
  g='abcdefghijklmnopqrstuvwxyz'[:len(g0)]
  ss=[g[i]+':'+g0[i] for i in range(len(g))]
  le(ss);[ca(s) for s in ss];gs=';'.join(ss);log(gs);print(gs)
@@ -48,8 +49,8 @@ def main(es):
  if 'p'not in sys.argv:
   le(es)
   for x in es:
-   cb([x]);
    if x in [x[1:]for x in sys.argv if x[0]=='-']:continue
+   cb([x]);
    log(x);ov and print('try',x);ks=[e(p(x),m)for m in(a,n)]
    s,t=(9,9)
    if x[1]!=':':#don't get a:1
