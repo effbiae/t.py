@@ -7,15 +7,16 @@ err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==2;smp=lambda x:ax(x)an
 def k1(c,x):
  if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else k2('=',x,0)if c=='~'else floor(x)
- if c=='|':return x[::-1]if v(x)else identity(int(x))[::-1]if smp(x)else(1,)
- if c=='<':return triu(ones((int(x),int(x)),dtype=int),+1)if smp(x)else(0,)
- if c=='>':return tril(ones((int(x),int(x)),dtype=int),-1)if smp(x)else(0,)
- if c=='=':return identity(int(x))if smp(x)else(0,)
- if c=='!':return arange(int(x))if smp(x)else array(x.shape)if m(x)else(0,)#reshape(arange(prod(x)),x)if v(x)and len(x)<3 else (1,)
+ if c=='|':return x[::-1]if v(x)else identity(int(x))[::-1]if smp(x)else(2,)if ax(x)else(1,)
+ if c=='<':return triu(ones((int(x),int(x)),dtype=int),+1)if smp(x)else(2,)
+ if c=='>':return tril(ones((int(x),int(x)),dtype=int),-1)if smp(x)else(2,)
+ if c=='=':return identity(int(x))if smp(x)else(2,)
+ if c=='!':return arange(int(x))if ax(x)else array(x.shape)if m(x)else\
+               reshape(arange(int(prod(x))),x)if v(x)and ty(x)==2 and len(x)<3 else (2,)
  if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else(1,)
  if c=='@':return tr(lambda x:x[0],(x,),(0,))
- if c=='^':return 1/x*arange(int(x))if smp(x)else(0,)
- if c=='&':return full((int(x),int(x)),1)if smp(x)else transpose(matrix(x))if m(x)else(1,)
+ if c=='^':return array(1)/x*arange(int(x))if ax(x)else(0,)
+ if c=='&':return full((int(x),int(x)),1)if smp(x)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
  return(0,)
 def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else (array(float(a))if ax(a)else a)/x if c=='%' \
