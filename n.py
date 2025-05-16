@@ -12,17 +12,17 @@ def k1(c,x):
  if c=='>':return tril(ones((int(x),int(x)),dtype=int),-1)if smp(x)else(2,)
  if c=='=':return identity(int(x))if smp(x)else(2,)
  if c=='!':return arange(int(x))if ax(x)else array(x.shape)if m(x)else\
-               reshape(arange(int(prod(x))),x)if v(x)and ty(x)==2 and len(x)<3 else (2,)
+               reshape(arange(int(prod(x))),x)if v(x)and ty(x)==2 and len(x)<3 else(2,)
  if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else(1,)
  if c=='@':return tr(lambda x:x[0],(x,),(0,))
  if c=='^':return array(1)/x*arange(int(x))if ax(x)else(0,)
  if c=='&':return full((int(x),int(x)),1)if smp(x)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
  return(0,)
 def k2(c,a,x):
- if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else (array(float(a))if ax(a)else a)/x if c=='%' \
-   else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else 0+(abs(a-x)<1e-5)if c=='='\
+ if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
+   (array(float(a))if ax(a)else a)/x if c=='%' else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else 0+(abs(a-x)<1e-5)if c=='='\
    else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
- if c=='!':return x%a if ty(a)==2 and ty(x)==2 else(0,)
+ if c=='!':return tr(lambda a,x:x%a,(a,x),(2,)) if ty(a)==2 and ty(x)==2 else(0,)
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
    if v(x) and not m(a):return(3,)

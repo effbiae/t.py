@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 import a,n,sys,os,pickle;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y
 ax=lambda x:not isinstance(x,np.ndarray);np.set_printoptions(precision=3)
-lf,gf,ef=[open(x,'w')for x in['log','g.b','e']]
+lf,gf,ef,gl=[open(x,'w')for x in['log','g.b','e','gl']]
 on,ov,od,oe=[x in sys.argv or 'a' in sys.argv for x in 'nvde'];ow='w'in sys.argv;od=od or all([_ not in sys.argv for _ in'nve'])
 v={}
 def il(c,x):
@@ -10,7 +10,12 @@ def e(x,m):
  if x[0]=='0':return([m.te,m.ti][type(x[1])==int](x[1]))
  if type(x)==str and x.isalpha():o=v[(m,x)];il(not m.ax(o),lambda:m.r_(o));return o
  if (p:=P.find(x[0]))>0:
-  if x[1]:a=e(x[1],m);b=e(x[2],m);return a if m.err(a)else b if m.err(b)else m.k(P.find(x[0]),a,b)
+  if x[1]:
+      a=e(x[1],m)
+      if m.err(a):return a
+      b=e(x[2],m)
+      if m.err(b):m._r(a);return b
+      return m.k(P.find(x[0]),a,b)
   else:a=e(x[2],m);return a if m.err(a) else m.k(P.find(x[0]),None,a)
  if p==0:
   k=(m,x[1]);il(k in v,lambda:m._r(v[k]));v[k]=e(x[2],m);return v[k]#m.r_(v[k])#check for error and don't assign
@@ -19,18 +24,23 @@ cd=lambda s:(x:=p(s),f'U {x[1]}={ce(x[2])}; //{s}')[-1]
 ce=lambda x:f't{"ei"[type(x[1])==int]}({x[1]})'if x[0]=='0'else f'r_({x})'if type(x)==str and x.isalpha() else\
         f'ke({P.find(x[0])},{ce(x[1])if x[1] else "0"},{ce(x[2])})'
 lg=lambda x,f:(print(x,file=f),f.flush());ca=lambda x:[lg(cd(x),gf)];cb=lambda x:[lg(f'_r({ce(p(a))}); //{a}',gf)for a in x]
-le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);
+le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);glog=lambda x:lg(x,gl)
 if 'i' not in sys.argv:
  #g0=('2','!2','^2','&2','<2','>2','1','0.+&2','^256','0.+&256')#,'<2','>2')#,'(1)')
  #g0=('1.','0.','-1.')
  g0=('^2','0.+&2','0.+<2','1.','^256','0.+&256')#,'<2','>2')#,'(1)')
  g='abcdefghijklmnopqrstuvwxyz'[:len(g0)]
- ss=[g[i]+':'+g0[i] for i in range(len(g))]
- le(ss);[ca(s) for s in ss];gs=';'.join(ss);log(gs);print(gs)
+ ss=[g[i]+':'+g0[i] for i in range(len(g))]+['z:0']
+ le(ss);[ca(s) for s in ss];gs=';'.join(ss);log(gs);glog(gs);print(gs)
  [e(p(s),m) for s in ss for m in (a,n)]
  vs=a.P[1:a.P.find('.')+1].replace('$','')
  base=lambda:(x:=[c+t for t in g for c in vs],x:=x+[u+a for u in g for a in x])[-1]
- if 'x'in sys.argv:exprs=lambda:base()+[c+a for c in vs for a in base()]
+ if 'x'in sys.argv:
+  def exprs():
+   y=base();x=[c+a for c in vs for a in y]
+   for a in y:#a in x
+    x+=[f'z:{a}'];x+=[f'z{v}{b}'for b in y for v in vs]
+   return x
  else:exprs=base
 def sm(an,x):
     l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
@@ -52,7 +62,8 @@ def main(es):
   for x in es:
    if x in [x[1:]for x in sys.argv if x[0]=='-']:continue
    if x in stop:break
-   cb([x]);log(x);ov and print('try',x);ks=[e(p(x),m)for m in(a,n)]
+   ov and print('try',x);cb([x]);log(x);ks=[e(p(x),m)for m in(a,n)]
+   if not a.err(ks[0]):glog(x)
    s,t=(9,9)
    if x[1]!=':':#don't get a:1
     s,t=[m.pk(_)for (_,m) in zip(ks,(a,n))]
