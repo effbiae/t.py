@@ -6,7 +6,7 @@ mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len
 err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==2;smp=lambda x:ax(x)and x>0 and not isinf(x)
 def k1(c,x):
  if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
-  sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else k2('=',x,0)if c=='~'else floor(x)
+  sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else k2('=',x,0)if c=='~'else floor(x).astype(int)
  if c=='|':return x[::-1]if v(x)else identity(int(x))[::-1]if smp(x)else(2,)if ax(x)else(1,)
  if c=='<':return triu(ones((int(x),int(x)),dtype=int),+1)if smp(x)else(2,)
  if c=='>':return tril(ones((int(x),int(x)),dtype=int),-1)if smp(x)else(2,)

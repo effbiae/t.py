@@ -5,7 +5,7 @@ m=-mavx512f -mavx512dq -mavx512vbmi -mavx512vnni
 O=-O3
 all:P Y liba.so
 liba.so:k.edu makefile a.c
-	$c -oliba.so $o -g -shared -fPIC k.edu/[az].c a.c $O -nostdlib $m
+	$c -oliba.so $o -g -shared -fPIC k.edu/?.c a.c $O -nostdlib $m
 k.edu:
 	git clone https://github.com/effbiae/k.edu.git
 P:k.edu

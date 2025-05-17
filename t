@@ -37,9 +37,9 @@ if 'i' not in sys.argv:
  base=lambda:(x:=[c+t for t in g for c in vs],x:=x+[u+a for u in g for a in x])[-1]
  if 'x'in sys.argv:
   def exprs():
-   y=base();x=[c+a for c in vs for a in y]
-   for a in y:#a in x
-    x+=[f'z:{a}'];x+=[f'z{v}{b}'for b in y for v in vs]
+   x=base();x+=[c+a for c in vs for a in x]
+   for a in x:
+    x+=[f'z:{a}'];x+=[f'z{v}{b}'for b in x for v in vs]
    return x
  else:exprs=base
 def sm(an,x):
