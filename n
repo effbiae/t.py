@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 import a,n,sys;from p import p;from numpy import *;P=a.P;v1=sys.argv[1]if len(sys.argv)>1 else''
-ax=lambda x:not isinstance(x,ndarray);set_printoptions(precision=3);v={}
+import pickle;ax=lambda x:not isinstance(x,ndarray);set_printoptions(precision=3);v={}
 lg=lambda x,f,e:(print(x,file=f,end=e),f.flush());
 [exec(f'{_}=open("{_}","w");{_[0]}l=lambda x:lg(x,{_},None)',globals())for _ in('log','glog')]
 O=lambda x:lg(x,sys.stdout,'')
@@ -12,7 +12,14 @@ def e(x,m):
  if x[0]=='[':return lm(lambda x:e(x,m),x[1:])[-1]
  if x[0]=='0':return([m.te,m.ti][type(x[1])==int](x[1]))
  if type(x)==str and x.isalpha():return m.r_(v[(m,x)])
- if (p:=P.find(x[0]))>0:y=m.k(p,e(x[1],m)if x[1] else None,e(x[2],m));return y
+ if (p:=P.find(x[0]))>0:
+  if x[1]:
+   a=e(x[1],m)
+   if m.err(a):return a
+   b=e(x[2],m)
+   if m.err(b):m._r(a);return b
+   return m.k(P.find(x[0]),a,b)
+  else:a=e(x[2],m);return a if m.err(a) else m.k(P.find(x[0]),None,a)
  if p==0:
   k=(m,x[1]);il(k in v,lambda:m._r(v[k]));v[k]=e(x[2],m);return m.r_(v[k])#check for error and don't assign
 ow=1
@@ -21,16 +28,19 @@ def sm(x):
  s=l+(':'if not ow else '\t')+l+(str(x)if not err(x)else 'err '+str(x[0]))
  return s.replace('\n','|').replace('[','').replace(']','')if ow else s
 def main():
+ op and (pf:=open('p','wb'))
  while 1:
   O(' 'if sys.stdin.isatty()else'');x=sys.stdin.readline().strip()
-  if not x:return
-  ll(x);ov and print('', x)
-  ks=[e(p(x),m)for m in(a,n)] #why r_?
+  if not x:break
+  ll(x);ov and print('',x)
+  ks=[e(p(x),m)for m in(a,n)]
   if not a.err(ks[0]):gl(x)
-  ks=[m.pk(_)for m,_ in zip((a,n),ks)]
+  ks=tuple([m.pk(_)for m,_ in zip((a,n),ks)])
   if not n.k2('~',*ks):ov and print('disagree',x,'\t'.join([sm(k)for k in ks]))
   else:print(ks[0])
+  op and pickle.dump((x,)+ks,pf)
   sys.stdout.flush()
+ op and pf.close()
 if __name__=='__main__':
  [exec(f"o{_}={_ in v1}",globals())for _ in 'vp']
  main()
