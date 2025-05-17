@@ -9,6 +9,6 @@ ty=lambda x:ct.c_int if tx(x)==2 else e2 if tx(x)==5 else i0;pa=lambda x:ix(x)if
 import numpy as np;err=lambda x:px(x)
 #pk=lambda x:(ix(x),)if px(x) else pa(x)if ax(x)else[np.copy(np.ctypeslib.as_array(ct.cast(sx(x),ct.POINTER(ty(x))),shape=sh(x))),_r(x)][0]
 def pk(x):
-    #import sys;print(sh(x),ty(x),sx(x));sys.stdout.flush();print(prn(x))
+    #import sys;print(sh(x),ty(x),sx(x));sys.stdout.flush()
     return (ix(x),)if px(x) else pa(x)if ax(x)else[np.copy(np.ctypeslib.as_array(ct.cast(sx(x),ct.POINTER(ty(x))),shape=sh(x))),_r(x)][0]
 'a.ldmxcsr()';k_(0,0)

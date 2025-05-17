@@ -11,11 +11,11 @@ def e(x,m):
  if type(x)==str and x.isalpha():o=v[(m,x)];il(not m.ax(o),lambda:m.r_(o));return o
  if (p:=P.find(x[0]))>0:
   if x[1]:
-      a=e(x[1],m)
-      if m.err(a):return a
-      b=e(x[2],m)
-      if m.err(b):m._r(a);return b
-      return m.k(P.find(x[0]),a,b)
+   a=e(x[1],m)
+   if m.err(a):return a
+   b=e(x[2],m)
+   if m.err(b):m._r(a);return b
+   return m.k(P.find(x[0]),a,b)
   else:a=e(x[2],m);return a if m.err(a) else m.k(P.find(x[0]),None,a)
  if p==0:
   k=(m,x[1]);il(k in v,lambda:m._r(v[k]));v[k]=e(x[2],m);return v[k]#m.r_(v[k])#check for error and don't assign
@@ -27,24 +27,24 @@ lg=lambda x,f:(print(x,file=f),f.flush());ca=lambda x:[lg(cd(x),gf)];cb=lambda x
 le=lambda x:[lg(e,ef)for e in x];log=lambda x:lg(x,lf);glog=lambda x:lg(x,gl)
 if 'i' not in sys.argv:
  #g0=('2','!2','^2','&2','<2','>2','1','0.+&2','^256','0.+&256')#,'<2','>2')#,'(1)')
- #g0=('1.','0.','-1.')
- g0=('^2','0.+&2','0.+<2','1.','^256','0.+&256')#,'<2','>2')#,'(1)')
+ #g0=('^2','0.+&2','0.+<2','1.','^256','0.+&256')#,'<2','>2')#,'(1)')
+ g0=('1.','0.','-1.')
  g='abcdefghijklmnopqrstuvwxyz'[:len(g0)]
  ss=[g[i]+':'+g0[i] for i in range(len(g))]+['z:0']
  le(ss);[ca(s) for s in ss];gs=';'.join(ss);log(gs);glog(gs);print(gs)
  [e(p(s),m) for s in ss for m in (a,n)]
  vs=a.P[1:a.P.find('.')+1].replace('$','')
  base=lambda:(x:=[c+t for t in g for c in vs],x:=x+[u+a for u in g for a in x])[-1]
- if 'x'in sys.argv:
+ if'x'in sys.argv:
   def exprs():
-   x=base();x+=[c+a for c in vs for a in x]
-   for a in x:
-    x+=[f'z:{a}'];x+=[f'z{v}{b}'for b in x for v in vs]
+   y=base();x=y+[c+a for c in vs for a in y]
+   for a in y:
+    x+=[f'z:{a}'];x+=[f'z{v}{b}'for b in y for v in vs]
    return x
  else:exprs=base
 def sm(an,x):
     l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
-    s=l+(an+':' if not ow else '')+l+(str(x)if not err(x)else 'err '+str(x[0]))
+    s=l+(an+':'if not ow else'')+l+(str(x)if not err(x)else'err '+str(x[0]))
     return s.replace('\n','|').replace('[','').replace(']','')[:100]if ow else s
 err=lambda x:type(x)is tuple;errpass=lambda s,e:e==4 or err(s) and (s[0]in[0]or s[0]==e)
 def help():p=sys.argv[0];print(f'try {p} for differences, then try {p} n for possible bugs. also {p} a \'2+^2\' for single expr')

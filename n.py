@@ -3,20 +3,20 @@ ax=lambda x:not isinstance(x,ndarray)or not len(x.shape);ID=lambda x:x;ti=ID;te=
 ty=lambda x:2 if type(x)is int else 5 if type(x)is float else [5,2][0+(x.dtype=='int64')]
 topy=lambda x:x.item()if not ax(x)and x.shape==()else x;k=lambda i,a,x:topy(k1(P[i],x)if a is None else k2(P[i],a,x))
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len typ wontdo other'.split()
-err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==2;smp=lambda x:ax(x)and x>0 and not isinf(x)
+err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==2;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x)
 def k1(c,x):
  if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else k2('=',x,0)if c=='~'else floor(x).astype(int)
- if c=='|':return x[::-1]if v(x)else identity(int(x))[::-1]if smp(x)else(2,)if ax(x)else(1,)
- if c=='<':return triu(ones((int(x),int(x)),dtype=int),+1)if smp(x)else(2,)
- if c=='>':return tril(ones((int(x),int(x)),dtype=int),-1)if smp(x)else(2,)
- if c=='=':return identity(int(x))if smp(x)else(2,)
- if c=='!':return arange(int(x))if ax(x)else array(x.shape)if m(x)else\
+ if c=='|':return x[::-1]if v(x)else identity(int(x))[::-1]if smp(x,0)else(2,)if ax(x)else(1,)
+ if c=='<':return triu(ones((int(x),int(x)),dtype=int),+1)if smp(x,0)else(2,)
+ if c=='>':return tril(ones((int(x),int(x)),dtype=int),-1)if smp(x,0)else(2,)
+ if c=='=':return identity(int(x))if smp(x,0)else(2,)
+ if c=='!':return arange(int(x))if smp(x,-1)else array(x.shape)if m(x)else\
                reshape(arange(int(prod(x))),x)if v(x)and ty(x)==2 and len(x)<3 else(2,)
  if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else(1,)
  if c=='@':return tr(lambda x:x[0],(x,),(0,))
- if c=='^':return array(1)/x*arange(int(x))if ax(x)else(0,)
- if c=='&':return full((int(x),int(x)),1)if smp(x)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
+ if c=='^':return array(1)/x*arange(int(x))if smp(x,-1)else(0,)
+ if c=='&':return full((int(x),int(x)),1)if smp(x,0)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
  return(0,)
 def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
@@ -27,7 +27,6 @@ def k2(c,a,x):
   if not ax(a):
    if v(x) and not m(a):return(3,)
    if not ax(x):return k2('@',x,a)
-   if ty(x)!=2:return(2,)
    if v(a):i=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return i[0] if len(i)else len(a)
    else:return(2,)
   q=array(x)/a;return q if any([ty(_)==5 for _ in(a,x)])else floor(q)

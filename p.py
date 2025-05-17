@@ -1,4 +1,4 @@
-P=open('P').read();m=["v;",P,";)]\n "];c=dict([(chr(x),' ')for x in range(128)])
+P=open('P').read();m=["av;","['/\\",P,";)]\n "];c=dict([(chr(x),' ')for x in range(128)])
 def f(x,s):
  for a in s:c[a]=x
 for i in range(len(m[0])):f(m[0][i],m[i+1])
@@ -16,7 +16,7 @@ def E(x):
 def t():
  if q():return()
  x=n()if not s[i][0]in'(['else x[1]if 3>len(x:=E(s[i]))else x
- while i<len(s)and'['==s[i][0]:x=E(x)
+ while'a'==cs(i):x=E(x)if'['==s[i]else(n(),x)
  return x
 def v():return';'<cs(i-1)
 def e(x):
@@ -43,17 +43,17 @@ def p(x):global s,i;s=lex('['+x);i=0;return t()
 def test():
     import sys
     if len(sys.argv)>1: #generate test cases
-        for x in ["","x;y","x+y","^8e3","x+*y","(+x)%y","%[1;3]"]:
+        for x in ["","x;y","x+y","^8e3","x+*y","(+x)%y","%[1;3]","ao'x"]:
             print("        [%12s,%s ],"%(x.__repr__(),p(x)))
         print(']')
     for x,y in [
         [          '',() ],
         [       'x;y',('[', 'x', 'y') ],
         [       'x+y',('+', 'x', 'y') ],
-        [      '^8e3',('^', ('0', 8000)) ],
-        [      'x+*y',('+', 'x', ('*', 'y')) ],
-        [    '(+x)%y',('%', ('+', 'x'), 'y') ],
-        [    '%[1;3]',('%', ('0', 1), ('0', 3)) ],
+        [      '^8e3',('^', 0, ('0', 8000)) ],
+        [      'x+*y',('+', 'x', ('*', 0, 'y')) ],
+        [    '(+x)%y',('%', ('+', 0, 'x'), 'y') ],
+        [    "ao'x",  (("'",'o'), 'a', 'x') ],
         ]:
         if (r:=p(x))!=y:print('!',repr(x),repr(r),'!=',y);sys.exit(1)
 if __name__=='__main__':
