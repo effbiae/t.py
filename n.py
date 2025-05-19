@@ -4,19 +4,19 @@ ty=lambda x:2 if type(x)is int else 5 if type(x)is float else [5,2][0+(x.dtype==
 topy=lambda x:x.item()if not ax(x)and x.shape==()else x;k=lambda i,a,x:topy(k1(P[i],x)if a is None else k2(P[i],a,x))
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len typ wontdo other'.split()
 err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==2;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x)
+ii=lambda x:(int(x),int(x))
 def k1(c,x):
  if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else k2('=',x,0)if c=='~'else floor(x).astype(int)
  if c=='|':return x[::-1]if v(x)else identity(int(x))[::-1]if smp(x,0)else(2,)if ax(x)else(1,)
- if c=='<':return triu(ones((int(x),int(x)),dtype=int),+1)if smp(x,0)else(2,)
- if c=='>':return tril(ones((int(x),int(x)),dtype=int),-1)if smp(x,0)else(2,)
+ if c in'<>':return (triu,tril)[c=='>'](ones(ii(x),dtype=int),(1,-1)[c=='>'])if smp(x,0)else(2,)
  if c=='=':return identity(int(x))if smp(x,0)else(2,)
  if c=='!':return arange(int(x))if smp(x,-1)else array(x.shape)if m(x)else\
                reshape(arange(int(prod(x))),x)if v(x)and ty(x)==2 and len(x)<3 else(2,)
  if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else(1,)
  if c=='@':return tr(lambda x:x[0],(x,),(0,))
  if c=='^':return array(1)/x*arange(int(x))if smp(x,-1)else(0,)
- if c=='&':return full((int(x),int(x)),1)if smp(x,0)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
+ if c=='&':return full(ii(x),1)if smp(x,0)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
  return(0,)
 def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
@@ -29,12 +29,11 @@ def k2(c,a,x):
    if not ax(x):return k2('@',x,a)
    if v(a):i=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return i[0] if len(i)else len(a)
    else:return(2,)
-  q=array(x)/a;return q if any([ty(_)==5 for _ in(a,x)])else floor(q)
+  q=array(x)/a;return q if any([ty(_)==5 for _ in(a,x)])else floor(q).astype(int)
  if c=='_':return tr(lambda a,x:x[int(a):],(a,x),(1,))
  if c==',':
   if ax(a):return(1,)
-  if m(a)or m(x):return(3,)
-  if ty(a)!=ty(x):return(3,)
+  if m(a)or m(x)or ty(a)!=ty(x):return(3,)
   return tr(lambda a,x:concatenate([k1(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
  if c=='#':n=k1('#',x);return(k1(',',x)if ax(x)else x)[arange(int(a))%n]if ax(a)and n else(1,)
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
