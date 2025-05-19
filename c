@@ -13,7 +13,7 @@ def e(x,s):
  if x[0]=='0':return f't{"ei"[type(x[1])==int]}({x[1]})'
  if type(x)==str and x.isalpha():return f'r_({x})'
  if (p:=P.find(x[0]))>0:return f'ke({P.find(x[0])},{e(x[1],s)if x[1] else "0"},{e(x[2],s)})'
- if p==0:return f'!({x[1]},px)&&_r({x[1]});{x[1]}={e(x[2],s)}; //{s}'
+ if p==0:return f'!x({x[1]},px)&&_r({x[1]});{x[1]}={e(x[2],s)}; //{s}'
 ow=1
 def main():
  gf=open('g.b','w')
@@ -21,7 +21,7 @@ def main():
   x=sys.stdin.readline().strip()
   if not x:break
   if any(_ in x for _ in':;'):lg(e(p(x),x),gf)
-  else:lg(f'_r({e(p(x),x)});',gf)
+  else:lg(f'_r({e(p(x),x)}); //{x}',gf)
  gf.close()
 if __name__=='__main__':
  [exec(f"o{_}={_ in v1}",globals())for _ in '']
