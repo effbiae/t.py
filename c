@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import sys;from p import p,P;lg=lambda x,f,e:(print(x,file=f,end=e),f.flush());
+import sys;from p import p,P;lg=lambda x,f:(print(x,file=f),f.flush());
 def e(x,s):
  if x[0]=='[':return '\n'.join([e(_,s)for _ in x[1:]])+'// '+s
  if x[0]=='0':return f't{"ei"[type(x[1])==int]}({x[1]})'
