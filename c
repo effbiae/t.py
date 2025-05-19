@@ -1,13 +1,5 @@
 #!/usr/bin/python3
 import sys;from p import p,P;lg=lambda x,f,e:(print(x,file=f,end=e),f.flush());
-lg=lambda x,f:(print(x,file=f),f.flush())
-def seq(x,m):
- r=None
- for a in x:
-  o=e(a,m);r is not None and m._r(r);
-  if m.err(o):return o
-  r=o
- return r
 def e(x,s):
  if x[0]=='[':return '\n'.join([e(_,s)for _ in x[1:]])+'// '+s
  if x[0]=='0':return f't{"ei"[type(x[1])==int]}({x[1]})'
