@@ -8,7 +8,7 @@ ev=lambda s,m:m.pk(e(p(s),m));err=lambda x:type(x)is tuple
 def seq(x,m):
  r=None
  for a in x:
-  o=e(a,m);r and m._r(r);
+  o=e(a,m);r is not None and m._r(r);
   if m.err(o):return o
   r=o
  return r
@@ -43,10 +43,10 @@ def main():
   ks=tuple([m.pk(_)for m,_ in zip((a,n),ks)])
   if not n.k2('~',*ks):
    ov and print('disagree',x,'\t'.join([sm(k)for k in ks]))
-   op and (pickle.dump((x,)+ks,pf),pf.flush())
-  else:print(ks[0])
+   op and (o:=(x,)+ks,pickle.dump(o,pf),pf.flush())
+  else:not oq and print(ks[0])
   [_.flush()for _ in(sys.stdout,log,glog)]
  op and pf.close()
 if __name__=='__main__':
- [exec(f"o{_}={_ in v1}",globals())for _ in 'vp']
+ [exec(f"o{_}={_ in v1}",globals())for _ in 'vpq']
  main()

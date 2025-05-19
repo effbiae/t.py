@@ -2,7 +2,7 @@
 import a;import sys;v1=sys.argv[1]if len(sys.argv)>1 else''
 g0=('2','!2','^2','&2','<2','>2','1','0.+&2','^256','0.+&256')#,'<2','>2')#,'(1)')
 g0=('^2','0.+&2','0.+<2','1.','^256','0.+&256')#,'<2','>2')#,'(1)')
-g0=('1.','0.','-1.')
+#g0=('1.','0.','-1.')
 g='abcdefghijklmnopqrstuvwxyz'[:len(g0)]
 ss=[g[i]+':'+g0[i] for i in range(len(g))]+['z:0']
 gs=';'.join(ss);print(gs)
