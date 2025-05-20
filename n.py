@@ -13,7 +13,7 @@ def k1(c,x):
  if c=='=':return identity(int(x))if smp(x,0)else(2,)
  if c=='!':return arange(int(x))if smp(x,-1)else array(x.shape)if m(x)else\
                reshape(arange(int(prod(x))),x)if v(x)and ty(x)==2 and len(x)<3 else(2,)
- if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else(1,)
+ if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else reshape(x,(1,prod(x.shape)))
  if c=='@':return tr(lambda x:x[0],(x,),(0,))
  if c=='^':return array(1)/x*arange(int(x))if smp(x,-1)else(0,)
  if c=='&':return full(ii(x),1)if smp(x,0)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
