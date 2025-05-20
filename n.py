@@ -8,7 +8,7 @@ ii=lambda x:(int(x),int(x))
 def k1(c,x):
  if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else k2('=',x,0)if c=='~'else floor(x).astype(int)
- if c=='|':return x[::-1]if v(x)else identity(int(x))[::-1]if smp(x,0)else(2,)if ax(x)else(1,)
+ if c=='|':return x[::-1]if v(x)else k1('=',x)[::-1]if smp(x,0)else(2,)if ax(x)else(1,)
  if c in'<>':return (triu,tril)[c=='>'](ones(ii(x),dtype=int),(1,-1)[c=='>'])if smp(x,0)else(2,)
  if c=='=':return identity(int(x))if smp(x,0)else(2,)
  if c=='!':return arange(int(x))if smp(x,-1)else array(x.shape)if m(x)else\
