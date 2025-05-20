@@ -27,7 +27,7 @@ def e(x,m):
  if p==0:
   k=(m,x[1]);o=e(x[2],m);
   if m.err(o):return o
-  k in v and m._r(v[k]);v[k]=o;return m.r_(v[k])#check for error and don't assign
+  k in v and m._r(v[k]);v[k]=o;return m.r_(o)
 ow=1
 def sm(x):
  l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
