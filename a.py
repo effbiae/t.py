@@ -5,11 +5,11 @@ a_ke=d(a.ke,[U,U,U,U]);k=lambda i,x,y:a_ke(i,0 if x is None else x,y)
 ax=d(a.kax,[i2,U]);tx=d(a.ktx,[i2,U]);mx=d(a.kmx,[i2,U]);nx=d(a.knx,[i2,U]);gx=d(a.kgx,[i0,U]);px=d(a.kpx,[i2,U]);ux=d(a.kux,[i2,U])
 _r=d(a.k_r,[U,U]);r_=d(a.kr_,[U,U]);sx=d(a.ksx,[U,U])
 sh=lambda x:0 if ax(x)else(ux(x),round(nx(x)/ux(x)if ux(x)else nx(x)))if mx(x)else(nx(x),)
-t_=lambda x:(print(x,tx(x)),i0)[-1];i=6;f=13;b=1;
-ty=lambda x:ct.c_int if tx(x)==i else e2 if tx(x)==f else i0 if tx(x)==b else t_(x);a=lambda x:ix(x)if tx(x)==i else ex(x) if tx(x)==f else gx(x)
+i,f,b,q=6,13,1,4;ty=lambda x:ct.c_int if tx(x)==i else e2 if tx(x)==f else i0 if tx(x)==b else i0 if tx(x)==q else i0
+a=lambda x:ix(x)if tx(x)==i else ex(x) if tx(x)==f else gx(x)
 import numpy as np;err=lambda x:px(x)
 g=lambda x,t,s:[np.copy(np.ctypeslib.as_array(ct.cast(sx(x),ct.POINTER(t)),shape=s)),_r(x)][0]
 u=lambda a:np.unpackbits(a,bitorder='little')
 def pk(x):
-    return (ix(x),)if px(x)else a(x)if ax(x)else g(x,ty(x),sh(x))if tx(x)!=1 else u(g(x,ty(x),((nx(x)+7)//8,)))[:nx(x)].reshape(sh(x))
+    return (ix(x),)if px(x)else a(x)if ax(x)else g(x,ty(x),sh(x))if tx(x)!=b else u(g(x,ty(x),((nx(x)+7)//8,)))[:nx(x)].reshape(sh(x))
 k_(0,0)
