@@ -6,7 +6,7 @@ ax=d(a.kax,[i2,U]);tx=d(a.ktx,[i2,U]);mx=d(a.kmx,[i2,U]);nx=d(a.knx,[i2,U]);gx=d
 _r=d(a.k_r,[U,U]);r_=d(a.kr_,[U,U]);sx=d(a.ksx,[U,U])
 sh=lambda x:0 if ax(x)else(ux(x),round(nx(x)/ux(x)if ux(x)else nx(x)))if mx(x)else(nx(x),)
 t_=lambda x:(print(x,tx(x)),i0)[-1]
-ty=lambda x:ct.c_int if tx(x)==6 else e2 if tx(x)==13 else i0 if tx(x)==1 else t_(x);pa=lambda x:ix(x)if tx(x)==6 else ex(x) if tx(x)==13 else gx(x)
+i=6;f=13;ty=lambda x:ct.c_int if tx(x)==i else e2 if tx(x)==f else i0 if tx(x)==1 else t_(x);pa=lambda x:ix(x)if tx(x)==i else ex(x) if tx(x)==f else gx(x)
 import numpy as np;err=lambda x:px(x)
 g=lambda x,t,s:[np.copy(np.ctypeslib.as_array(ct.cast(sx(x),ct.POINTER(t)),shape=s)),_r(x)][0]
 u=lambda a:np.unpackbits(a,bitorder='little')
