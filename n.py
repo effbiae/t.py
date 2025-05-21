@@ -6,8 +6,11 @@ mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len
 err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==2;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x)
 ii=lambda x:(int(x),int(x))
 def k1(c,x):
- if c in'?+-*%#*~_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
-  sqrt(x)if c=='%'else(1 if ax(x)else len(x))if c=='#'else x*x if c=='*'else k2('=',x,0)if c=='~'else floor(x).astype(int)
+ if c in'?+-*%#*_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
+  sqrt(x)if c=='%'else(k1('^',x)if ax(x)else len(x))if c=='#'else x*x if c=='*'else floor(x).astype(int)
+ if c=='~':
+  if ax(x):return not(x)
+  ma=k2('=',x,0).astype(bool);_=copy(x);_[ma]=nan;_[logical_not(ma)]=0.;return _
  if c=='|':return x[::-1]if v(x)else k1('=',x)[::-1]if smp(x,0)else(2,)if ax(x)else(1,)
  if c in'<>':return (triu,tril)[c=='>'](ones(ii(x),dtype=int),(1,-1)[c=='>'])if smp(x,0)else(2,)
  if c=='=':return identity(int(x))if smp(x,0)else(2,)
@@ -22,7 +25,7 @@ def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
    (array(float(a))if ax(a)else a)/x if c=='%' else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else 0+(abs(a-x)<1e-5)if c=='='\
    else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
- if c=='!':return tr(lambda a,x:x%a,(a,x),(2,)) if ty(a)==2 and ty(x)==2 else(0,)
+ if c=='!':return tr(lambda a,x:x%a,(a,x),(2,))if ty(a)==2 and ty(x)==2 else(4,)
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
    if v(x) and not m(a):return(3,)
