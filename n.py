@@ -28,9 +28,9 @@ def k2(c,a,x):
  if c=='!':return tr(lambda a,x:x%a,(a,x),(2,))if ty(a)==2 and ty(x)==2 else(4,)
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
-   if v(x) and not m(a):return(3,)
+   if v(x)and not m(a):return(3,)
    if not ax(x):return k2('@',x,a)
-   if v(a):i=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return i[0] if len(i)else len(a)
+   if v(a):i=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return i[0]if len(i)else len(a)
    else:return(2,)
   q=array(x)/a;return q if any([ty(_)==5 for _ in(a,x)])else floor(q).astype(int)
  if c=='_':return tr(lambda a,x:x[int(a):],(a,x),(1,))
@@ -47,18 +47,19 @@ def k2(c,a,x):
    elif m(x):return tr(matmul,(a,x),(2,))
   if m(a):return tr(matmul,(a,x),(2,))
   return(3,)
- if c=='~':
-  if ax(a)!=ax(x):return 0
-  p=[k1(',',_)if ax(_)else _ for _ in(a,x)]
-  if not equal(*[_.shape for _ in p]).all():return 0
-  fs=(isnan,isposinf,isneginf);ms=[logical_and(*[f(_)for _ in p])for f in fs]
-  return 0+k2('|',reduce(logical_or,ms),k2('=',*p)).all()
+ if c=='~':return match(a,x)
  if c=='^':
   if ty(a)!=2:return(1,)
   if ax(x):return k2('#',a,x)
   f=lambda a,x:k1('&',k2('#',a,x)if ax(a)else a);x=k1('!',x)if ax(x)else x
   return tr(f,(a,x),(5,))if ax(a)else(1,)
  return(0,)
+def match(a,x):
+ if ax(a)!=ax(x):return 0
+ p=[k1(',',_)if ax(_)else _ for _ in(a,x)]
+ if not equal(*[_.shape for _ in p]).all():return 0
+ fs=(isnan,isposinf,isneginf);ms=[logical_and(*[f(_)for _ in p])for f in fs]
+ return 0+k2('|',reduce(logical_or,ms),k2('=',*p)).all()
 def tr(f,v,e):
  try:return f(*v)
  except:return e
