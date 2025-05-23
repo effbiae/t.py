@@ -10,7 +10,7 @@ def k1(c,x):
   sqrt(x)if c=='%'else(k1('^',x)if ax(x)else len(x))if c=='#'else x*x if c=='*'else floor(x).astype(int)
  if c=='~':
   if ax(x):return not(x)
-  ma=k2('=',x,0).astype(bool);_=copy(x);_[ma]=nan;_[logical_not(ma)]=0.;return _
+  ma=k2('=',x,0).astype(bool);_=copy(x);_[ma]=nan if ty(x)==f else 0;_[logical_not(ma)]=0.;return _
  if c=='|':return x[::-1]if v(x)else k1('=',x)[::-1]if smp(x,0)else(2,)if ax(x)else(1,)
  if c in'<>':return (triu,tril)[c=='>'](ones(ii(x),dtype=int),(1,-1)[c=='>'])if smp(x,0)else(2,)
  if c=='=':return identity(int(x))if smp(x,0)else(2,)
@@ -47,7 +47,7 @@ def k2(c,a,x):
    elif m(x):return tr(matmul,(a,x),(2,))
   if m(a):return tr(matmul,(a,x),(2,))
   return(3,)
- if c=='~':return match(a,x)
+ if c=='~':return k2('=',a,x)
  if c=='^':
   if ty(a)!=i:return(1,)
   if ax(x):return k2('#',a,x)
