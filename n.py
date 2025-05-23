@@ -51,8 +51,8 @@ def k2(c,a,x):
  if c=='^':
   if ty(a)!=i:return(1,)
   if ax(x):return k2('#',a,x)
-  f=lambda a,x:k1('&',k2('#',a,x)if ax(a)else a);x=k1('!',x)if ax(x)else x
-  return tr(f,(a,x),(5,))if ax(a)else(1,)
+  g=lambda a,x:k1('&',k2('#',a,x)if ax(a)else a);x=k1('!',x)if ax(x)else x
+  return tr(g,(a,x),(5,))if ax(a)else(1,)
  return(0,)
 def match(a,x):
  if ax(a)!=ax(x):return 0

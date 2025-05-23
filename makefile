@@ -1,5 +1,5 @@
 SHELL=/bin/bash
-o=-fno-builtin -funsigned-char -fno-unwind-tables -Wno-psabi -Wfatal-errors -Wno-multichar -Wno-parentheses -Wno-pointer-type-mismatch -Wno-incompatible-pointer-types
+o=-fno-builtin -funsigned-char -fno-unwind-tables -Wno-psabi -Wfatal-errors -Wno-multichar -Wno-parentheses -Wno-pointer-type-mismatch -Wno-incompatible-pointer-types -Wno-macro-redefined
 c=clang-13
 m=-mavx512f -mavx512dq -mavx512vbmi -mavx512vnni -mavx512vpopcntdq
 O=-O3

@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-import sys;from p import p,P;lg=lambda x,f:(print(x,file=f),f.flush());
+import sys;from p import p,P;lg=lambda x,f:(print(x,file=f),f.flush())
+v1=sys.argv[1]if len(sys.argv)>1 else '1'
 def e(x,s):
  if x[0]=='[':return '\n'.join([e(_,s)for _ in x[1:]])+'// '+s
  if x[0]=='0':return f't{"ei"[type(x[1])==int]}({x[1]})'
@@ -12,7 +13,7 @@ def main():
   x=sys.stdin.readline().strip()
   if not x:break
   if any(_ in x for _ in':;'):lg(e(p(x),x),gf)
-  else:lg(f'_r({e(p(x),x)}); //{x}',gf)
+  else:n=int(v1);lg(f'i({n},_r({e(p(x),x)})); //{x}',gf)
  gf.close()
 if __name__=='__main__':
  main()
