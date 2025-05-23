@@ -38,7 +38,7 @@ def k2(c,a,x):
   if ax(a):return(1,)
   if m(a)or m(x)or ty(a)!=ty(x):return(3,)
   return tr(lambda a,x:concatenate([k1(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
- if c=='#':n=k1('#',x);return(k1(',',x)if ax(x)else x)[arange(int(a))%n]if ax(a)and n else(1,)
+ if c=='#':n=1 if ax(x) else len(x);return(k1(',',x)if ax(x)else x)[arange(int(a))%n]if ax(a)and n else(1,)
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
   if ax(a):return a*x
   if ax(x):return(2,)
