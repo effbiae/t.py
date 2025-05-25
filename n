@@ -22,8 +22,8 @@ def e(x,m):
    if m.err(a):return a
    b=e(x[2],m)
    if m.err(b):m._r(a);return b
-   return m.k(P.find(x[0]),a,b)
-  else:a=e(x[2],m);return a if m.err(a) else m.k(P.find(x[0]),None,a)
+   return m.k(p,a,b)
+  else:a=e(x[2],m);return a if m.err(a) else m.k(p,None,a)
  if p==0:
   k=(m,x[1]);o=e(x[2],m);
   if m.err(o):return o
