@@ -8,16 +8,14 @@ ii=lambda x:(int(x),int(x))
 def k1(c,x):
  if c in'?+-*%#*_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(k1('^',x)if ax(x)else len(x))if c=='#'else x*x if c=='*'else floor(x).astype(int)
- if c=='~':
-  if ax(x):return not(x)
-  ma=k2('=',x,0).astype(bool);_=copy(x);_[ma]=nan if ty(x)==f else 0;_[logical_not(ma)]=0.;return _
+ if c=='~':return not(x)if ax(x)else k2('=',x,0)
  if c=='|':return x[::-1]if v(x)else k1('=',x)[::-1]if smp(x,0)else(2,)if ax(x)else(1,)
  if c in'<>':return (triu,tril)[c=='>'](ones(ii(x),dtype=int),(1,-1)[c=='>'])if smp(x,0)else(2,)
  if c=='=':return identity(int(x))if smp(x,0)else(2,)
  if c=='!':return arange(int(x))if smp(x,-1)else array(x.shape)if m(x)else\
                reshape(arange(int(prod(x))),x)if v(x)and ty(x)==i and len(x)<3 else(2,)
  if c==',':return reshape(x,1)if ax(x)else reshape(x,(1,)+x.shape)if v(x)else reshape(x,(1,prod(x.shape)))
- if c=='@':return tr(lambda x:x[0],(x,),(0,))
+ if c=='@':return k1('^',x)if ax(x) else tr(lambda x:x[0],(x,),(0,))
  if c=='^':return array(1)/x*arange(int(x))if smp(x,-1)else(0,)
  if c=='&':return full(ii(x),1)if smp(x,0)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
  return(0,)
@@ -38,14 +36,16 @@ def k2(c,a,x):
   if ax(a):return(1,)
   if m(a)or m(x)or ty(a)!=ty(x):return(3,)
   return tr(lambda a,x:concatenate([k1(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
- if c=='#':n=1 if ax(x) else len(x);return(k1(',',x)if ax(x)else x)[arange(int(a))%n]if ax(a)and n else(1,)
+ if c=='#':
+  n=1 if ax(x) else len(x)
+  if not ax(a)or not n:return(1,)
+  ia=int(a);xs=(arange(ia)%n)if ia>0 else n+ia+arange(-a);return tr(lambda x:(k1(',',x)if ax(x)else x)[xs],(x,),(2,))
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
   if ax(a):return a*x
-  if ax(x):return(2,)
   if v(a):
    if ty(x)==i and v(x):return tr(lambda a,x:a[x],(a,x),(2,))
    elif m(x):return tr(matmul,(a,x),(2,))
-  if m(a):return tr(matmul,(a,x),(2,))
+  if m(a):return a*x if ax(x)else tr(matmul,(a,x),(2,))
   return(3,)
  if c=='~':return k2('=',a,x)
  if c=='^':
