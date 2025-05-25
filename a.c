@@ -5,7 +5,6 @@ U kti(i2 x){return ti(x);}
 U kte(e2 x){return te(x);}
 #define xx(s) i2 k##s##x(Ux){return s##x;}
 xx(n)xx(t)xx(i)xx(m)xx(a)xx(p)xx(u)
-#define sx ((i0*)k_(0,x))
 i0*ksx(Ux){return sx;}
 e2 kex(Ux){return ex;}
 i0 kgx(Ux){return (i0)ix;}
