@@ -1,6 +1,6 @@
 from a import P;from numpy import *;seterr(divide='ignore', invalid='ignore');from functools import reduce
 ax=lambda x:type(x)==ndarray and x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=ID;_r=ID
-i,f=2,5;ty=lambda x:[f,i][0+(x.dtype=='int64')];k=lambda i,a,x:k1(P[i],x)if a is None else k2(P[i],a,x)
+i,f=2,5;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];k=lambda i,a,x:k1(P[i],x)if a is None else k2(P[i],a,x)
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len typ wontdo other'.split()
 err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==i;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x)
 ii=lambda x:(int(x),int(x))
