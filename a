@@ -2,9 +2,10 @@
 import a,n,sys,os,pickle;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y;np.set_printoptions(precision=2)
 ax=lambda x:not isinstance(x,np.ndarray)
 ow=1;od=1;oe=1;on=1
+st=lambda x:str(x)if(not x.shape==() or x.dtype==np.int64)else str(np.reshape(x,(1,)))[1:-1]
 def sm(an,x):
     l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
-    s=l+(an+':'if not ow else'')+l+(str(x)if not err(x)else'err '+str(x[0]))
+    s=l+(an+':'if not ow else'')+l+(st(x)if not err(x)else'err '+str(x[0]))
     w=s.replace('\n','|').replace('[','').replace(']','')
     return (w[:48]+'..'if len(w)>50 else w)if ow else s
 err=lambda x:type(x)is tuple;errpass=lambda s,e:e==4 or err(s) and (s[0]in[0]or s[0]==e)

@@ -6,7 +6,7 @@ err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==i;smp=lambda x,g:ax(x)
 ii=lambda x:(int(x),int(x))
 def k1(c,x):
  if c in'?+-*%#*_':return(4,)if c=='?'else ar(abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
-  sqrt(x)if c=='%'else([print(x,type(x)),k1('^',x)if ax(x)else len(x)][-1])if c=='#'else x*x if c=='*'else floor(x).astype(int))
+  sqrt(x)if c=='%'else(k1('^',x)if ax(x)else len(x))if c=='#'else x*x if c=='*'else floor(x).astype(int))
  if c=='~':return ar(0+logical_not(x))if ax(x)else k2('=',x,0)
  if c=='|':return x[::-1]if v(x)else k1('=',x)[::-1]if smp(x,0)else(2,)if ax(x)else(1,)
  if c in'<>':return (triu,tril)[c=='>'](ones(ii(x),dtype=int),(1,-1)[c=='>'])if smp(x,0)else(2,)
