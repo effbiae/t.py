@@ -48,10 +48,10 @@ def k2(c,a,x):
   return(3,)
  if c=='~':return k2('=',a,x)
  if c=='^':
-  if ty(a)!=i:return(1,)
-  if ax(x):return k2('#',a,x)
-  g=lambda a,x:k1('&',k2('#',a,x)if ax(a)else a);x=k1('!',x)if ax(x)else x
-  return tr(g,(a,x),(5,))if ax(a)else(1,)
+  if ty(a)!=i or not ax(a) or a<1 or ax(x):return(1,)
+  if v(x):
+   return(2,)if len(x)%a else reshape(x,(a,len(x)//a))
+  return tr(lambda:ar([_[:a:]for _ in x]),(),(5,))
  return(0,)
 def match(a,x):
  if type(a)!=ndarray:a=array(a)
