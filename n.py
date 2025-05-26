@@ -30,7 +30,7 @@ def k2(c,a,x):
    if not ax(x):return k2('@',x,a)
    if v(a):n=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return n[0]if len(n)else len(a)
    else:return(2,)
-  q=array(x)/a;return q if any([ty(_)==f for _ in(a,x)])else q
+  return array(x)/a
  if c=='_':return tr(lambda a,x:x[int(a):],(a,x),(1,))
  if c==',':
   if ax(a):return(1,)
