@@ -1,14 +1,13 @@
 from a import P;from numpy import *;seterr(divide='ignore', invalid='ignore');from functools import reduce
-ax=lambda x:not isinstance(x,ndarray)or not len(x.shape);ID=lambda x:x;ti=ID;te=ID;pk=ID;r_=ID;_r=ID;rr=lambda x:1
-i,f=2,5;ty=lambda x:i if type(x)is int else f if type(x)is float else [f,i][0+(x.dtype=='int64')]
-topy=lambda x:x.item()if not ax(x)and x.shape==()else x;k=lambda i,a,x:topy(k1(P[i],x)if a is None else k2(P[i],a,x))
+ax=lambda x:type(x)==ndarray and x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=ID;_r=ID
+i,f=2,5;ty=lambda x:[f,i][0+(x.dtype=='int64')];k=lambda i,a,x:k1(P[i],x)if a is None else k2(P[i],a,x)
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len typ wontdo other'.split()
 err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==i;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x)
 ii=lambda x:(int(x),int(x))
 def k1(c,x):
- if c in'?+-*%#*_':return(4,)if c=='?'else abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
-  sqrt(x)if c=='%'else(k1('^',x)if ax(x)else len(x))if c=='#'else x*x if c=='*'else floor(x).astype(int)
- if c=='~':return not(x)if ax(x)else k2('=',x,0)
+ if c in'?+-*%#*_':return(4,)if c=='?'else ar(abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
+  sqrt(x)if c=='%'else([print(x,type(x)),k1('^',x)if ax(x)else len(x)][-1])if c=='#'else x*x if c=='*'else floor(x).astype(int))
+ if c=='~':return ar(0+logical_not(x))if ax(x)else k2('=',x,0)
  if c=='|':return x[::-1]if v(x)else k1('=',x)[::-1]if smp(x,0)else(2,)if ax(x)else(1,)
  if c in'<>':return (triu,tril)[c=='>'](ones(ii(x),dtype=int),(1,-1)[c=='>'])if smp(x,0)else(2,)
  if c=='=':return identity(int(x))if smp(x,0)else(2,)
@@ -55,6 +54,8 @@ def k2(c,a,x):
   return tr(g,(a,x),(5,))if ax(a)else(1,)
  return(0,)
 def match(a,x):
+ if type(a)!=ndarray:a=array(a)
+ if type(x)!=ndarray:x=array(x)
  if ax(a)!=ax(x):return 0
  p=[k1(',',_)if ax(_)else _ for _ in(a,x)]
  if not equal(*[_.shape for _ in p]).all():return 0
