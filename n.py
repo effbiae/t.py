@@ -54,10 +54,7 @@ def k2(c,a,x):
   return tr(lambda:ar([_[:a:]for _ in x]),(),(5,))
  return(0,)
 def match(a,x):
- if type(a)!=ndarray:a=array(a)
- if type(x)!=ndarray:x=array(x)
- if ax(a)!=ax(x):return 0
- p=[k1(',',_)if ax(_)else _ for _ in(a,x)]
+ p=[array(_)if type(_)!=ndarray else _ for _ in (a,x)]
  if not equal(*[_.shape for _ in p]).all():return 0
  fs=(isnan,isposinf,isneginf);ms=[logical_and(*[f(_)for _ in p])for f in fs]
  return 0+k2('|',reduce(logical_or,ms),k2('=',*p)).all()
