@@ -10,4 +10,4 @@ i0*ksz(Uz){return sz;}
 e2 kez(Uz){return ez;}
 i0 kgz(Uz){return (i0)iz;}
 static U ke_(U i,Uy,Uz){return y&&py?k_r(z),y:pz?k_r(y),z:k(i,y,z);}
-U ke(U i,Uy,Uz){return r(ke_(i,y,z),if(pr)(k_r(y),k_r(z)));}
+U ke(U i,Uy,Uz){return r(ke_(i,y,z),if(!py&&!pz&&pr)(k_r(y),k_r(z)));}

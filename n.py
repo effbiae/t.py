@@ -27,10 +27,10 @@ def k2(c,a,x):
   if not ax(a):
    if v(x)and not m(a):return(3,)
    if not ax(x):return k2('@',x,a)
-   if v(a):n=nonzero([k2('~',a[i],x)for i in arange(len(a))])[0];return n[0]if len(n)else len(a)
+   if v(a):n=nonzero([match(a[i],x)for i in arange(len(a))])[0];return n[0]if len(n)else len(a)
    else:return(2,)
   return array(x)/a
- if c=='_':return tr(lambda a,x:x[int(a):],(a,x),(1,))
+ if c=='_':return tr(lambda a,x:x[int(a)if a>=0 else 0:len(x)if a>=0 else int(len(x)+a)],(a,x),(1,))
  if c==',':
   if ax(a):return(1,)
   if m(a)or m(x)or ty(a)!=ty(x):return(3,)
