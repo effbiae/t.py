@@ -32,12 +32,13 @@ def sm(x):
  l='\n'if not ax(x)and len(x.shape)>1 and not ow else''
  s=l+(':'if not ow else '\t')+l+(str(x)if not err(x)else 'err '+str(x[0]))
  return s.replace('\n','|').replace('[','').replace(']','')if ow else s
+f=sys.stdin
 def main():
  op and (pf:=open('p','wb'))
  while 1:
-  O(' 'if sys.stdin.isatty()else'');x=sys.stdin.readline().strip()
+  O(' 'if f.isatty()else'');x=f.readline()
   if not x:break
-  ll(x);ov and print('',x);ks=[e(p(x),m)for m in(a,n)]
+  x=x.strip();ll(x);ov and print('',x);ks=[e(p(x),m)for m in(a,n)]
   if not a.err(ks[0]):gl(x)
   ks=tuple([m.pk(_)for m,_ in zip((a,n),ks)])
   if not n.match(*ks):
@@ -48,4 +49,5 @@ def main():
  op and pf.close()
 if __name__=='__main__':
  [exec(f"o{_}={_ in v1}",globals())for _ in 'vpqw']
+ if len(sys.argv)>2:f=open(sys.argv[2])
  main()

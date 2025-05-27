@@ -1,12 +1,13 @@
 #include"k.edu/a.h"
-U k_r(Ux){return px||ax?x:_r(x);}
-U kr_(Ux){return px||ax?x:r_(x);}
-U kti(i2 x){return ti(x);}
-U kte(e2 x){return te(x);}
-#define xx(s) i2 k##s##x(Ux){return s##x;}
-xx(n)xx(t)xx(i)xx(m)xx(a)xx(p)xx(u)
-i0*ksx(Ux){return sx;}
-e2 kex(Ux){return ex;}
-i0 kgx(Ux){return (i0)ix;}
-static U kk(U i,Ua,Ux){return a&&pa?k_r(x),a:px?k_r(a),x:k(i,a,x);}
-U ke(U i,Ua,Ux){return r(kk(i,a,x),if(pr)(k_r(a),k_r(x)));}
+typedef char i0;typedef unsigned i2;typedef float e2;
+U k_r(Uz){return pz||az?z:_r(z);}
+U kr_(Uz){return pz||az?z:r_(z);}
+U kti(i2 z){return ti(z);}
+U kte(e2 z){return te(z);}
+#define zz(s) i2 k##s##z(Uz){return s##z;}
+zz(n)zz(t)zz(i)zz(m)zz(a)zz(p)zz(u)
+i0*ksz(Uz){return sz;}
+e2 kez(Uz){return ez;}
+i0 kgz(Uz){return (i0)iz;}
+static U ke_(U i,Uy,Uz){return y&&py?k_r(z),y:pz?k_r(y),z:k(i,y,z);}
+U ke(U i,Uy,Uz){return r(ke_(i,y,z),if(pr)(k_r(y),k_r(z)));}
