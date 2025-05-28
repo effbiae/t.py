@@ -1,3 +1,4 @@
+#include<stdio.h>
 #include"k.edu/a.h"
 typedef char i0;typedef unsigned i2;typedef float e2;
 U k_r(Uz){return pz||az?z:_r(z);}
@@ -9,5 +10,4 @@ zz(n)zz(t)zz(i)zz(m)zz(a)zz(p)zz(u)
 i0*ksz(Uz){return sz;}
 e2 kez(Uz){return ez;}
 i0 kgz(Uz){return (i0)iz;}
-static U ke_(U i,Uy,Uz){return y&&py?k_r(z),y:pz?k_r(y),z:k(i,y,z);}
-U ke(U i,Uy,Uz){return r(ke_(i,y,z),if(!py&&!pz&&pr)(k_r(y),k_r(z)));}
+U ke(U i,Uy,Uz){return y&&py?k_r(z),y:pz?k_r(y),z:r(k(i,y,z),if(pr)(k_r(y),k_r(z)));}

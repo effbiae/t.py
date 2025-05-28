@@ -44,6 +44,7 @@ def main():
   if not n.match(*ks):
    ov and print('disagree',x,'\t'.join([sm(k)for k in ks]))
    op and (o:=(x,)+ks,pickle.dump(o,pf),pf.flush())
+   not oq and print('!')
   else:not oq and print(ks[0])
   [_.flush()for _ in(sys.stdout,log,glog)]
  op and pf.close()
