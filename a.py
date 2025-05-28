@@ -8,8 +8,6 @@ sh=lambda z:0 if az(z)else(uz(z),round(nz(z)/uz(z)if uz(z)else nz(z)))if mz(z)el
 i,f,b,q=6,13,1,4;ty=lambda z:ct.c_int if tz(z)==i else e2 if tz(z)==f else i0 if tz(z)==b else i0 if tz(z)==q else i0
 a=lambda z:np.array(iz(z)if tz(z)==i else ez(z) if tz(z)==f else gz(z))
 import numpy as np;err=lambda z:pz(z)
-g=lambda z,t,s:[np.copy(np.ctypeslib.as_array(ct.cast(sz(z),ct.POINTER(t)),shape=s)),_r(z)][0]
-u=lambda a:np.unpackbits(a,bitorder='little')
-def pk(z):
-    return (iz(z),)if pz(z)else a(z)if az(z)else g(z,ty(z),sh(z))if tz(z)!=b else u(g(z,ty(z),((nz(z)+7)//8,)))[:nz(z)].reshape(sh(z))
+g=lambda z,t,s:[np.copy(np.ctypeslib.as_array(ct.cast(sz(z),ct.POINTER(t)),shape=s)),_r(z)][0];u=lambda a:np.unpackbits(a,bitorder='little')
+pk=lambda z:(iz(z),)if pz(z)else a(z)if az(z)else g(z,ty(z),sh(z))if tz(z)!=b else u(g(z,ty(z),((nz(z)+7)//8,)))[:nz(z)].reshape(sh(z))
 k_(m_(0,2**36))
