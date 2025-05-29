@@ -9,9 +9,7 @@ def exprs():
  y=base();x=y+[c+a for c in vs for a in y]
  for a in y:x+=[f'z:{a}'];x+=[f'z{v}{b}'for b in y for v in vs]
  return x
-if __name__=='__main__':
- try:
-    s=[_ for _ in v1 if len(_)>1 and _[0]not in'-/']
-    if not len(s):s=exprs()if'x'in v1 else base()
-    for _ in s:print(_)
- except BrokenPipeError:pass
+s=exprs()if'x'in v1 else base()
+try:
+ for _ in s:print(_)
+except BrokenPipeError:pass
