@@ -1,13 +1,11 @@
 #!/usr/bin/python3
-import sys
-print('#use expect <this-filename> <path-to-a>')
+import sys;re='expect -re "(?n)^ "';ce='eof {puts "crash";exit 1}'
+print('if {[llength $argv] < 1} {puts "usage: expect $argv0 <path-to-a>";exit 1}')
 print('spawn [lindex $argv 0]')
-print('proc s {x} {expect -re {(?n)^ } {send -- "$x\\r" } eof {puts "crash";exit 1} }')
+print('proc s {x} {'+re+' {send -- "$x\\r"} '+ce+'}')
 f=sys.stdin
 while 1:
  x=f.readline()
  if not x:break
  print('s "'+x.strip()+'"')
-print('s "\\\\\\\\"')
-print('expect eof')
-print('puts "ok"')
+print('if {[llength $argv] > 1} {s "\\\\\\\\";expect eof;puts "ok"} else {'+re+' {interact} '+ce+'}')
