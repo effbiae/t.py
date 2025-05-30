@@ -46,7 +46,7 @@ def main():
    op and (o:=(x,)+ks,pickle.dump(o,pf),pf.flush())
    not oq and print('!')
   else:not oq and print(ks[0])
-  [_.flush()for _ in(sys.stdout,log,glog)]
+  O('')
  op and pf.close()
 if __name__=='__main__':
  [exec(f"o{_}={_ in v1}",globals())for _ in 'vpqw']
