@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 import sys
-print('spawn k.edu/a\nproc xx {x} { expect -re {(?n)^ } { send -- "$x\r" } eof { puts "crash";exit 1} }')
+print('spawn k.edu/a')
+print('proc xx {x} {expect -re {(?n)^ } {send -- "$x\\r" } eof {puts "crash";exit 1} }')
 f=sys.stdin
 while 1:
  x=f.readline()
@@ -9,4 +10,3 @@ while 1:
 print('xx "\\\\\\\\"')
 print('expect eof')
 print('puts "exit"')
-
