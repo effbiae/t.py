@@ -11,7 +11,7 @@ k.edu:
 P:k.edu
 	a=$$(grep -o 'P="[^"]*"' k.edu/z.c);echo -n $${a:3:29}>P
 Y:k.edu
-	a=$$(grep -o 'gg\[[^"]*"[^"]*"' k.edu/z.c);echo -n $${a:8:16}>Y
+	a=$$(grep -o 'gg\[[^"]*"[^"]*"' k.edu/z.c);echo -n $${a:8:20}>Y
 d:g.b g.c liba.so
 	$c -od -D_start=_kstart $o -g g.c -L. -la -Wl,-rpath=`pwd`
 z:;zip py.zip makefile a.py a.c t.py p.py n.py

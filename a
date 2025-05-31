@@ -15,7 +15,7 @@ def pr():
  while 1:
   try:r+=[pickle.load(pf)]
   except EOFError:return r
-lu=lambda x,y:x[y]if y<len(x)else'ERR'
+lu=lambda x,y:x[y]if y<len(x)else'ERR'+str(y)
 def main():
  results=pr()
  for w in range(3):

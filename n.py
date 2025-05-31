@@ -42,7 +42,7 @@ def k2(c,a,x):
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
   if ax(a):return a*x
   if v(a):
-   if v(x):return tr(lambda a,x:a[x],(a,x),(2,))if ty(x)==i else a*x
+   if v(x) or ax(x):return tr(lambda a,x:a[x],(a,x),(2,))if ty(x)==i else a*x
    elif m(x):return tr(matmul,(a,x),(2,))
   if m(a):return a*x if ax(x)else tr(matmul,(a,x),(2,))
   return(3,)
