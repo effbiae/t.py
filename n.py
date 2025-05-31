@@ -20,8 +20,8 @@ def k1(c,x):
  return(0,)
 def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
-   (array(float(a))if ax(a)else a)/x if c=='%' else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else 0+(abs(a-x)<1e-5)if c=='='\
-   else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
+   (array(float(a))if ax(a)else a)/x if c=='%' else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else\
+   0+isclose(a,x,rtol=1e-5)if c=='=' else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
  if c=='!':return tr(lambda a,x:x%a,(a,x),(2,))if ty(a)==i and ty(x)==i else(4,)
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):

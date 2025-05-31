@@ -15,5 +15,7 @@ Y:k.edu
 d:g.b g.c liba.so
 	$c -od -D_start=_kstart $o -g g.c -L. -la -Wl,-rpath=`pwd`
 z:;zip py.zip makefile a.py a.c t.py p.py n.py
-test:;python3 p.py
+test:
+	python3 p.py
+	python3 a.py
 clean:;rm -f P s liba.so t py.zip t log g.b g.c -r k.edu __pycache__
