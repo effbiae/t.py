@@ -11,8 +11,6 @@ g=lambda z,t,s:[np.copy(np.ctypeslib.as_array(ct.cast(sz(z),ct.POINTER(t)),shape
 pk=lambda z:(iz(z),)if pz(z)else a(z)if az(z)else g(z,ty(z),sh(z))if tz(z)!=b else u(g(z,ty(z),((nz(z)+7)//8,)))[:nz(z)].reshape(sh(z))
 k_(m_(0,2**36))
 if __name__=='__main__':
- import sys;ch=lambda y,z:np.allclose(y,z) or (print(y,'!=',z),sys.exit(1))
- ch(pk(ti(1)),1);ch(abs(pk(te(1.1))-1.1)<0.00001,1);
- ch(1,np.array_equal(pk(k(P.find("!"),0,ti(2))),np.array([0,1])))
- ch(pk(k(P.find("^"),0,ti(2))),np.array([0,0.5]))
- ch(1,pk(k(P.find("<"),te(1.1),te(1.2))))
+ import sys;ch=lambda y,z:np.allclose(y,z)or(print(y,'!=',z),sys.exit(1))
+ ch(pk(ti(1)),1);ch(abs(pk(te(1.1))-1.1)<0.00001,1);ch(1,np.array_equal(pk(k(P.find("!"),0,ti(2))),np.array([0,1])))
+ ch(pk(k(P.find("^"),0,ti(2))),np.array([0,0.5]));ch(1,pk(k(P.find("<"),te(1.1),te(1.2))))
