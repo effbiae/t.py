@@ -1,5 +1,5 @@
 from a import P;from numpy import *;seterr(divide='ignore', invalid='ignore');from functools import reduce
-ax=lambda x:type(x)==ndarray and x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=ID;_r=ID
+ax=lambda x:x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=ID;_r=ID
 i,f=2,5;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];k=lambda i,a,x:k1(P[i],x)if a is None else k2(P[i],a,x)
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len typ wontdo other'.split()
 err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==i;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x)
@@ -27,7 +27,7 @@ def k2(c,a,x):
   if not ax(a):
    if v(x)and not m(a):return(3,)
    if not ax(x):return k2('@',x,a)
-   if v(a):n=nonzero([match(a[i],x)for i in arange(len(a))])[0];return n[0]if len(n)else len(a)
+   if v(a):n=nonzero([match(a[i],x)for i in arange(len(a))])[0];return n[0]if len(n)else ar(len(a))
    else:return(2,)
   return array(x)/a
  if c=='_':return tr(lambda a,x:x[int(a)if a>=0 else 0:len(x)if a>=0 else int(len(x)+a)],(a,x),(1,))
