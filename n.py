@@ -3,7 +3,7 @@ ax=lambda x:x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=
 i,f=2,5;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];k=lambda i,a,x:k1(P[i],x)if a is None else k2(P[i],a,x)
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len typ wontdo other'.split()
 err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==i;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x)
-ii=lambda x:(int(x),int(x));match=lambda a,x:0+isclose(a,x,equal_nan=1).all()
+ii=lambda x:(int(x),int(x));match=lambda a,x:0+allclose(a,x,equal_nan=1)
 def k1(c,x):
  if c in'?+-*%#*_':return(4,)if c=='?'else ar(abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(k1('^',x)if ax(x)else len(x))if c=='#'else x*x if c=='*'else floor(x).astype(int))
@@ -49,8 +49,7 @@ def k2(c,a,x):
  if c=='~':return k2('=',a,x)
  if c=='^':
   if ty(a)!=i or not ax(a) or a<1 or ax(x):return(1,)
-  if v(x):
-   return(2,)if len(x)%a else reshape(x,(a,len(x)//a))
+  if v(x):return(2,)if len(x)%a else reshape(x,(a,len(x)//a))
   return tr(lambda:ar([_[:a:]for _ in x]),(),(5,))
  return(0,)
 def tr(f,v,e):
