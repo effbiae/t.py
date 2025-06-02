@@ -3,7 +3,7 @@ ax=lambda x:x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=
 i,f=2,5;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];k=lambda i,a,x:k1(P[i],x)if a is None else k2(P[i],a,x)
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y='nyi rnk len typ wontdo other'.split()
 err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==i;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x)
-ii=lambda x:(int(x),int(x))
+ii=lambda x:(int(x),int(x));match=lambda a,x:0+isclose(a,x,equal_nan=1).all()
 def k1(c,x):
  if c in'?+-*%#*_':return(4,)if c=='?'else ar(abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(k1('^',x)if ax(x)else len(x))if c=='#'else x*x if c=='*'else floor(x).astype(int))
@@ -21,7 +21,7 @@ def k1(c,x):
 def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
    (array(float(a))if ax(a)else a)/x if c=='%' else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else\
-   0+isclose(a,x,rtol=1e-5)if c=='=' else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
+   0+isclose(a,x)if c=='=' else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
  if c=='!':return tr(lambda a,x:x%a,(a,x),(2,))if ty(a)==i and ty(x)==i else(4,)
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
@@ -53,11 +53,6 @@ def k2(c,a,x):
    return(2,)if len(x)%a else reshape(x,(a,len(x)//a))
   return tr(lambda:ar([_[:a:]for _ in x]),(),(5,))
  return(0,)
-def match(a,x):
- p=[array(_)if type(_)!=ndarray else _ for _ in (a,x)]
- if not equal(*[_.shape for _ in p]).all():return 0
- fs=(isnan,isposinf,isneginf);ms=[logical_and(*[f(_)for _ in p])for f in fs]
- return 0+k2('|',reduce(logical_or,ms),k2('=',*p)).all()
 def tr(f,v,e):
  try:return f(*v)
  except:return e
