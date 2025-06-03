@@ -1,4 +1,4 @@
-from a import P;from numpy import *;seterr(divide='ignore', invalid='ignore');from functools import reduce
+from a import P;from numpy import *;seterr(divide='ignore', invalid='ignore')
 ax=lambda x:x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=ID;_r=ID
 i,f=int,float;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];k=lambda i,a,x:k1(P[i],x)if a is None else k2(P[i],a,x)
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y=(open('Y').read()+' nop').split()#'nyi rnk len typ dom'+' nop'
@@ -22,7 +22,7 @@ def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
    (ar(f(a))if ax(a)else a)/x if c=='%'else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else\
    0+isclose(a,x)if c=='='else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
- if c=='!':return tr(lambda a,x:x%a,(a,x),(2,))if ty(a)==i and ty(x)==i else(3,)
+ if c=='!':return tr(lambda a,x:x%a,(a,x),(2,))if ty(a)==i and ty(x)==i else k2('*',a,x)
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
    if v(x)and not m(a):return(3,)
@@ -32,8 +32,8 @@ def k2(c,a,x):
   return ar(x)/a
  if c=='_':return tr(lambda a,x:x[i(a)if a>=0 else 0:len(x)if a>=0 else i(len(x)+a)],(a,x),(1,))
  if c==',':
-  if ax(a):return(1,)
-  if m(a)or m(x)or ty(a)!=ty(x):return(3,)
+  if ty(a)!=ty(x):return(3,)
+  if m(a)or m(x)or ax(a):return(1,)
   return tr(lambda a,x:concatenate([k1(',',_)if ax(_)else _ for _ in(a,x)]),(a,x),(0,))
  if c=='#':
   n=1 if ax(x) else len(x)
