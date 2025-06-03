@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-import a,n,sys,os,pickle;from p import p;import numpy as np;P=a.P;Y=open('Y').read().split();Z=n.Y;np.set_printoptions(precision=2)
+import a,n,sys,os,pickle;from p import p;import numpy as np;P=a.P;Y=n.Y;np.set_printoptions(precision=2)
 ax=lambda x:not isinstance(x,np.ndarray)
 ow=1;od=1;oe=1;on=1
 st=lambda x:str(x)if(not x.shape==() or x.dtype==np.int64)else str(np.reshape(x,(1,)))[1:-1]
@@ -8,7 +8,7 @@ def sm(an,x):
     s=l+(an+':'if not ow else'')+l+(st(x)if not err(x)else'err '+str(x[0]))
     w=s.replace('\n','|').replace('[','').replace(']','')
     return (w[:48]+'..'if len(w)>50 else w)if ow else s
-err=lambda x:type(x)is tuple;errpass=lambda s,e:e==4 or err(s) and (s[0]in[0]or s[0]==e)
+err=lambda x:type(x)is tuple;errpass=lambda s,e:e==len(Y)-1 or err(s) and (s[0]in[0]or s[0]==e)
 pf=open('p','rb')
 def pr():
  r=[]
@@ -22,7 +22,7 @@ def main():
   for x,s,t in results:
    if w==0 and not n.match(s,t)and not err(s) and not err(t):od and print(x,'\t',sm('n',t),'\t(',sm('a',s),')')#,max(abs(t-s)[1:]))
    elif w==1 and err(s) and not err(t) and s[0]:oe and print('> a',lu(Y,s[0]),x,sm('n',t))
-   elif w==2 and err(t) and not errpass(s,t[0]):on and print('> n',lu(Z,t[0]),x,sm('a',s))
+   elif w==2 and err(t) and not errpass(s,t[0]):on and print('> n',lu(Y,t[0]),x,sm('a',s))
   sys.stdout.flush()
 if __name__=='__main__':
     main()
