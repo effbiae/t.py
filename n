@@ -1,10 +1,9 @@
 #!/usr/bin/python3
-import a,n,sys;from p import p;from numpy import *;P=a.P;v1=sys.argv[1]if len(sys.argv)>1 else''
-import pickle;ax=lambda x:not isinstance(x,ndarray);set_printoptions(precision=3);v={}
+import a,n,sys,pickle,p;p=p.p;P=a.P;from numpy import *;v1=sys.argv[1]if len(sys.argv)>1 else''
+ax=lambda x:not isinstance(x,ndarray);set_printoptions(precision=3);v={}
 lg=lambda x,f,e:(print(x,file=f,end=e),f.flush());
 [exec(f'{_}=open("{_}","w");{_[0]}l=lambda x:lg(x,{_},None)',globals())for _ in('log','glog')]
-O=lambda x:lg(x,sys.stdout,'')
-ev=lambda s,m:m.pk(e(p(s),m));err=lambda x:type(x)is tuple
+O=lambda x:lg(x,sys.stdout,'');ev=lambda s,m:m.pk(e(p(s),m));err=lambda x:type(x)is tuple
 def seq(x,m):
  r=None
  for a in x:

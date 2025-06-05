@@ -1,9 +1,10 @@
-from a import P;from numpy import *;seterr(divide='ignore', invalid='ignore')
+import a;from numpy import *;seterr(divide='ignore', invalid='ignore')
 ax=lambda x:x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=ID;_r=ID
-i,f=int,float;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];k=lambda i,a,x:k1(P[i],x)if a is None else k2(P[i],a,x)
+i,f=int,float;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];
+k=lambda i,y,z:k1(a.P[i],z)if y is None else k2(a.P[i],y,z)
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y=(open('Y').read()+' nop').split()#'nyi rnk len typ dom'+' nop'
-err=lambda x:type(x)is tuple;aix=lambda x:ax(x)and ty(x)==i;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x)
-ii=lambda x:(i(x),i(x));match=lambda a,x:0+allclose(a,x,equal_nan=1)
+err=lambda x:type(x)is tuple;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x);ii=lambda x:(i(x),i(x))
+match=lambda a,x:0+allclose(a,x,equal_nan=1)
 def k1(c,x):
  if c in'?+-*%#*_':return(5,)if c=='?'else ar(abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(k1('^',x)if ax(x)else len(x))if c=='#'else x*x if c=='*'else floor(x).astype(i))
@@ -15,22 +16,22 @@ def k1(c,x):
                reshape(arange(i(prod(x))),x)if v(x)and ty(x)==i and len(x)<3 else(2,)
  if c==',':return reshape(x,(1,)+x.shape)if ax(x)or v(x)else reshape(x,(1,prod(x.shape)))
  if c=='@':return k1('^',x)if ax(x)else tr(lambda x:x[0],(x,),(0,))
- if c=='^':return ar(1)/x*arange(i(x))if smp(x,-1)else(0,)
+ if c=='^':return ar(1)/x*arange(i(x))if smp(x,-1)else(2,)
  if c=='&':return full(ii(x),1)if smp(x,0)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
  return(0,)
 def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
    (ar(f(a))if ax(a)else a)/x if c=='%'else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else\
    0+isclose(a,x)if c=='='else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
- if c=='!':return tr(lambda a,x:x%a,(a,x),(2,))if ty(a)==i and ty(x)==i else k2('*',a,x)
+ if c=='!':return tr(lambda a,x:x%a,(a,x),(2,))if ty(a)==i and ty(x)==i else k2('*',a,x)if not ax(x)else(4,)
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
    if v(x)and not m(a):return(3,)
    if not ax(x):return k2('@',x,a)
    if v(a):n=nonzero([match(a[i],x)for i in arange(len(a))])[0];return n[0]if len(n)else ar(len(a))
    else:return(2,)
-  return ar(x)/a
- if c=='_':return tr(lambda a,x:x[i(a)if a>=0 else 0:len(x)if a>=0 else i(len(x)+a)],(a,x),(1,))
+  return ar(x)/a if not ax(x)else(4,)
+ if c=='_':return tr(lambda a,x:x[i(a)if a>=0 else 0:len(x)if a>=0 else len(x)+i(a)],(a,x),(1,))
  if c==',':
   if ty(a)!=ty(x):return(3,)
   if m(a)or m(x)or ax(a):return(1,)
