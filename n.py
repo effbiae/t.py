@@ -1,7 +1,6 @@
 import a;from numpy import *;seterr(divide='ignore', invalid='ignore')
 ax=lambda x:x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=ID;_r=ID
-i,f=int,float;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];
-k=lambda i,y,z:k1(a.P[i],z)if y is None else k2(a.P[i],y,z)
+i,f=int,float;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];k=lambda i,y,z:k1(a.P[i],z)if y is None else k2(a.P[i],y,z)
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y=(open('Y').read()+' nop').split()#'nyi rnk len typ dom'+' nop'
 err=lambda x:type(x)is tuple;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x);ii=lambda x:(i(x),i(x))
 match=lambda a,x:0+allclose(a,x,equal_nan=1)
