@@ -27,7 +27,7 @@ def e(x,m):
   if m.err(o):return o
   k in v and m._r(v[k]);v[k]=o;return m.r_(o)
 def sm(x):
- l='\n'if len(x.shape)>1 and not ow else''
+ l='\n'if not err(x)and len(x.shape)>1 and not ow else''
  s=l+(':'if not ow else '\t')+l+(str(x)if not err(x)else 'err '+str(x[0]))
  return s.replace('\n','|').replace('[','').replace(']','')if ow else s
 f=sys.stdin
