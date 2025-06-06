@@ -1,9 +1,9 @@
 #!/usr/bin/python3
 import a,sys;v1=sys.argv[1]if len(sys.argv)>1 else''
 g0='i:1;j:0;k:-1'
-g0='v:^48;m:0.+48^^48*48;s:16;t:-6;i:1;j:0;k:-1'
-g0='v:^48;m:0.+48^^48*48;s:16;t:-6'
+g0='v:^48;m:48^^48*48;s:16;t:-6;i:1;j:0;k:-1'
 g0='v:^2;m:2^^4;s:1'
+g0='v:^48;m:48^^48*48;s:16;t:-6'
 g=[_[0]for _ in g0.split(';')]
 print(g0+(';z:0'if'x'in v1 else''))
 vs=a.P[1:a.P.find('.')+1].replace('$','').replace('.','')+'EMR'
