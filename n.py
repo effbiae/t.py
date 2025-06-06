@@ -17,7 +17,7 @@ def k1(c,x):
  if c=='@':return k1('^',x)if ax(x)else tr(lambda x:x[0],(x,),(0,))
  if c=='^':return ar(1)/x*arange(i(x))if smp(x,-1)else(2,)
  if c=='&':return full(ii(x),1)if smp(x,0)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
- if c=='E':return k1('^',x)if smp(x,0)else exp(x)
+ if c=='E':return k1('^',x)if ax(x)else exp(x)
  return(0,)
 def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
