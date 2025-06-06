@@ -57,19 +57,3 @@ def k2(c,a,x):
 def tr(f,v,e):
  try:return f(*v)
  except:return e
-
-'''m?x is x@m (i.e. commute of @. useful for our ai machinations)
-btw in general  a@x is at/application/composition/..
-i.e. 'a' is a function. e.g. scalar s is scalar i.e. it scales. that is why it is called scalar.
-2@3 is 6
-
-a?x is the inverse operation, e.g
-
-2?6 is 3
-
-except m?x is not least squares. instead we are using it for something else.
-
-m@x is linear transform(m is function)
-v@x is indexing (vectors are functions)
-v?x is find(i.e. inverse of index)
-  '''
