@@ -1,11 +1,12 @@
 #!/usr/bin/python3
-import a;import sys;v1=sys.argv[1]if len(sys.argv)>1 else''
+import a,sys;v1=sys.argv[1]if len(sys.argv)>1 else''
 g0='i:1;j:0;k:-1'
-g0='v:^48;m:0.+48^!48*48;s:16;t:-6;i:1;j:0;k:-1'
-g0='v:^48;m:0.+48^!48*48;s:16;t:-6'
+g0='v:^48;m:0.+48^^48*48;s:16;t:-6;i:1;j:0;k:-1'
+g0='v:^2;m:0.+2^^4'
+g0='v:^48;m:0.+48^^48*48;s:16;t:-6'
 g=[_[0]for _ in g0.split(';')]
 print(g0+(';z:0'if'x'in v1 else''))
-vs=a.P[1:a.P.find('.')+1].replace('$','').replace('.','')
+vs=a.P[1:a.P.find('.')+1].replace('$','').replace('.','')+'E'
 base=lambda:(x:=[c+t for t in g for c in vs],x:=x+[u+a for u in g for a in x])[-1]
 def exprs():
  y=base();x=y+[c+a for c in vs for a in y]
