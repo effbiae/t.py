@@ -18,6 +18,8 @@ def k1(c,x):
  if c=='^':return ar(1)/x*arange(i(x))if smp(x,-1)else(2,)
  if c=='&':return full(ii(x),1)if smp(x,0)else transpose(matrix(x))if m(x)else(1,)if v(x)else(2,)
  if c=='E':return k1('^',x)if ax(x)else exp(x)
+ if c=='M':x=exp(x-max(x));return x/(sum(x))
+ if c=='R':return(5,)
  return(0,)
 def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
@@ -57,7 +59,9 @@ def k2(c,a,x):
   if ty(a)!=i or not ax(a) or a<1 or ax(x):return(1,)
   if v(x):return(2,)if len(x)%a else reshape(x,(a,len(x)//a))
   return tr(lambda:ar([_[:a]for _ in x]),(),(2,))
- if c=='E':return(2,)if ax(x) else a*(x/(1+exp(-x)))if not ax(a)else(1,)
+ if c=='E':return(2,)if ax(x)else a*(x/(1+exp(-x)))
+ if c=='R':return(2,)if ax(x)or not len(x)else a*(x/sqrt(ar(1)/len(x)*sum(x*x)))
+ if c=='M':return(5,)
  return(0,)
 def tr(f,v,e):
  try:return f(*v)
