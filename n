@@ -39,7 +39,7 @@ def main():
   x=x.strip();ll(x);ov and print('',x);ks=[e(p(x),m)for m in(a,n)]
   if not a.err(ks[0]):gl(x)
   ks=tuple([m.pk(_)for m,_ in zip((a,n),ks)])
-  if not n.match(*ks):
+  if not n.ma(*ks):
    ov and print('disagree',x,'\t'.join([sm(k)for k in ks]))
    op and (o:=(x,)+ks,pickle.dump(o,pf),pf.flush())
    not oq and print('!')

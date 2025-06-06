@@ -3,7 +3,7 @@ ax=lambda x:x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=
 i,f=int,float;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];k=lambda i,y,z:k1(a.P[i],z)if y is None else k2(a.P[i],y,z)
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y=(open('Y').read()+' nop').split()#'nyi rnk len typ dom'+' nop'
 err=lambda x:type(x)is tuple;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x);ii=lambda x:(i(x),i(x))
-match=lambda a,x:(_:=[ar(_)for _ in (a,x)],0+(_[0].shape==_[1].shape and allclose(*_,rtol=1e-4,equal_nan=1)))[-1]
+ma=lambda a,x:(_:=[ar(_)for _ in (a,x)],0+(_[0].shape==_[1].shape and allclose(*_,rtol=1e-4,equal_nan=1)))[-1]
 def k1(c,x):
  if c in'?+-*%#*_':return(5,)if c=='?'else ar(abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(k1('^',x)if ax(x)else len(x))if c=='#'else x*x if c=='*'else floor(x).astype(i))
@@ -28,7 +28,7 @@ def k2(c,a,x):
   if not ax(a):
    if v(x)and not m(a):return(3,)
    if not ax(x):return k2('@',x,a)
-   if v(a):n=where([match(_,x)for _ in a])[0];return ar(n[0]if len(n)else len(a))
+   if v(a):n=where([ma(_,x)for _ in a])[0];return ar(n[0]if len(n)else len(a))
    else:return(2,)
   return ar(x)/a if not ax(x)else(4,)
  if c=='_':return tr(lambda a,x:x[i(a)if a>=0 else 0:len(x)if a>=0 else len(x)+i(a)],(a,x),(1,))
@@ -52,7 +52,7 @@ def k2(c,a,x):
   if ty(a)!=i or not ax(a) or a<1 or ax(x):return(1,)
   if v(x):return(2,)if len(x)%a else reshape(x,(a,len(x)//a))
   return tr(lambda:ar([_[:a]for _ in x]),(),(2,))
- if c=='E':return a*(x/(1+exp(-x)))
+ if c=='E':return a*(x/(1+exp(-x)))if not ax(a)and not ax(x)else(2,)
  return(0,)
 def tr(f,v,e):
  try:return f(*v)

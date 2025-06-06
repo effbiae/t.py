@@ -20,7 +20,7 @@ def main():
  results=pr()
  for w in range(3):
   for x,s,t in results:
-   if w==0 and not n.match(s,t)and not err(s) and not err(t):od and print(x,'\t',sm('n',t),'\t(',sm('a',s),')')#,max(abs(t-s)[1:]))
+   if w==0 and not n.ma(s,t)and not err(s) and not err(t):od and print(x,'\t',sm('n',t),'\t(',sm('a',s),')')#,max(abs(t-s)[1:]))
    elif w==1 and err(s) and not err(t) and s[0]:oe and print('> a',lu(Y,s[0]),x,sm('n',t))
    elif w==2 and err(t) and not errpass(s,t[0]):on and print('> n',lu(Y,t[0]),x,sm('a',s))
   sys.stdout.flush()
