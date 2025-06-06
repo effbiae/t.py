@@ -52,7 +52,7 @@ def k2(c,a,x):
   if ty(a)!=i or not ax(a) or a<1 or ax(x):return(1,)
   if v(x):return(2,)if len(x)%a else reshape(x,(a,len(x)//a))
   return tr(lambda:ar([_[:a]for _ in x]),(),(2,))
- if c=='E':return a*(x/(1+exp(-x)))if not ax(a)and not ax(x)else(2,)
+ if c=='E':return a*(x/(1+exp(-x)))if not ax(a)and not ax(x)else(1,)
  return(0,)
 def tr(f,v,e):
  try:return f(*v)
