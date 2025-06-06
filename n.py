@@ -60,7 +60,7 @@ def k2(c,a,x):
   if v(x):return(2,)if len(x)%a else reshape(x,(a,len(x)//a))
   return tr(lambda:ar([_[:a]for _ in x]),(),(2,))
  if c=='E':return(2,)if ax(x)else a*(x/(1+exp(-x)))
- if c=='R':return(2,)if ax(x)or not len(x)else a*(x/sqrt(ar(1)/len(x)*sum(x*x)))
+ if c=='R':return(2,)if ax(x)or not len(x)else a*(x/sqrt(1/len(x)*sum(x*x)))
  if c=='M':return(5,)
  return(0,)
 def tr(f,v,e):
