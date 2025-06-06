@@ -3,7 +3,7 @@ ax=lambda x:x.shape==();ID=lambda x:x;ar=lambda x:array(x);ti=ar;te=ar;pk=ID;r_=
 i,f=int,float;ty=lambda x:[f,i][0+issubclass(x.dtype.type,integer)];k=lambda i,y,z:k1(a.P[i],z)if y is None else k2(a.P[i],y,z)
 mv=lambda n:lambda x:not ax(x)and len(x.shape)==n;v=mv(1);m=mv(2);Y=(open('Y').read()+' nop').split()#'nyi rnk len typ dom'+' nop'
 err=lambda x:type(x)is tuple;smp=lambda x,g:ax(x)and x>g and not isinf(x)and not isnan(x);ii=lambda x:(i(x),i(x))
-match=lambda a,x:(_:=[ar(_)for _ in (a,x)],0+(_[0].shape==_[1].shape and allclose(*_,rtol=1e-4,equal_nan=1)))[-1]
+match=lambda a,x:(_:=[ar(_)for _ in (a,x)],0+(_[0].shape==_[1].shape and allclose(*_,rtol=1e-6,equal_nan=1)))[-1]
 def k1(c,x):
  if c in'?+-*%#*_':return(5,)if c=='?'else ar(abs(x)if c=='+'else -x if c=='-'else x*x if c=='*'else \
   sqrt(x)if c=='%'else(k1('^',x)if ax(x)else len(x))if c=='#'else x*x if c=='*'else floor(x).astype(i))
