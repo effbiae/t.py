@@ -23,7 +23,9 @@ def k2(c,a,x):
  if c in'+-*%<>=&|':return tr(lambda a,x:a+x if c=='+'else a-x if c=='-'else a*x if c=='*'else\
    (ar(f(a))if ax(a)else a)/x if c=='%'else 0+(a<x)if c=='<'else 0+(a>x)if c=='>'else\
    0+isclose(a,x)if c=='='else minimum(a,x)if c=='&'else maximum(a,x),(a,x),(2,))
- if c=='!':return tr(lambda a,x:x%a,(a,x),(2,))if ty(a)==i and ty(x)==i else k2('*',a,x)if not ax(x)else(4,)
+ if c=='!':
+  if not ax(x)and not ax(a):return(4,)
+  return tr(lambda a,x:x%a,(a,x),(2,))if ty(a)==i and ty(x)==i else k2('*',a,x)if not ax(x)else(4,)
  if c=='?':#s? is inverse;v? is inverse;m? is commutem (x@m)
   if not ax(a):
    if v(x)and not m(a):return(3,)
@@ -43,7 +45,8 @@ def k2(c,a,x):
  if c=='@':#s@ is scalar(i.e. multiply);v@ is index;m@ is matmul
   if ax(a):return a*x
   if v(a):
-   if v(x) or ax(x):return tr(lambda a,x:a[x],(a,x),(2,))if ty(x)==i else a*x
+   if v(x):return(3,)
+   if ax(x):return tr(lambda a,x:a[x],(a,x),(2,))if ty(x)==i and x>=0 else a*x
    elif m(x):return tr(matmul,(a,x),(2,))
   if m(a):return a*x if ax(x)else tr(matmul,(a,x),(2,))
   return(3,)
@@ -52,7 +55,7 @@ def k2(c,a,x):
   if ty(a)!=i or not ax(a) or a<1 or ax(x):return(1,)
   if v(x):return(2,)if len(x)%a else reshape(x,(a,len(x)//a))
   return tr(lambda:ar([_[:a]for _ in x]),(),(2,))
- if c=='E':return a*(x/(1+exp(-x)))if not ax(a)and not ax(x)else(1,)
+ if c=='E':return(2,)if ax(x) else a*(x/(1+exp(-x)))if not ax(a)else(1,)
  return(0,)
 def tr(f,v,e):
  try:return f(*v)
