@@ -46,9 +46,11 @@ def k2(c,a,x):
   if ax(a):return a*x
   if v(a):
    if v(x):return(3,)
-   if ax(x):return tr(lambda a,x:a[x],(a,x),(2,))if ty(x)==i and x>=0 else a*x
+   if ax(x):return tr(lambda a,x:a[x],(a,x),(2,))if ty(x)==i and x>=0 else(2,)if x<0 else a*x
    elif m(x):return tr(matmul,(a,x),(2,))
-  if m(a):return a*x if ax(x)else tr(matmul,(a,x),(2,))
+  if m(a):
+   if ax(x):return tr(lambda a,x:a[x],(a,x),(2,))if x>=0 else(2,)
+   return tr(matmul,(a,x),(2,))
   return(3,)
  if c=='~':return k2('=',a,x)
  if c=='^':
