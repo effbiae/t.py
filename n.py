@@ -1,7 +1,7 @@
 from a import P;k=lambda i,y,z:k1(P[i],z)if y is None else k2(P[i],y,z)
 from numpy import *;seterr(divide='ignore', invalid='ignore');Y=(open('Y').read()+' nop').split()#'nyi rnk len typ dom'+' nop'
 a=lambda z:z.shape==();mv=lambda n:lambda z:not a(z)and len(z.shape)==n;v=mv(1);m=mv(2)
-ID=lambda z:z;ar=lambda z:array(z);ti=ar;te=ar;pk=ID;r_=ID;_r=ID;i,f=int,float;ty=lambda z:[f,i][0+issubclass(z.dtype.type,integer)]
+ar=lambda z:array(z);ti=ar;te=ar;ID=lambda z:z;pk=ID;r_=ID;_r=ID;i,f=int,float;ty=lambda z:[f,i][0+issubclass(z.dtype.type,integer)]
 err=lambda z:type(z)is tuple;smp=lambda z,g:a(z)and z>g and not isinf(z)and not isnan(z);ii=lambda z:(i(z),i(z))
 ma=lambda y,z:(_:=[ar(_)for _ in(y,z)],0+(_[0].shape==_[1].shape and allclose(*_,rtol=1e-4,equal_nan=1)))[-1]
 def k1(c,z):
