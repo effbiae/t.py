@@ -12,6 +12,6 @@ e2 kez(Uz){return ez;}
 i0 kgz(Uz){return (i0)iz;}
 U ke(U i,Uy,Uz){return y&&py?k_r(z),y:pz?k_r(y),z:r(k(i,y,z),if(z(r,pz))(k_r(y),k_r(z)));}
 void cv(int*a,Uz){i(nz,Uy=_i(i,z);a[i]=z(y,iz))}
-void cm(int*a,Uz){i(uz,cv(a+i*vz,_i(i,z)))}
-U kci(int*a,Uz){(mz?cm:cv)(a,z);return z;}
+void cm(int*a,Uz){i(uz,Uy=_i(i,z);cv(a+i*vz,y);_r(y))}
+U kci(int*a,Uz){P(!a,z)(mz?cm:cv)(a,z);return z;}
 U kce(int*a,Uz){return kci(a,z);}
