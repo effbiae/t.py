@@ -9,25 +9,23 @@ def batched(iterable, n, *, strict=False):
         if strict and len(batch) != n:
             raise ValueError('batched(): incomplete batch')
         yield batch
+plus=lambda x,y:x+y
 n='/tmp/n'
 e='/tmp/e'
 t='/tmp/t'
 os.system(f'cp {v1} {t}')
-def u(b):f=open(n,'w');f.writelines(b);f.close();os.system(f'./e<{n}>{e}');return os.system(f'expect {e} k.edu/a 1')
+def u(b):f=open(n,'w');f.writelines(b);f.close();os.system(f'./e<{n}>{e}');return os.system(f'expect {e} k.edu/a 1 >/dev/null')
 def tt():
  l=open(t).readlines()
  def tc(l,d):
-  t=l[-1];h=l[1:-1];a=l[0];b=list(batched(h,len(h)//d));xs=[(a,)+_[0]+(t,)for _ in combinations(b,len(b)-1)]
+  t=l[-1];h=l[1:-1];a=l[0];b=list(batched(h,len(h)//d));xs=[(a,)+reduce(plus,_)+(t,)for _ in combinations(b,len(b)-1)]
   for x in xs:
+   print(x)
    if u(x):return x
   return 0
  r=0
- for x in (2,3):
-  if y:=tc(l,x):
-   print('found smaller')
-   r=1
-   os.system(f'less {n}')
-   os.system(f'cp {n} {t}')
-   break
+ for x in (2,3,4,5):
+  if tc(l,x):
+   print('found smaller');r=1;os.system(f'less {n}');os.system(f'cp {n} {t}');break
  return r
 while tt():pass

@@ -9,7 +9,7 @@ liba.so:k.edu makefile a.c
 k.edu:
 	git clone https://github.com/effbiae/k.edu.git
 P:k.edu
-	a=$$(grep -o 'P="[^"]*"' k.edu/z.c);echo -n $${a:3:29}>P
+	a=$$(grep -o 'R="[^"]*"' k.edu/z.c);echo -n $${a:3:29}>P
 Y:k.edu
 	a=$$(grep -o 'gg\[[^"]*"[^"]*"' k.edu/z.c);echo -n $${a:8:20}>Y
 d:g.b g.c liba.so
