@@ -2,9 +2,9 @@
 import a,sys;[exec(f"v{i}=sys.argv[{i}]if len(sys.argv)>{i} else''",globals())for i in (1,2,3)]
 g0='i:1;j:0;k:-1'
 g0='v:^48;m:48^^48*48;s:16;t:-6;i:1;j:0;k:-1'
-g0='v:^2;m:2^^4;s:1'
-g0='v:^48;m:48^^48*48;s:16;t:-6'
 g0='i:2#1.;v:^2'
+g0='v:^48;m:48^^48*48;s:16;t:-6'
+g0='v:^2;m:2^^4;s:1'
 if v2:g0=v2
 g=[_[0]for _ in g0.split(';')]
 print(g0+(';z:0'if'x'in v1 else''))

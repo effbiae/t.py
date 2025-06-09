@@ -18,7 +18,7 @@ def k1(c,z):
  if c=='^':return ar(1)/z*arange(i(z))if smp(z,-1)else(2,)
  if c=='&':return full(ii(z),1)if smp(z,0)else transpose(matrix(z))if m(z)else(1,)if v(z)else(2,)
  if c=='E':return k1('^',z)if a(z)else exp(z)
- if c=='M':z=exp(z-max(z));return z/sum(z)
+ if c=='M':return max(z);z=exp(z-max(z));return z/sum(z)
  if c=='R':return(5,)
  return(0,)
 def k2(c,y,z):
