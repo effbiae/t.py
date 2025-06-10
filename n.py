@@ -11,8 +11,7 @@ def k1(c,z):
  if c=='|':return z[::-1]if v(z)else k1('=',z)[::-1]if smp(z,0)else(2,)if a(z)else(1,)
  if c in'<>':return (triu,tril)[c=='>'](ones(ii(z),dtype=i),(1,-1)[c=='>'])if smp(z,0)else(2,)
  if c=='=':return identity(i(z))if smp(z,0)else(2,)
- if c=='!':return arange(i(z))if smp(z,-1)else ar(z.shape)if m(z)else\
-               reshape(arange(i(prod(z))),z)if v(z)and ty(z)==i and len(z)<3 else(2,)
+ if c=='!':return arange(i(z))if smp(z,-1)else ar(z.shape)if m(z)else ("dosomthing",z)[-1] if v(z)and ty(z)==i and len(z)<3 else(2,)
  if c==',':return reshape(z,(1,)+z.shape)if a(z)or v(z)else k1(',',ar(len(z)))
  if c=='@':return k1('^',z)if a(z)else tr(lambda z:z[0],(z,),(0,))
  if c=='^':return ar(1)/z*arange(i(z))if smp(z,-1)else(2,)
@@ -34,11 +33,11 @@ def k2(c,y,z):
    if not a(z):return k2('@',z,y)
    if v(y):n=where([ma(_,z)for _ in y])[0];return ar(n[0]if len(n)else len(y))
    else:return(2,)
-  return ar(z)/y if not a(z)else(4,)
+  return ar(z)/y #if not a(z)else(4,)
  if c=='_':return tr(lambda y,z:z[i(y)if y>=0 else 0:len(z)if y>=0 else len(z)+i(y)],(y,z),(1,))
  if c==',':
   if ty(y)!=ty(z):return(3,)
-  if m(y)or m(z)or a(y):return(1,)
+  if m(y)or m(z):return(1,)
   return tr(lambda y,z:concatenate([k1(',',_)if a(_)else _ for _ in(y,z)]),(y,z),(0,))
  if c=='#':
   n=1 if a(z) else len(z)
