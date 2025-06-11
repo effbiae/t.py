@@ -33,7 +33,7 @@ def k2(c,y,z):
    if not a(z):return k2('@',z,y)
    if v(y):n=where([ma(_,z)for _ in y])[0];return ar(n[0]if len(n)else len(y))
    else:return(2,)
-  return ar(z)/y #if not a(z)else(4,)
+  return z/y
  if c=='_':return tr(lambda y,z:z[i(y)if y>=0 else 0:len(z)if y>=0 else len(z)+i(y)],(y,z),(1,))
  if c==',':
   if ty(y)!=ty(z):return(3,)
@@ -42,6 +42,7 @@ def k2(c,y,z):
  if c=='#':
   n=1 if a(z) else len(z)
   if not a(y)or not n:return(1,)
+  if isnan(y)or isinf(y):return(4,)
   ia=i(y);zs=(arange(ia)%n)if ia>0 else n+ia+arange(-y);return tr(lambda z:(k1(',',z)if a(z)else z)[zs],(z,),(2,))
  if c=='@':#s@ is scalar(i.e. multiply);v@ is indez;m@ is matmul
   if a(y):return y*z

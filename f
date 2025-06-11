@@ -31,7 +31,7 @@ def tt():
  print('bs',n2,bs)
  for x in bs:
   if tc(l,x):
-   r=1;print('split in',x);sy(f'less {n}');sy(f'cp {n} {t}');break
+   r=1;print('split in',x);"sy(f'less {n}')";sy(f'cp {n} {t}');break
  return r
 #first, try empty middle
 l=open(t).readlines()
