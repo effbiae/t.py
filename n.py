@@ -23,7 +23,7 @@ def k1(c,z):
 def k2(c,y,z):
  if c in'+-*%<>=&|':return tr(lambda y,z:y+z if c=='+'else y-z if c=='-'else y*z if c=='*'else\
    (ar(f(y))if a(y)else y)/z if c=='%'else 0+(y<z)if c=='<'else 0+(y>z)if c=='>'else\
-   0+isclose(y,z)if c=='='else minimum(y,z)if c=='&'else matimum(y,z),(y,z),(2,))
+   0+isclose(y,z)if c=='='else minimum(y,z)if c=='&'else maximum(y,z),(y,z),(2,))
  if c=='!':
   if not a(z)and not a(y):return(4,)
   return tr(lambda y,z:z%y,(y,z),(2,))if ty(y)==i and ty(z)==i else k2('*',y,z)if not a(z)else(4,)

@@ -11,7 +11,7 @@ k.edu:
 P:k.edu
 	a=$$(grep -o 'R="[^"]*"' k.edu/z.c);echo -n $${a:3:29}>P
 Y:k.edu
-	a=$$(grep -o 'gg\[[^"]*"[^"]*"' k.edu/z.c);echo -n $${a:8:20}>Y
+	a=$$(grep -o 'Q\[[^"]*"[^"]*"' k.edu/z.c);echo -n $${a:5:20}>Y
 d:g.b g.c liba.so
 	$c -od -D_start=_kstart $o -g g.c -L. -la -Wl,-rpath=`pwd`
 t:t.c liba.so
